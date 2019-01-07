@@ -1,0 +1,289 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form Input changes value and all related formulas 1`] = `
+<div
+  className="ui segment ui form"
+>
+  <style>
+    .d-form-bgcibidbjc { 
+  color: pink;
+  font-size: 100px !important;
+ }
+.d-form-Aebfdiadfh { 
+  padding: 9px 0px;
+ }
+.d-form-Adiagibjfa { 
+  margin-right: 12px;
+  margin-bottom: 6px;
+ }
+.d-form-bidfabidci { 
+  margin: 6px 0px 12px 0px;
+ }
+.d-form-Abdgbhfjheg { 
+  margin-bottom: 0px !important;
+ }
+
+  .fieldSet-bejaheefjb {
+    border: solid 1px #ddd;
+    border-radius: 5px;
+    background-color: #fafafa;
+  }
+
+
+  .fieldSet-bejaheefjb legend {
+    padding: 0px 6px;
+    font-weight: bold;
+  }
+  </style>
+  <div
+    className="ui form"
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="fourteen wide field"
+      >
+        <label
+          htmlFor="name"
+        >
+          Mimo
+        </label>
+        <div
+          className="ui labeled input"
+        >
+          <div
+            className="ui label label"
+            onClick={[Function]}
+          >
+            Name
+          </div>
+          <input
+            name="name"
+            onChange={[Function]}
+            type="text"
+            value="Tomas"
+          />
+        </div>
+      </div>
+      <div
+        className="two wide field"
+      >
+        <label
+          htmlFor="older"
+        >
+          Older
+        </label>
+        <div
+          className="ui disabled input"
+        >
+          <input
+            disabled={true}
+            name="older"
+            onChange={[Function]}
+            tabIndex={-1}
+            type="text"
+            value={50}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="fields"
+    >
+      <div
+        className="one wide field"
+      >
+         
+      </div>
+      <div
+        className="inline field"
+      >
+        <label
+          htmlFor="age"
+        >
+          Age: 
+        </label>
+        <div
+          className="ui input"
+        >
+          <input
+            name="age"
+            onChange={[Function]}
+            type="text"
+            value={40}
+          />
+        </div>
+      </div>
+      <div
+        className="two wide field"
+      >
+         
+      </div>
+      <div
+        className="inline field"
+      >
+        <label
+          htmlFor="younger"
+        >
+          Younger:
+        </label>
+        <div
+          className="ui input"
+        >
+          <input
+            name="younger"
+            onChange={[Function]}
+            type="text"
+            value={20}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Form Input renders correctly 1`] = `
+<div
+  className="ui segment ui form"
+>
+  <style>
+    .d-form-bgcibidbjc { 
+  color: pink;
+  font-size: 100px !important;
+ }
+.d-form-Aebfdiadfh { 
+  padding: 9px 0px;
+ }
+.d-form-Adiagibjfa { 
+  margin-right: 12px;
+  margin-bottom: 6px;
+ }
+.d-form-bidfabidci { 
+  margin: 6px 0px 12px 0px;
+ }
+.d-form-Abdgbhfjheg { 
+  margin-bottom: 0px !important;
+ }
+
+  .fieldSet-bejaheefjb {
+    border: solid 1px #ddd;
+    border-radius: 5px;
+    background-color: #fafafa;
+  }
+
+
+  .fieldSet-bejaheefjb legend {
+    padding: 0px 6px;
+    font-weight: bold;
+  }
+  </style>
+  <div
+    className="ui form"
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="fourteen wide field"
+      >
+        <label
+          htmlFor="name"
+        >
+          Mimo
+        </label>
+        <div
+          className="ui labeled input"
+        >
+          <div
+            className="ui label label"
+            onClick={[Function]}
+          >
+            Name
+          </div>
+          <input
+            name="name"
+            onChange={[Function]}
+            type="text"
+            value="Tomas"
+          />
+        </div>
+      </div>
+      <div
+        className="two wide field"
+      >
+        <label
+          htmlFor="older"
+        >
+          Older
+        </label>
+        <div
+          className="ui disabled input"
+        >
+          <input
+            disabled={true}
+            name="older"
+            onChange={[Function]}
+            tabIndex={-1}
+            type="text"
+            value={43}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="fields"
+    >
+      <div
+        className="one wide field"
+      >
+         
+      </div>
+      <div
+        className="inline field"
+      >
+        <label
+          htmlFor="age"
+        >
+          Age: 
+        </label>
+        <div
+          className="ui input"
+        >
+          <input
+            name="age"
+            onChange={[Function]}
+            type="text"
+            value={33}
+          />
+        </div>
+      </div>
+      <div
+        className="two wide field"
+      >
+         
+      </div>
+      <div
+        className="inline field"
+      >
+        <label
+          htmlFor="younger"
+        >
+          Younger:
+        </label>
+        <div
+          className="ui input"
+        >
+          <input
+            name="younger"
+            onChange={[Function]}
+            type="text"
+            value={13}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,279 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form Checkbox changes value and all related formulas 1`] = `
+<div
+  className="ui segment ui form"
+>
+  <style>
+    .d-form-bgcibidbjc { 
+  color: pink;
+  font-size: 100px !important;
+ }
+.d-form-Aebfdiadfh { 
+  padding: 9px 0px;
+ }
+.d-form-Adiagibjfa { 
+  margin-right: 12px;
+  margin-bottom: 6px;
+ }
+.d-form-bidfabidci { 
+  margin: 6px 0px 12px 0px;
+ }
+.d-form-Abdgbhfjheg { 
+  margin-bottom: 0px !important;
+ }
+
+  .fieldSet-bejaheefjb {
+    border: solid 1px #ddd;
+    border-radius: 5px;
+    background-color: #fafafa;
+  }
+
+
+  .fieldSet-bejaheefjb legend {
+    padding: 0px 6px;
+    font-weight: bold;
+  }
+  </style>
+  <div
+    className="ui form"
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="eight wide field"
+      >
+        <div
+          className="field"
+        >
+          <div
+            className="ui checkbox d-form-bgcibidbjc"
+            onChange={[Function]}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+          >
+            <input
+              checked={false}
+              className="hidden"
+              name="agree"
+              onClick={[Function]}
+              readOnly={true}
+              tabIndex={0}
+              type="checkbox"
+            />
+            <label>
+              Agree With Terms and Conditions
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="fields"
+    >
+      <div
+        className="eight wide field"
+      >
+        <div
+          className="field"
+        >
+          <div
+            className="ui checked toggle checkbox d-form-bgcibidbjc"
+            onChange={[Function]}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+          >
+            <input
+              checked={true}
+              className="hidden"
+              name="disagree"
+              onClick={[Function]}
+              readOnly={true}
+              tabIndex={0}
+              type="checkbox"
+            />
+            <label>
+              Disagree With Terms and Conditions
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="fields"
+    >
+      <div
+        className="eight wide field"
+      >
+        <div
+          className="field"
+        >
+          <div
+            className="ui checked checkbox d-form-bgcibidbjc"
+            onChange={[Function]}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+          >
+            <input
+              checked={true}
+              className="hidden"
+              name="must"
+              onClick={[Function]}
+              readOnly={true}
+              tabIndex={0}
+              type="checkbox"
+            />
+            <label>
+              Must Agree With Terms and Conditions
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Form Checkbox renders correctly 1`] = `
+<div
+  className="ui segment ui form"
+>
+  <style>
+    .d-form-bgcibidbjc { 
+  color: pink;
+  font-size: 100px !important;
+ }
+.d-form-Aebfdiadfh { 
+  padding: 9px 0px;
+ }
+.d-form-Adiagibjfa { 
+  margin-right: 12px;
+  margin-bottom: 6px;
+ }
+.d-form-bidfabidci { 
+  margin: 6px 0px 12px 0px;
+ }
+.d-form-Abdgbhfjheg { 
+  margin-bottom: 0px !important;
+ }
+
+  .fieldSet-bejaheefjb {
+    border: solid 1px #ddd;
+    border-radius: 5px;
+    background-color: #fafafa;
+  }
+
+
+  .fieldSet-bejaheefjb legend {
+    padding: 0px 6px;
+    font-weight: bold;
+  }
+  </style>
+  <div
+    className="ui form"
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="eight wide field"
+      >
+        <div
+          className="field"
+        >
+          <div
+            className="ui checked checkbox d-form-bgcibidbjc"
+            onChange={[Function]}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+          >
+            <input
+              checked={true}
+              className="hidden"
+              name="agree"
+              onClick={[Function]}
+              readOnly={true}
+              tabIndex={0}
+              type="checkbox"
+            />
+            <label>
+              Agree With Terms and Conditions
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="fields"
+    >
+      <div
+        className="eight wide field"
+      >
+        <div
+          className="field"
+        >
+          <div
+            className="ui toggle checkbox d-form-bgcibidbjc"
+            onChange={[Function]}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+          >
+            <input
+              checked={false}
+              className="hidden"
+              name="disagree"
+              onClick={[Function]}
+              readOnly={true}
+              tabIndex={0}
+              type="checkbox"
+            />
+            <label>
+              Disagree With Terms and Conditions
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="fields"
+    >
+      <div
+        className="eight wide field"
+      >
+        <div
+          className="field"
+        >
+          <div
+            className="ui checkbox d-form-bgcibidbjc"
+            onChange={[Function]}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+          >
+            <input
+              checked={false}
+              className="hidden"
+              name="must"
+              onClick={[Function]}
+              readOnly={true}
+              tabIndex={0}
+              type="checkbox"
+            />
+            <label>
+              Must Agree With Terms and Conditions
+            </label>
+          </div>
+          <div>
+            <div
+              className="ui red pointing label"
+              onClick={[Function]}
+            >
+              You must agree to terms and conditions
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

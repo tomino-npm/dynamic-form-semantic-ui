@@ -1,0 +1,50 @@
+{
+  "name": "@tomino/dynamic-form-semantic-ui",
+  "version": "1.0.3",
+  "description": "Semantic UI form renderer based on dynamic form generation",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "luis": "node fuse.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com"
+  },
+  "keywords": [
+    "Semantic",
+    "UI",
+    "Form",
+    "React"
+  ],
+  "author": "Tomi Trescak <tomi.trescak@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@tomino/toolbelt": "^1.0.5",
+    "@types/jest": "^23.3.12",
+    "@types/react": "^16.7.13",
+    "@types/react-test-renderer": "^16.0.3",
+    "fuse-box": "^3.6.0",
+    "jest": "^23.6.0",
+    "luis": "^2.6.6",
+    "mobx": "^5.8.0",
+    "mobx-react": "^5.4.3",
+    "mobx-state-tree": "^3.10.0",
+    "mst-middlewares": "^3.10.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-test-renderer": "^16.7.0",
+    "semantic-ui-react": "^0.84.0",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "@tomino/dynamic-form": "^1.0.7",
+    "@types/webfontloader": "^1.6.29",
+    "webfontloader": "^1.6.28"
+  },
+  "jest": {
+    "preset": "ts-jest/presets/default",
+    "testEnvironment": "node"
+  }
+}

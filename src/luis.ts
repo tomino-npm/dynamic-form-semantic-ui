@@ -4,7 +4,7 @@ import { renderLuis, setupTestBridge } from 'luis';
 // this needs to be there to set up custom global function that luis uses
 setupTestBridge({ testResults: [] } as any);
 
-(window as any).jest = {
+(global as any).jest = {
   fn: () => {}
 };
 

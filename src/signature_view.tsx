@@ -1,14 +1,8 @@
 import * as React from 'react';
-import * as wfl from 'webfontloader';
 
 import { observer } from 'mobx-react';
 
-//@ts-ignore
-import * as verified from './approved.png';
-//@ts-ignore
-import * as rejected from './rejected.png';
-//@ts-ignore
-import * as pending from './loader.gif';
+import { verified, rejected, pending } from './images';
 
 import { FormControlProps, css } from './common';
 import { Modal, Header, Item, Icon, List, TextArea, Button, Input, Label } from 'semantic-ui-react';
@@ -79,7 +73,8 @@ export class Signature extends React.Component<FormControlProps> {
     reason: '',
     password: '',
     loading: false,
-    error: ''
+    error: '',
+    fontReady: false
   };
 
   handleOpen = () => this.setState({ modalOpen: true });
@@ -190,7 +185,7 @@ export class Signature extends React.Component<FormControlProps> {
     );
   }
 
-  renderSign(value: SignatureType, allowComment: boolean) {
+  renderSign(_value: SignatureType, allowComment: boolean) {
     return (
       <>
         {allowComment && (
@@ -388,15 +383,18 @@ export class Signature extends React.Component<FormControlProps> {
     const font = handlers.signatureFont();
 
     // load font if needed
-    if (value.signature) {
+    if (value.signature && typeof window !== undefined) {
       // use three possible fonts
-      wfl.load({ google: { families: [font] } });
+      require('webfontloader').load({
+        google: { families: [font] },
+        fontactive: () => !this.state.fontReady && this.setState({ fontReady: true })
+      });
     }
 
     return (
       <fieldset className={signatureStyle}>
         <legend>{formControl.label}</legend>
-        {value.signature && this.renderSigned(value, font)}
+        {value.signature && this.state.fontReady && this.renderSigned(value, font)}
         {value.rejected && this.renderRejected(value)}
         {!value.date && this.renderSign(value, allowComment)}
       </fieldset>

@@ -22,16 +22,19 @@ export class SelectComponent extends React.Component<Props> {
     const { formControl, owner } = this.props;
     const { source, controlProps, list, filterSource, filterColumn } = formControl;
 
+    const listSource = owner.getSchema(list);
+    if (listSource == null) {
+      debugger;
+    }
+
     return (
       <>
         <Dropdown
           {...controlProps}
           options={
             filterSource
-              ? owner
-                  .getSchema(list)
-                  .enum.filter((v: any) => v[filterColumn] === owner.getValue(filterSource))
-              : owner.getSchema(list).enum
+              ? listSource.enum.filter((v: any) => v[filterColumn] === owner.getValue(filterSource))
+              : listSource.enum
           }
           name={source}
           selection={true}

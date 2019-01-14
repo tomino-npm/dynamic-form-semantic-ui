@@ -1,3 +1,4 @@
+export { IFieldOwner } from './src/form_view';
 export { FormView } from './src/form_view';
 export { CheckboxView as Checkbox } from './src/checkbox_view';
 export { ErrorView as Error } from './src/error_view';

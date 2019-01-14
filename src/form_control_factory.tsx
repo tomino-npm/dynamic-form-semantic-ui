@@ -12,6 +12,12 @@ import { RepeaterView } from './repeater_view';
 import { SelectView } from './select_view';
 import { TableView } from './table_view';
 import { SignatureView } from './signature_view';
+import { TextAreaView } from './textarea_view';
+import { css } from '@tomino/toolbelt';
+
+const formText = css`
+  margin-top: 20px;
+`;
 
 export function renderControl(
   control: FormElement,
@@ -29,7 +35,7 @@ export function renderControl(
       return (
         <div className="ui form">
           <FormView
-            owner={dataSet.getValue(control.source)}
+            owner={control.source ? dataSet.getValue(control.source) : dataSet}
             formControl={formElement}
             handlers={handlers}
             child={true}
@@ -46,10 +52,26 @@ export function renderControl(
       return <RepeaterView owner={dataSet} formControl={formElement} handlers={handlers} />;
     case 'Table':
       return <TableView owner={dataSet} formControl={formElement} handlers={handlers} />;
+    case 'Textarea':
+      return <TextAreaView owner={dataSet} formControl={formElement} />;
     case 'DeleteButton':
       return <Button icon="trash" color="red" onClick={handlers && handlers.delete} />;
+    case 'Value':
+      return (
+        <span className="formText" {...formElement.controlProps}>
+          {dataSet.getValue(formElement.source)}
+        </span>
+      );
     case 'Text':
-      return <span className="formText">{dataSet.getValue(formElement.source)}</span>;
+      return (
+        <div
+          className={'formText ' + (formElement.inline ? '' : formText)}
+          {...formElement.controlProps}
+          dangerouslySetInnerHTML={{ __html: formElement.label }}
+        />
+      );
+    case 'Image':
+      return <img src={formElement.url} alt={formElement.label} {...formElement.controlProps} />;
     case 'Signature':
       return <SignatureView owner={dataSet} formControl={formElement} handlers={handlers} />;
   }

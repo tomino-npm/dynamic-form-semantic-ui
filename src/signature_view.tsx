@@ -274,85 +274,88 @@ export class Signature extends React.Component<FormControlProps> {
           </Modal.Actions>
         </Modal>
 
-        <Modal
-          open={this.state.modalRejectOpen}
-          trigger={
-            <Button
-              icon="ban"
-              content="Reject"
-              labelPosition="left"
-              onClick={() => this.setState({ modalRejectOpen: true })}
-              color="red"
-              floated={allowComment ? 'right' : null}
-            />
-          }
-          size="small"
-        >
-          <Header icon="ban" content="Reject Signature" />
-          <Modal.Content>
-            <div>
-              <p>
-                Do you wish to reject this form? Upon rejecting, you will no longer be able to make
-                any changes, the form will be automatically submitted and process will advance to a
-                next state.
-              </p>
-              <form className={centered}>
-                <label htmlFor="password">
-                  <b>Please provide your password to reject this form:</b>
-                </label>{' '}
-                <br />
-                <Input
-                  className={margined}
-                  type="password"
-                  icon="lock"
-                  autoComplete="password"
-                  value={this.state.password}
-                  onChange={e => this.setState({ password: e.currentTarget.value })}
-                />
-                {this.state.error && (
-                  <Label color="red" content={this.state.error} className={errorLabel} />
-                )}
-              </form>
-            </div>
-            {this.state.reason && (
-              <p>
-                <b>
-                  <Icon name="comment" /> Comment
-                </b>
-                <br /> {this.state.reason}
-              </p>
-            )}
-          </Modal.Content>
-          <Modal.Actions>
-            {!this.state.loading && (
+        {(this.props.formControl.controlProps || {}).allowReject && (
+          <Modal
+            open={this.state.modalRejectOpen}
+            trigger={
               <Button
-                onClick={() => this.setState({ modalRejectOpen: false })}
-                loading={this.state.loading}
-              >
-                <Icon name="remove" /> Cancel
-              </Button>
-            )}
-            <Button
-              color="red"
-              loading={this.state.loading}
-              onClick={async () => {
-                if (this.state.loading) {
-                  return;
-                }
+                icon="ban"
+                content="Reject"
+                labelPosition="left"
+                onClick={() => this.setState({ modalRejectOpen: true })}
+                color="red"
+                floated={allowComment ? 'right' : null}
+              />
+            }
+            size="small"
+          >
+            <Header icon="ban" content="Reject Signature" />
+            <Modal.Content>
+              <div>
+                <p>
+                  Do you wish to reject this form? Upon rejecting, you will no longer be able to
+                  make any changes, the form will be automatically submitted and process will
+                  advance to a next state.
+                </p>
+                <form className={centered}>
+                  <label htmlFor="password">
+                    <b>Please provide your password to reject this form:</b>
+                  </label>{' '}
+                  <br />
+                  <Input
+                    className={margined}
+                    type="password"
+                    icon="lock"
+                    autoComplete="password"
+                    value={this.state.password}
+                    onChange={e => this.setState({ password: e.currentTarget.value })}
+                  />
+                  {this.state.error && (
+                    <Label color="red" content={this.state.error} className={errorLabel} />
+                  )}
+                </form>
+              </div>
+              {this.state.reason && (
+                <p>
+                  <b>
+                    <Icon name="comment" /> Comment
+                  </b>
+                  <br /> {this.state.reason}
+                </p>
+              )}
+            </Modal.Content>
 
-                if (this.state.password) {
-                  this.setState({ loading: true, error: '' });
-                  await this.props.handlers.reject(this.state.password, this.state.reason);
-                  this.setState({ loading: false, modalOpen: false, password: '' });
-                } else {
-                  this.setState({ error: 'Please provide password' });
-                }
-              }}
-            >
-              <Icon name="ban" /> Reject
-            </Button>
-          </Modal.Actions>
-        </Modal>
+            <Modal.Actions>
+              {!this.state.loading && (
+                <Button
+                  onClick={() => this.setState({ modalRejectOpen: false })}
+                  loading={this.state.loading}
+                >
+                  <Icon name="remove" /> Cancel
+                </Button>
+              )}
+              <Button
+                color="red"
+                loading={this.state.loading}
+                onClick={async () => {
+                  if (this.state.loading) {
+                    return;
+                  }
+
+                  if (this.state.password) {
+                    this.setState({ loading: true, error: '' });
+                    await this.props.handlers.reject(this.state.password, this.state.reason);
+                    this.setState({ loading: false, modalOpen: false, password: '' });
+                  } else {
+                    this.setState({ error: 'Please provide password' });
+                  }
+                }}
+              >
+                <Icon name="ban" /> Reject
+              </Button>
+            </Modal.Actions>
+          </Modal>
+        )}
       </>
     );
   }
@@ -379,7 +382,7 @@ export class Signature extends React.Component<FormControlProps> {
     }
 
     const value = owner.getValue(source) as SignatureType;
-    const { allowComment } = controlProps;
+    const { allowComment } = controlProps || ({} as any);
     const font = handlers.signatureFont();
 
     // load font if needed

@@ -15,7 +15,7 @@ export interface IFieldOwner {
 interface Props {
   owner: DataSet;
   formControl: IFieldOwner;
-  handlers?: { [index: string]: () => void };
+  handlers?: { [index: string]: (...props: string[]) => any };
   child?: boolean;
 }
 
@@ -83,6 +83,7 @@ export class FormView extends React.Component<Props> {
         ) : (
           <>
             {formControl.label &&
+              formControl.control !== 'Text' &&
               formControl.control !== 'Signature' &&
               formControl.control !== 'Checkbox' &&
               formControl.label !== 'Radio' && (

@@ -5,35 +5,7 @@ exports[`Form Input changes value and all related formulas 1`] = `
   className="ui segment ui form"
 >
   <style>
-    .d-form-bgcibidbjc { 
-  color: pink;
-  font-size: 100px !important;
- }
-.d-form-Aebfdiadfh { 
-  padding: 9px 0px;
- }
-.d-form-Adiagibjfa { 
-  margin-right: 12px;
-  margin-bottom: 6px;
- }
-.d-form-bidfabidci { 
-  margin: 6px 0px 12px 0px;
- }
-.d-form-Abdgbhfjheg { 
-  margin-bottom: 0px !important;
- }
-
-  .fieldSet-bejaheefjb {
-    border: solid 1px #ddd;
-    border-radius: 5px;
-    background-color: #fafafa;
-  }
-
-
-  .fieldSet-bejaheefjb legend {
-    padding: 0px 6px;
-    font-weight: bold;
-  }
+    
   </style>
   <div
     className="ui form"
@@ -149,35 +121,7 @@ exports[`Form Input renders correctly 1`] = `
   className="ui segment ui form"
 >
   <style>
-    .d-form-bgcibidbjc { 
-  color: pink;
-  font-size: 100px !important;
- }
-.d-form-Aebfdiadfh { 
-  padding: 9px 0px;
- }
-.d-form-Adiagibjfa { 
-  margin-right: 12px;
-  margin-bottom: 6px;
- }
-.d-form-bidfabidci { 
-  margin: 6px 0px 12px 0px;
- }
-.d-form-Abdgbhfjheg { 
-  margin-bottom: 0px !important;
- }
-
-  .fieldSet-bejaheefjb {
-    border: solid 1px #ddd;
-    border-radius: 5px;
-    background-color: #fafafa;
-  }
-
-
-  .fieldSet-bejaheefjb legend {
-    padding: 0px 6px;
-    font-weight: bold;
-  }
+    
   </style>
   <div
     className="ui form"

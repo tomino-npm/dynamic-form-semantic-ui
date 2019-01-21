@@ -5,35 +5,7 @@ exports[`Form Checkbox changes value and all related formulas 1`] = `
   className="ui segment ui form"
 >
   <style>
-    .d-form-bgcibidbjc { 
-  color: pink;
-  font-size: 100px !important;
- }
-.d-form-Aebfdiadfh { 
-  padding: 9px 0px;
- }
-.d-form-Adiagibjfa { 
-  margin-right: 12px;
-  margin-bottom: 6px;
- }
-.d-form-bidfabidci { 
-  margin: 6px 0px 12px 0px;
- }
-.d-form-Abdgbhfjheg { 
-  margin-bottom: 0px !important;
- }
-
-  .fieldSet-bejaheefjb {
-    border: solid 1px #ddd;
-    border-radius: 5px;
-    background-color: #fafafa;
-  }
-
-
-  .fieldSet-bejaheefjb legend {
-    padding: 0px 6px;
-    font-weight: bold;
-  }
+    
   </style>
   <div
     className="ui form"
@@ -48,16 +20,16 @@ exports[`Form Checkbox changes value and all related formulas 1`] = `
           className="field"
         >
           <div
-            className="ui checkbox d-form-bgcibidbjc"
+            className="ui checkbox"
             onChange={[Function]}
             onClick={[Function]}
             onMouseDown={[Function]}
+            onMouseUp={[Function]}
           >
             <input
               checked={false}
               className="hidden"
               name="agree"
-              onClick={[Function]}
               readOnly={true}
               tabIndex={0}
               type="checkbox"
@@ -79,16 +51,16 @@ exports[`Form Checkbox changes value and all related formulas 1`] = `
           className="field"
         >
           <div
-            className="ui checked toggle checkbox d-form-bgcibidbjc"
+            className="ui checked toggle checkbox"
             onChange={[Function]}
             onClick={[Function]}
             onMouseDown={[Function]}
+            onMouseUp={[Function]}
           >
             <input
               checked={true}
               className="hidden"
               name="disagree"
-              onClick={[Function]}
               readOnly={true}
               tabIndex={0}
               type="checkbox"
@@ -110,16 +82,16 @@ exports[`Form Checkbox changes value and all related formulas 1`] = `
           className="field"
         >
           <div
-            className="ui checked checkbox d-form-bgcibidbjc"
+            className="ui checked checkbox"
             onChange={[Function]}
             onClick={[Function]}
             onMouseDown={[Function]}
+            onMouseUp={[Function]}
           >
             <input
               checked={true}
               className="hidden"
               name="must"
-              onClick={[Function]}
               readOnly={true}
               tabIndex={0}
               type="checkbox"
@@ -140,35 +112,7 @@ exports[`Form Checkbox renders correctly 1`] = `
   className="ui segment ui form"
 >
   <style>
-    .d-form-bgcibidbjc { 
-  color: pink;
-  font-size: 100px !important;
- }
-.d-form-Aebfdiadfh { 
-  padding: 9px 0px;
- }
-.d-form-Adiagibjfa { 
-  margin-right: 12px;
-  margin-bottom: 6px;
- }
-.d-form-bidfabidci { 
-  margin: 6px 0px 12px 0px;
- }
-.d-form-Abdgbhfjheg { 
-  margin-bottom: 0px !important;
- }
-
-  .fieldSet-bejaheefjb {
-    border: solid 1px #ddd;
-    border-radius: 5px;
-    background-color: #fafafa;
-  }
-
-
-  .fieldSet-bejaheefjb legend {
-    padding: 0px 6px;
-    font-weight: bold;
-  }
+    
   </style>
   <div
     className="ui form"
@@ -183,16 +127,16 @@ exports[`Form Checkbox renders correctly 1`] = `
           className="field"
         >
           <div
-            className="ui checked checkbox d-form-bgcibidbjc"
+            className="ui checked checkbox"
             onChange={[Function]}
             onClick={[Function]}
             onMouseDown={[Function]}
+            onMouseUp={[Function]}
           >
             <input
               checked={true}
               className="hidden"
               name="agree"
-              onClick={[Function]}
               readOnly={true}
               tabIndex={0}
               type="checkbox"
@@ -214,16 +158,16 @@ exports[`Form Checkbox renders correctly 1`] = `
           className="field"
         >
           <div
-            className="ui toggle checkbox d-form-bgcibidbjc"
+            className="ui toggle checkbox"
             onChange={[Function]}
             onClick={[Function]}
             onMouseDown={[Function]}
+            onMouseUp={[Function]}
           >
             <input
               checked={false}
               className="hidden"
               name="disagree"
-              onClick={[Function]}
               readOnly={true}
               tabIndex={0}
               type="checkbox"
@@ -245,16 +189,16 @@ exports[`Form Checkbox renders correctly 1`] = `
           className="field"
         >
           <div
-            className="ui checkbox d-form-bgcibidbjc"
+            className="ui checkbox"
             onChange={[Function]}
             onClick={[Function]}
             onMouseDown={[Function]}
+            onMouseUp={[Function]}
           >
             <input
               checked={false}
               className="hidden"
               name="must"
-              onClick={[Function]}
               readOnly={true}
               tabIndex={0}
               type="checkbox"

@@ -15,6 +15,8 @@ export class SelectComponent extends React.Component<Props> {
   handleSelectChange = (_e: any, control: DropdownProps) => {
     // React.ChangeEvent<HTMLInputElement>
     // find value
+    // console.log(this.props.owner.getSchema(this.props.formControl.source).validate(''));
+
     this.props.owner.setValue(this.props.formControl.source, control.value.toString());
   };
 

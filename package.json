@@ -45,7 +45,6 @@
     "webfontloader": "^1.6.28"
   },
   "jest": {
-    "preset": "ts-jest/presets/default",
-    "testEnvironment": "node"
+    "preset": "ts-jest/presets/default"
   }
 }

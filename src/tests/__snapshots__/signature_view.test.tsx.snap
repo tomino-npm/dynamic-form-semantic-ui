@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form Signature renders correctly 1`] = `
+<div
+  className="ui segment ui form"
+>
+  <style>
+    
+  </style>
+  <div
+    className="ui form"
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="five wide field"
+      >
+        <fieldset
+          className="signature-Abfgejbdfga"
+        >
+          <legend>
+            Dean Signature
+          </legend>
+          <div
+            className="ui list"
+            role="list"
+          >
+            <div
+              className="item"
+              onClick={[Function]}
+              role="listitem"
+            >
+              <i
+                aria-hidden="true"
+                className="ban icon"
+              />
+              <div
+                className="content"
+              >
+                Simeon Simoff rejected to sign on 10/15/2018
+              </div>
+            </div>
+            <div
+              className="item"
+              onClick={[Function]}
+              role="listitem"
+            >
+              <i
+                aria-hidden="true"
+                className="comment icon"
+              />
+              <div
+                className="content"
+              >
+                All wrong
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div
+        className="five wide field"
+      >
+        <fieldset
+          className="signature-Abfgejbdfga"
+        >
+          <legend>
+            Supervisor Signature
+          </legend>
+          
+        </fieldset>
+      </div>
+      <div
+        className="five wide field"
+      >
+        <fieldset
+          className="signature-Abfgejbdfga"
+        >
+          <legend>
+            Student Signature
+          </legend>
+          
+          <button
+            className="ui icon primary left labeled button"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <i
+              aria-hidden="true"
+              className="pencil alternate icon"
+            />
+            Sign
+          </button>
+        </fieldset>
+      </div>
+    </div>
+    <div
+      className="fields"
+    >
+      <div
+        className="five wide field"
+      >
+         
+      </div>
+      <div
+        className="five wide field"
+      >
+        <fieldset
+          className="signature-Abfgejbdfga"
+        >
+          <legend>
+            Supervisor Signature
+          </legend>
+          
+        </fieldset>
+      </div>
+      <div
+        className="five wide field"
+      >
+        <fieldset
+          className="signature-Abfgejbdfga"
+        >
+          <legend>
+            Student Signature
+          </legend>
+          
+          <textarea
+            onChange={[Function]}
+            onInput={[Function]}
+            placeholder="Please leave a comment ..."
+            rows={3}
+            style={
+              Object {
+                "resize": "",
+              }
+            }
+            value=""
+          />
+          <button
+            className="ui icon primary right floated left labeled button"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <i
+              aria-hidden="true"
+              className="pencil alternate icon"
+            />
+            Sign
+          </button>
+        </fieldset>
+      </div>
+    </div>
+    <div
+      className="fields"
+    >
+      <div
+        className="five wide field"
+      >
+         
+      </div>
+      <div
+        className="five wide field"
+      >
+        <fieldset
+          className="signature-Abfgejbdfga"
+        >
+          <legend>
+            Supervisor Signature
+          </legend>
+          
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>
+`;

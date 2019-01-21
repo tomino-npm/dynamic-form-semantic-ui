@@ -5,35 +5,7 @@ exports[`Form Repeater renders correctly 1`] = `
   className="ui segment ui form"
 >
   <style>
-    .d-form-bgcibidbjc { 
-  color: pink;
-  font-size: 100px !important;
- }
-.d-form-Aebfdiadfh { 
-  padding: 9px 0px;
- }
-.d-form-Adiagibjfa { 
-  margin-right: 12px;
-  margin-bottom: 6px;
- }
-.d-form-bidfabidci { 
-  margin: 6px 0px 12px 0px;
- }
-.d-form-Abdgbhfjheg { 
-  margin-bottom: 0px !important;
- }
-
-  .fieldSet-bejaheefjb {
-    border: solid 1px #ddd;
-    border-radius: 5px;
-    background-color: #fafafa;
-  }
-
-
-  .fieldSet-bejaheefjb legend {
-    padding: 0px 6px;
-    font-weight: bold;
-  }
+    
   </style>
   <div
     className="ui form"
@@ -44,209 +16,146 @@ exports[`Form Repeater renders correctly 1`] = `
       <div
         className="sixteen wide field"
       >
-        <fieldset
-          className=".fieldSet-bejaheefjb"
+        <style>
+          
+        </style>
+        <div
+          className="ui form"
         >
-          <style>
-            .d-form-bgcibidbjc { 
-  color: pink;
-  font-size: 100px !important;
- }
-.d-form-Aebfdiadfh { 
-  padding: 9px 0px;
- }
-.d-form-Adiagibjfa { 
-  margin-right: 12px;
-  margin-bottom: 6px;
- }
-.d-form-bidfabidci { 
-  margin: 6px 0px 12px 0px;
- }
-.d-form-Abdgbhfjheg { 
-  margin-bottom: 0px !important;
- }
-
-  .fieldSet-bejaheefjb {
-    border: solid 1px #ddd;
-    border-radius: 5px;
-    background-color: #fafafa;
-  }
-
-
-  .fieldSet-bejaheefjb legend {
-    padding: 0px 6px;
-    font-weight: bold;
-  }
-          </style>
           <div
-            className="ui form"
+            className="fields"
           >
             <div
-              className="fields"
+              className="eight wide field"
             >
-              <div
-                className="eight wide field"
+              <label
+                htmlFor="name"
               >
-                <label
-                  htmlFor="name"
-                >
-                  Name
-                </label>
-                <div
-                  className="ui input"
-                >
-                  <input
-                    name="name"
-                    onChange={[Function]}
-                    type="text"
-                    value="Slovakia"
-                  />
-                </div>
-              </div>
+                Name
+              </label>
               <div
-                className="eight wide field"
+                className="ui input"
               >
-                <label
-                  htmlFor="capital"
-                >
-                  Capital
-                </label>
-                <div
-                  className="ui input"
-                >
-                  <input
-                    name="capital"
-                    onChange={[Function]}
-                    type="text"
-                    value="Bratislava"
-                  />
-                </div>
-              </div>
-              <div
-                className="one wide field"
-              >
-                <label>
-                   
-                </label>
-                <button
-                  className="ui red icon button"
-                  onClick={[Function]}
-                  role="button"
-                >
-                  <i
-                    aria-hidden="true"
-                    className="trash icon"
-                  />
-                </button>
+                <input
+                  name="name"
+                  onChange={[Function]}
+                  type="text"
+                  value="Slovakia"
+                />
               </div>
             </div>
+            <div
+              className="eight wide field"
+            >
+              <label
+                htmlFor="capital"
+              >
+                Capital
+              </label>
+              <div
+                className="ui input"
+              >
+                <input
+                  name="capital"
+                  onChange={[Function]}
+                  type="text"
+                  value="Bratislava"
+                />
+              </div>
+            </div>
+            <div
+              className="one wide field"
+            >
+              <label>
+                 
+              </label>
+              <button
+                className="ui red icon button"
+                onClick={[Function]}
+              >
+                <i
+                  aria-hidden="true"
+                  className="trash icon"
+                />
+              </button>
+            </div>
           </div>
-          <style>
-            .d-form-bgcibidbjc { 
-  color: pink;
-  font-size: 100px !important;
- }
-.d-form-Aebfdiadfh { 
-  padding: 9px 0px;
- }
-.d-form-Adiagibjfa { 
-  margin-right: 12px;
-  margin-bottom: 6px;
- }
-.d-form-bidfabidci { 
-  margin: 6px 0px 12px 0px;
- }
-.d-form-Abdgbhfjheg { 
-  margin-bottom: 0px !important;
- }
-
-  .fieldSet-bejaheefjb {
-    border: solid 1px #ddd;
-    border-radius: 5px;
-    background-color: #fafafa;
-  }
-
-
-  .fieldSet-bejaheefjb legend {
-    padding: 0px 6px;
-    font-weight: bold;
-  }
-          </style>
+        </div>
+        <style>
+          
+        </style>
+        <div
+          className="ui form"
+        >
           <div
-            className="ui form"
+            className="fields"
           >
             <div
-              className="fields"
+              className="eight wide field"
             >
-              <div
-                className="eight wide field"
+              <label
+                htmlFor="name"
               >
-                <label
-                  htmlFor="name"
-                >
-                  Name
-                </label>
-                <div
-                  className="ui input"
-                >
-                  <input
-                    name="name"
-                    onChange={[Function]}
-                    type="text"
-                    value="Australia"
-                  />
-                </div>
-              </div>
+                Name
+              </label>
               <div
-                className="eight wide field"
+                className="ui input"
               >
-                <label
-                  htmlFor="capital"
-                >
-                  Capital
-                </label>
-                <div
-                  className="ui input"
-                >
-                  <input
-                    name="capital"
-                    onChange={[Function]}
-                    type="text"
-                    value="Canberra"
-                  />
-                </div>
-              </div>
-              <div
-                className="one wide field"
-              >
-                <label>
-                   
-                </label>
-                <button
-                  className="ui red icon button"
-                  onClick={[Function]}
-                  role="button"
-                >
-                  <i
-                    aria-hidden="true"
-                    className="trash icon"
-                  />
-                </button>
+                <input
+                  name="name"
+                  onChange={[Function]}
+                  type="text"
+                  value="Australia"
+                />
               </div>
             </div>
+            <div
+              className="eight wide field"
+            >
+              <label
+                htmlFor="capital"
+              >
+                Capital
+              </label>
+              <div
+                className="ui input"
+              >
+                <input
+                  name="capital"
+                  onChange={[Function]}
+                  type="text"
+                  value="Canberra"
+                />
+              </div>
+            </div>
+            <div
+              className="one wide field"
+            >
+              <label>
+                 
+              </label>
+              <button
+                className="ui red icon button"
+                onClick={[Function]}
+              >
+                <i
+                  aria-hidden="true"
+                  className="trash icon"
+                />
+              </button>
+            </div>
           </div>
-          <button
-            className="ui icon primary left labeled button"
-            onClick={[Function]}
-            role="button"
-          >
-            <i
-              aria-hidden="true"
-              className="plus icon"
-            />
-            Add
-          </button>
-        </fieldset>
+        </div>
+        <button
+          className="ui icon primary left labeled button"
+          onClick={[Function]}
+        >
+          <i
+            aria-hidden="true"
+            className="plus icon"
+          />
+          Add
+        </button>
       </div>
     </div>
   </div>

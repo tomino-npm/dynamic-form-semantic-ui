@@ -13,7 +13,7 @@ import { SelectView } from './select_view';
 import { TableView } from './table_view';
 import { SignatureView } from './signature_view';
 import { TextAreaView } from './textarea_view';
-import { css } from '@tomino/toolbelt';
+import { css } from './common';
 
 const formText = css`
   margin-top: 20px;

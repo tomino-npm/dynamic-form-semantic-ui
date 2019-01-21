@@ -388,10 +388,13 @@ export class Signature extends React.Component<FormControlProps> {
     // load font if needed
     if (value.signature && typeof window !== undefined) {
       // use three possible fonts
-      require('webfontloader').load({
-        google: { families: [font] },
-        fontactive: () => !this.state.fontReady && this.setState({ fontReady: true })
-      });
+
+      if (typeof window !== 'undefined') {
+        require('webfontloader').load({
+          google: { families: [font] },
+          fontactive: () => !this.state.fontReady && this.setState({ fontReady: true })
+        });
+      }
     }
 
     return (

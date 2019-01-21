@@ -69,7 +69,7 @@ export class FormView extends React.Component<Props> {
         width={formControl.inline ? undefined : (control.width as SemanticWIDTHSNUMBER)}
         inline={formControl.inline}
       >
-        {formControl.elements && formControl.elements.length ? (
+        {formControl.elements && formControl.elements.length && formControl.label ? (
           <fieldset className={fieldSet}>
             {formControl.label && (
               <legend>
@@ -83,6 +83,7 @@ export class FormView extends React.Component<Props> {
         ) : (
           <>
             {formControl.label &&
+              formControl.control !== 'Image' &&
               formControl.control !== 'Text' &&
               formControl.control !== 'Signature' &&
               formControl.control !== 'Checkbox' &&
@@ -106,7 +107,7 @@ export class FormView extends React.Component<Props> {
     this.lastRow = 0;
 
     const rows = groupByArray(this.props.formControl.elements, 'row');
-    const css = !this.props.child && <style>{renderCss()}</style>; /*?*/
+    const css = !this.props.child && <style>{renderCss()}</style>;
     return (
       <>
         {css}

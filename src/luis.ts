@@ -16,6 +16,7 @@ import './tests/repeater_view.test';
 import './tests/select_view.test';
 import './tests/signature_view.test';
 import './tests/table_view.test';
+import './tests/form_editor.test';
 
 // render luis ui to '#react-root'
 renderLuis();

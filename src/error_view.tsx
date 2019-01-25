@@ -11,6 +11,7 @@ type ErrorProps = {
   source: string;
   pointing?: PointingProps;
   newLine?: boolean;
+  inline?: boolean;
 };
 
 export function renderError(error: string, pointing: PointingProps) {
@@ -21,7 +22,9 @@ export function renderError(error: string, pointing: PointingProps) {
   );
 }
 
-export const ErrorView = observer(({ owner, source, newLine, pointing = true }: ErrorProps) => {
+const ErrorViewComponent = ({ owner, source, newLine, inline, pointing = true }: ErrorProps) => {
+  pointing = inline ? 'left' : pointing;
+
   if (!owner.getError(source)) {
     return null;
   }
@@ -31,11 +34,14 @@ export const ErrorView = observer(({ owner, source, newLine, pointing = true }: 
   }
 
   return renderError(owner.getError(source), pointing);
-});
+};
+ErrorViewComponent.displayName = 'ErrorView';
+
+export const ErrorView = observer(ErrorViewComponent);
 
 type ErrorLabelProps = { error: string; pointing?: PointingProps };
 
-export const ErrorLabel = observer(({ error, pointing = true }: ErrorLabelProps) => {
+const ErrorLabelComponent = ({ error, pointing = true }: ErrorLabelProps) => {
   if (!error) {
     return null;
   }
@@ -44,4 +50,7 @@ export const ErrorLabel = observer(({ error, pointing = true }: ErrorLabelProps)
       {error}
     </Label>
   );
-});
+};
+ErrorLabelComponent.displayName = 'ErrorLabel';
+
+export const ErrorLabel = observer(ErrorLabelComponent);

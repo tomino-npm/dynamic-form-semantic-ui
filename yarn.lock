@@ -105,10 +105,18 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.7.13":
+"@types/react@*":
   version "16.7.18"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.18.tgz#f4ce0d539a893dd61e36cd11ae3a5e54f5a48337"
   integrity sha512-Tx4uu3ppK53/iHk6VpamMP3f3ahfDLEVt3ZQc8TFm30a1H3v9lMsCntBREswZIW/SKrvJjkb3Hq8UwO6GREBng==
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
+
+"@types/react@^16.7.20":
+  version "16.7.20"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.20.tgz#13ae752c012710d0fa800985ca809814b51d3b58"
+  integrity sha512-Qd5RWkwl6SL7R2XzLk/cicjVQm1Mhc6HqXY5Ei4pWd1Vi8Fkbd5O0sA398x8fRSTPAuHdDYD9nrWmJMYTJI0vQ==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -3066,15 +3074,15 @@ mobx-react@^5.4.3:
     hoist-non-react-statics "^3.0.0"
     react-lifecycles-compat "^3.0.2"
 
-mobx-state-tree@^3.10.0:
-  version "3.10.0"
-  resolved "https://registry.yarnpkg.com/mobx-state-tree/-/mobx-state-tree-3.10.0.tgz#92b893e2c85339e246779d19928b6d69b798a813"
-  integrity sha512-CEOZRx8wOSwEI7cYiD+kvPrAtpDB5VNpWVWL11mCXljx8WE9Ec6nwL/xZRYMZVFRvxvAoSFS9VqmVDiUHAZ1LA==
+mobx-state-tree@^3.10.1:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/mobx-state-tree/-/mobx-state-tree-3.10.1.tgz#79aea97360f36cc6eedd488baacbe47f10d07aa1"
+  integrity sha512-jP/0Fy9rmFJoVHLYTjhvKVHl9MhtRQ/a73NzsmD60wiosSrxzqFqi+p1zdf2g8dqW7ihUYfmV6hRC4+nhh6Rgg==
 
-mobx@^5.8.0:
-  version "5.8.0"
-  resolved "https://registry.yarnpkg.com/mobx/-/mobx-5.8.0.tgz#cf59eae4baa2fde4387ffb6462b7ccf3b497b03c"
-  integrity sha512-NsZB+9bF5j+nv9Qwk6bNeE3np26a4TbTGkMpOLf6o1zXoM9BtHPQn/00px4uZ2AXJXtQML5P4MEWdMm6icMIfQ==
+mobx@^5.9.0:
+  version "5.9.0"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-5.9.0.tgz#a08edd7132787f771409c9c33788a5df66ff7ce7"
+  integrity sha512-D3mY1uM3H9BP5duk5tTanrOq92yqetYKsprPJWvkKDrbs+fro59xrpWX+vtr10YoLgJIFz+a4A8lI+4YtqmCUQ==
 
 ms@2.0.0:
   version "2.0.0"
@@ -3086,10 +3094,10 @@ ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
 
-mst-middlewares@^3.10.0:
-  version "3.10.0"
-  resolved "https://registry.yarnpkg.com/mst-middlewares/-/mst-middlewares-3.10.0.tgz#1de8853fae70dc7ff1188999cf7a71d67bc225c9"
-  integrity sha512-ZBe+dZ0S4695TMebfZXmK9RDhdnnm2lHrpGXjiFPkKC6rZzS+o8AfDkrRrEo5+Zzkq6VZJryyHgtdxgPrXb8hA==
+mst-middlewares@^3.10.1:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/mst-middlewares/-/mst-middlewares-3.10.1.tgz#22c11832e0b13da2dd95e15845c8bfb92cdbaeec"
+  integrity sha512-wTG4mzO1hldIuzWA75jYTZlQ3EZ0/HJ/XBdhdTkdz8Vo9QCPFEqaOZaJpvE5atGmkWsn4+ImLb38OnM0+YwWcg==
 
 mustache@^2.3.0:
   version "2.3.2"
@@ -4603,10 +4611,10 @@ type-is@~1.6.16:
     media-typer "0.3.0"
     mime-types "~2.1.18"
 
-typescript@^3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.2.2.tgz#fe8101c46aa123f8353523ebdcf5730c2ae493e5"
-  integrity sha512-VCj5UiSyHBjwfYacmDuc/NOk4QQixbE+Wn7MFJuS0nRuPQbof132Pw4u53dm264O8LPc2MVsc7RJNml5szurkg==
+typescript@^3.2.4:
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.2.4.tgz#c585cb952912263d915b462726ce244ba510ef3d"
+  integrity sha512-0RNDbSdEokBeEAkgNbxJ+BLwSManFy9TeXz8uW+48j/xhEXv1ePME60olyzw2XzUqUBNAYFeJadIqAgNqIACwg==
 
 typestyle@^2.0.1:
   version "2.0.1"

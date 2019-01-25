@@ -17,7 +17,7 @@ describe('Form', () => {
           type: 'object',
           properties: {
             id: {
-              type: 'id'
+              type: 'string'
             },
             name: {
               type: 'string'

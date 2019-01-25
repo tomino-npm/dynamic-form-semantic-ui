@@ -49,7 +49,7 @@ export class RepeaterComponent extends React.Component<FormControlProps> {
       owner
     } = this.props;
     owner.addRow(source);
-    owner.validateValue(source, owner.getValue(source));
+    // owner.validateValue(source, owner.getValue(source));
   };
 
   render(): JSX.Element {

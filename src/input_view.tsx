@@ -37,7 +37,7 @@ export class InputComponent extends React.Component<FormControlProps> {
           onChange={this.handleInputChange}
         />
 
-        <ErrorView owner={owner} source={source} />
+        <ErrorView inline={formControl.inline} owner={owner} source={source} />
       </React.Fragment>
     );
   }

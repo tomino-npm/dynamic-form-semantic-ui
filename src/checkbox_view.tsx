@@ -14,7 +14,7 @@ type Props = {
 export class CheckboxComponent extends React.Component<Props> {
   handleToggleChange = (_e: any, control: CheckboxProps) => {
     // find value
-    this.props.owner.setValue(this.props.formControl.source, control.checked);
+    this.props.owner.setValue(this.props.formControl.source, control.checked ? true : undefined);
   };
 
   render() {

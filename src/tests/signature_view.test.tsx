@@ -21,7 +21,8 @@ describe('Form', function() {
       uid: {},
       name: {},
       date: {
-        type: 'date'
+        type: 'string',
+        format: 'date-time'
       }
     }
   };
@@ -110,7 +111,8 @@ describe('Form', function() {
         source: 'studentSignature',
         controlProps: {
           font: 'Charm',
-          allowComment: true
+          allowComment: true,
+          submit: true
         }
       }),
       create.formElement({
@@ -136,6 +138,32 @@ describe('Form', function() {
           font: 'Indie Flower',
           allowComment: false
         }
+      }),
+      create.formElement({
+        row: 2,
+        column: 10,
+        width: 5,
+        control: 'Signature',
+        label: 'Student Signature',
+        source: 'studentSignature',
+        controlProps: {
+          font: 'Charm',
+          allowComment: false,
+          allowReject: true
+        }
+      }),
+      create.formElement({
+        row: 3,
+        column: 10,
+        width: 5,
+        control: 'Signature',
+        label: 'Student Signature',
+        source: 'studentSignature',
+        controlProps: {
+          font: 'Charm',
+          allowComment: true,
+          allowReject: true
+        }
       })
     ]
   });
@@ -160,12 +188,26 @@ describe('Form', function() {
             formControl={form}
             owner={form.dataSet}
             handlers={{
-              sign: () => {
+              signAndSubmit: () => {
                 return new Promise(resolve => setTimeout(resolve, 1000));
               },
+              sign: () => {
+                return new Promise(resolve =>
+                  setTimeout(() => {
+                    resolve({
+                      date,
+                      signature,
+                      name: 'Alladin Hasan',
+                      verifiedState: 'Verified'
+                    });
+                  }, 1000)
+                );
+              },
               reject: () => {},
+              rejectAndSubmit: () => {},
               verifySignature: () => results[ci++ % 3],
-              signatureFont: () => 'Pacifico'
+              signatureFont: () => 'Pacifico',
+              validateForm: () => true
             }}
           />
         </Segment>

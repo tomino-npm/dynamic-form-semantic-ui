@@ -35,8 +35,10 @@ export class SelectComponent extends React.Component<Props> {
           {...controlProps}
           options={
             filterSource
-              ? listSource.enum.filter((v: any) => v[filterColumn] === owner.getValue(filterSource))
-              : listSource.enum
+              ? listSource.$enum.filter(
+                  (v: any) => v[filterColumn] === owner.getValue(filterSource)
+                )
+              : listSource.$enum
           }
           name={source}
           selection={true}

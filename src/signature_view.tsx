@@ -59,11 +59,11 @@ export type SignatureType = {
   comment: string;
   signature: string;
   verifiedState: 'Pending' | 'Verified' | 'Rejected';
-  rejected: boolean;
+  rejected?: boolean;
   uid: string;
   name: string;
   date: Date;
-  setValue(name: string, value: any): any;
+  setValue?(name: string, value: any): any;
 };
 
 export class Signature extends React.Component<FormControlProps> {
@@ -200,7 +200,7 @@ export class Signature extends React.Component<FormControlProps> {
           open={this.state.modalOpen}
           trigger={
             <Button
-              onClick={this.handleOpen}
+              onClick={() => this.props.handlers.validateForm() && this.handleOpen()}
               icon="pencil alternate"
               content="Sign"
               labelPosition="left"
@@ -214,9 +214,13 @@ export class Signature extends React.Component<FormControlProps> {
           <Modal.Content>
             <div>
               <p>
-                Do you wish to sign this form? Upon signing, you will no longer be able to make any
-                changes, the form will be automatically submitted and process will advance to a next
-                state.
+                {this.props.formControl.controlProps && this.props.formControl.controlProps.submit
+                  ? `Do you wish to sign this form? Upon signing, you will no longer be able to make any
+                  changes, the form will be automatically submitted and process will advance to a next
+                  state.`
+                  : `Do you wish to sign this form? Upon signing, you will no longer be able to make any
+                  changes. To submit this form go back to the process page and press the "Submit" button.
+                  To make further changes to the form, you will need to remove your signature.`}
               </p>
 
               <form className={centered}>
@@ -262,14 +266,26 @@ export class Signature extends React.Component<FormControlProps> {
 
                 if (this.state.password) {
                   this.setState({ loading: true, error: '' });
-                  await this.props.handlers.sign(this.state.password, this.state.reason);
+                  let signature = await this.props.handlers.sign(
+                    this.props.formControl.source,
+                    false,
+                    this.state.password,
+                    this.state.reason,
+                    this.props.formControl.controlProps &&
+                      this.props.formControl.controlProps.submit
+                  );
+                  this.props.owner.setValue(this.props.formControl.source, signature);
+
                   this.setState({ loading: false, modalOpen: false, password: '' });
                 } else {
                   this.setState({ error: 'Please provide password' });
                 }
               }}
             >
-              <Icon name="pencil alternate" /> Sign
+              <Icon name="pencil alternate" />{' '}
+              {this.props.formControl.controlProps && this.props.formControl.controlProps.submit
+                ? 'Sign and Submit'
+                : 'Sign'}
             </Button>
           </Modal.Actions>
         </Modal>
@@ -282,7 +298,9 @@ export class Signature extends React.Component<FormControlProps> {
                 icon="ban"
                 content="Reject"
                 labelPosition="left"
-                onClick={() => this.setState({ modalRejectOpen: true })}
+                onClick={() =>
+                  this.props.handlers.validateForm() && this.setState({ modalRejectOpen: true })
+                }
                 color="red"
                 floated={allowComment ? 'right' : null}
               />
@@ -293,9 +311,12 @@ export class Signature extends React.Component<FormControlProps> {
             <Modal.Content>
               <div>
                 <p>
-                  Do you wish to reject this form? Upon rejecting, you will no longer be able to
+                  {this.props.formControl.controlProps && this.props.formControl.controlProps.submit
+                    ? `Do you wish to reject this form? Upon rejecting, you will no longer be able to
                   make any changes, the form will be automatically submitted and process will
-                  advance to a next state.
+                  advance to a next state.`
+                    : `Do you wish to reject this form? Upon rejecting, you will no longer be able to
+                  make any changes. To make further changes to the form, you will need to withdraw your rejection.`}
                 </p>
                 <form className={centered}>
                   <label htmlFor="password">
@@ -341,17 +362,28 @@ export class Signature extends React.Component<FormControlProps> {
                   if (this.state.loading) {
                     return;
                   }
-
                   if (this.state.password) {
                     this.setState({ loading: true, error: '' });
-                    await this.props.handlers.reject(this.state.password, this.state.reason);
+                    const rejection = (await this.props.handlers.sign(
+                      this.props.formControl.source,
+                      true,
+                      this.state.password,
+                      this.state.reason,
+                      this.props.formControl.controlProps &&
+                        this.props.formControl.controlProps.submit
+                    )) as SignatureType;
+                    this.props.owner.setValue(this.props.formControl.source, rejection);
+
                     this.setState({ loading: false, modalOpen: false, password: '' });
                   } else {
                     this.setState({ error: 'Please provide password' });
                   }
                 }}
               >
-                <Icon name="ban" /> Reject
+                <Icon name="ban" />{' '}
+                {this.props.formControl.controlProps && this.props.formControl.controlProps.submit
+                  ? 'Reject and Submit'
+                  : 'Reject'}
               </Button>
             </Modal.Actions>
           </Modal>
@@ -373,11 +405,15 @@ export class Signature extends React.Component<FormControlProps> {
       !handlers ||
       !handlers.verifySignature ||
       !handlers.sign ||
-      !handlers.reject ||
-      !handlers.signatureFont
+      !handlers.signatureFont ||
+      !handlers.validateForm
     ) {
       throw new Error(
-        'You must implement and pass "verifySignature(uid, signature)", "sign(password, reason)" and "reject(password, reason)" and "signatureFont(): string" handler to use signature component'
+        `You must implement following handlers to use signatures:
+          - validateForm (): boolean
+          - verifySignature(uid: string, signature: string): boolean
+          - sign(source: string, reject: boolean, password: string, reason: string, submit: boolean): string
+          - signatureFont(): string`
       );
     }
 

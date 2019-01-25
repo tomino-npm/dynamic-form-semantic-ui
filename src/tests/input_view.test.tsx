@@ -15,18 +15,19 @@ describe('Form', () => {
         type: 'string'
       },
       age: {
-        type: 'number'
+        type: 'number',
+        minimum: 10
       },
       younger: {
-        type: 'expression',
-        default: `console.log(this); return this['age'] - 20`
+        type: 'string',
+        expression: `console.log(this); return this['age'] - 20`
       },
       older: {
-        type: 'expression',
-        readOnly: true,
-        default: `this['age'] + 10`
+        type: 'string',
+        expression: `this['age'] + 10`
       }
-    }
+    },
+    required: ['name']
   };
 
   const formDefinition: FormDefinition = create.form({

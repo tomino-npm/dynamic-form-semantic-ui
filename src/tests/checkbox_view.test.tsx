@@ -26,7 +26,7 @@ describe('Form', () => {
           },
           must: {
             type: 'boolean',
-            validationMessage: 'You must agree to terms and conditions'
+            errorMessage: 'You must agree to terms and conditions'
           }
         },
         required: ['must']

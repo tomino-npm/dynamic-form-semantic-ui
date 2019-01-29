@@ -82,7 +82,7 @@ describe('Form', () => {
       // just another notation
       return (
         <Segment className="ui form">
-          <TableView formControl={form.elements[0]} owner={form.dataSet} handlers={{}} />
+          <TableView formControl={form.elements[0]} owner={form.dataSet} handlers={{} as any} />
 
           <div style={{ marginTop: '20px' }}>
             <Button content="Undo" onClick={() => undoManager.undo()} />

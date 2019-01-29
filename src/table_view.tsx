@@ -5,18 +5,15 @@ import { Button, Form } from 'semantic-ui-react';
 import { FormElement, DataSet } from '@tomino/dynamic-form';
 
 import { ErrorView } from './error_view';
-import { css } from './common';
+import { css, FormControlProps } from './common';
 import { renderControl } from './form_control_factory';
 
 const formGroup = css`
   margin-bottom: 0px !important;
 `;
 
-type RowProps = {
-  formControl: FormElement;
-  owner: DataSet;
+type RowProps = FormControlProps & {
   data: DataSet;
-  handlers: { [index: string]: () => void };
   index: number;
 };
 
@@ -47,13 +44,7 @@ class TableRow extends React.PureComponent<RowProps> {
   }
 }
 
-type Props = {
-  formControl: FormElement;
-  owner: DataSet;
-  handlers: { [index: string]: () => void };
-};
-
-export class TableComponent extends React.Component<Props> {
+export class TableComponent extends React.Component<FormControlProps> {
   addRow = () => {
     const {
       formControl: { source },

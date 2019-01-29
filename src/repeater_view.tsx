@@ -3,7 +3,7 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 
 import { Button } from 'semantic-ui-react';
-import { FormElement, DataSet } from '@tomino/dynamic-form';
+import { DataSet } from '@tomino/dynamic-form';
 
 import { ErrorView } from './error_view';
 import { FormView } from './form_view';
@@ -13,11 +13,8 @@ const noItems = css`
   margin: 6px 0px 12px 0px;
 `;
 
-type RowProps = {
-  formControl: FormElement;
-  owner: DataSet;
+type RowProps = FormControlProps & {
   data: DataSet;
-  handlers: { [index: string]: () => void };
 };
 
 class RepeaterRow extends React.PureComponent<RowProps> {

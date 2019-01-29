@@ -2,10 +2,9 @@ import * as React from 'react';
 
 import { observer } from 'mobx-react';
 
-import { verified, rejected, pending } from './images';
-
-import { FormControlProps, css } from './common';
-import { Modal, Header, Item, Icon, List, TextArea, Button, Input, Label } from 'semantic-ui-react';
+import { FormControlProps, css, SignatureHandlers, SignatureType } from './common';
+import { Modal, Header, Icon, List, TextArea, Button, Input, Label } from 'semantic-ui-react';
+import { SignedSignature } from './signature/signature_signed';
 
 const signatureStyle = css`
   .signature {
@@ -34,15 +33,6 @@ const signatureStyle = css`
   }
 `;
 
-const signedStyle = css`
-  font-size: 18px !important;
-`;
-
-const signedDate = css`
-  font-size: 12px !important;
-  color: #333;
-`;
-
 const margined = css`
   margin-top: 12px;
 `;
@@ -55,18 +45,7 @@ const errorLabel = css`
   margin-left: 12px !important;
 `;
 
-export type SignatureType = {
-  comment: string;
-  signature: string;
-  verifiedState: 'Pending' | 'Verified' | 'Rejected';
-  rejected?: boolean;
-  uid: string;
-  name: string;
-  date: Date;
-  setValue?(name: string, value: any): any;
-};
-
-export class Signature extends React.Component<FormControlProps> {
+export class Signature extends React.Component<FormControlProps & { handlers: SignatureHandlers }> {
   state = {
     modalOpen: false,
     modalRejectOpen: false,
@@ -87,90 +66,6 @@ export class Signature extends React.Component<FormControlProps> {
       console.log(state);
       value.setValue('verifiedState', state);
     }
-  }
-
-  renderSigned(value: SignatureType, font: string) {
-    return (
-      <Item.Group>
-        <Item>
-          <Item.Image size="tiny">
-            {value.verifiedState === 'Pending' && (
-              <Modal
-                trigger={
-                  <img
-                    src={pending}
-                    title="Pending Signature Verification"
-                    onClick={this.handleOpen}
-                  />
-                }
-                basic
-                size="small"
-                open={this.state.modalOpen}
-              >
-                <Header icon="question" content="Pending Verification" />
-                <Modal.Content>
-                  <p>Please wait while we verify the signature.</p>
-                </Modal.Content>
-                <Modal.Actions>
-                  <Button basic inverted onClick={this.handleClose}>
-                    <Icon name="remove" /> Close
-                  </Button>
-                </Modal.Actions>
-              </Modal>
-            )}
-            {value.verifiedState === 'Verified' && (
-              <Modal
-                trigger={<img src={verified} title="Valid Signature" onClick={this.handleOpen} />}
-                basic
-                size="small"
-                open={this.state.modalOpen}
-              >
-                <Header icon="check" content="The Signature is Valid" />
-                <Modal.Content>
-                  <p>
-                    The signature was verified. User {value.name} has signed this document and since
-                    the document has been signed it has not been modified or tampered with.
-                  </p>
-                </Modal.Content>
-                <Modal.Actions>
-                  <Button basic inverted onClick={this.handleClose}>
-                    <Icon name="remove" /> Close
-                  </Button>
-                </Modal.Actions>
-              </Modal>
-            )}
-            {value.verifiedState === 'Rejected' && (
-              <Modal
-                trigger={<img src={rejected} title="Invalid Signature" onClick={this.handleOpen} />}
-                basic
-                size="small"
-                open={this.state.modalOpen}
-              >
-                <Header icon="times circle" content="The Signature is Invalid" />
-                <Modal.Content>
-                  <p>
-                    It is possible that the content of the form has been modified after user signed
-                    the document. Please contact the process owner and the signatory.
-                  </p>
-                </Modal.Content>
-                <Modal.Actions>
-                  <Button basic inverted onClick={this.handleClose}>
-                    <Icon name="remove" /> Close
-                  </Button>
-                </Modal.Actions>
-              </Modal>
-            )}
-          </Item.Image>
-          <Item.Content>
-            <span className={signedStyle} style={{ fontFamily: font }}>
-              {value.name}
-            </span>
-            <br />
-            <span className={signedDate}>{value.date.toLocaleDateString()}</span>
-          </Item.Content>
-        </Item>
-      </Item.Group>
-    );
   }
 
   renderRejected(value: SignatureType) {
@@ -436,7 +331,7 @@ export class Signature extends React.Component<FormControlProps> {
     return (
       <fieldset className={signatureStyle}>
         <legend>{formControl.label}</legend>
-        {value.signature && this.state.fontReady && this.renderSigned(value, font)}
+        {value.signature && this.state.fontReady && <SignedSignature value={value} font={font} />}
         {value.rejected && this.renderRejected(value)}
         {!value.date && this.renderSign(value, allowComment)}
       </fieldset>

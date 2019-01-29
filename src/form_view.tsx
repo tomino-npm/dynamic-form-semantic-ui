@@ -3,21 +3,18 @@ import * as React from 'react';
 import { Form, Icon, SemanticWIDTHSNUMBER } from 'semantic-ui-react';
 
 import { groupByArray } from '@tomino/toolbelt/group-by-array';
-import { DataSet, FormElement } from '@tomino/dynamic-form';
+import { FormElement } from '@tomino/dynamic-form';
 
 import { renderControl } from './form_control_factory';
-import { renderCss, css } from './common';
+import { renderCss, css, FormControlProps } from './common';
 
 export interface IFieldOwner {
   elements?: FormElement[];
 }
 
-interface Props {
-  owner: DataSet;
-  formControl: IFieldOwner;
-  handlers?: { [index: string]: (...props: string[]) => any };
+type Props = FormControlProps & {
   child?: boolean;
-}
+};
 
 const fieldSet = css`
   .fieldSet {

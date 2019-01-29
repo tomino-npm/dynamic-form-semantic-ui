@@ -199,13 +199,13 @@ describe('Form', function() {
                       signature,
                       name: 'Alladin Hasan',
                       verifiedState: 'Verified'
-                    });
+                    } as any);
                   }, 1000)
                 );
               },
               reject: () => {},
               rejectAndSubmit: () => {},
-              verifySignature: () => results[ci++ % 3],
+              verifySignature: () => Promise.resolve(results[ci++ % 3]),
               signatureFont: () => 'Pacifico',
               validateForm: () => true
             }}

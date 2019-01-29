@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button } from 'semantic-ui-react';
+// import { Button } from 'semantic-ui-react';
 import { FormElement, DataSet } from '@tomino/dynamic-form';
 
 import { CheckboxView } from './checkbox_view';
@@ -11,19 +11,15 @@ import { RadioView } from './radio_view';
 import { RepeaterView } from './repeater_view';
 import { SelectView } from './select_view';
 import { TableView } from './table_view';
-import { SignatureView } from './signature_view';
+// import { SignatureView } from './signature_view';
 import { TextAreaView } from './textarea_view';
-import { css } from './common';
+import { css, SignatureHandlers } from './common';
 
 const formText = css`
   margin-top: 20px;
 `;
 
-export function renderControl(
-  control: FormElement,
-  dataSet: DataSet,
-  handlers: { [index: string]: () => void }
-) {
+export function renderControl(control: FormElement, dataSet: DataSet, handlers: SignatureHandlers) {
   const formElement = control as FormElement;
 
   switch (formElement.control) {
@@ -54,8 +50,8 @@ export function renderControl(
       return <TableView owner={dataSet} formControl={formElement} handlers={handlers} />;
     case 'Textarea':
       return <TextAreaView owner={dataSet} formControl={formElement} />;
-    case 'DeleteButton':
-      return <Button icon="trash" color="red" onClick={handlers && handlers.delete} />;
+    // case 'DeleteButton':
+    //   return <Button icon="trash" color="red" onClick={handlers && handlers.delete} />;
     case 'Value':
       return (
         <span className="formText" {...formElement.controlProps}>
@@ -72,8 +68,8 @@ export function renderControl(
       );
     case 'Image':
       return <img src={formElement.url} alt={formElement.label} {...formElement.controlProps} />;
-    case 'Signature':
-      return <SignatureView owner={dataSet} formControl={formElement} handlers={handlers} />;
+    // case 'Signature':
+    //   return <SignatureView owner={dataSet} formControl={formElement} handlers={handlers as any} />;
   }
 
   throw new Error('Not implemented: ' + formElement.control);

@@ -1,17 +1,13 @@
 import * as React from 'react';
 
 import { observer } from 'mobx-react';
-import { Dropdown, DropdownProps } from 'semantic-ui-react';
-import { FormElement, DataSet } from '@tomino/dynamic-form';
+import { Dropdown, DropdownProps, Input } from 'semantic-ui-react';
 
 import { ErrorView } from './error_view';
+import { FormControlProps } from './common';
+import { EnumOption } from '@tomino/dynamic-form/dist/json_schema';
 
-type Props = {
-  formControl: FormElement;
-  owner: DataSet;
-};
-
-export class SelectComponent extends React.Component<Props> {
+export class SelectComponent extends React.Component<FormControlProps> {
   handleSelectChange = (_e: any, control: DropdownProps) => {
     // React.ChangeEvent<HTMLInputElement>
     // find value
@@ -28,21 +24,30 @@ export class SelectComponent extends React.Component<Props> {
     if (listSource == null) {
       debugger;
     }
+    const options = filterSource
+      ? listSource.$enum.filter((v: any) => v[filterColumn] === owner.getValue(filterSource))
+      : listSource.$enum;
+
+    if (this.props.readOnly) {
+      return (
+        <Input
+          {...controlProps}
+          name={source}
+          disabled={true}
+          value={(options.find(f => f.value === owner.getValue(source)) || ({} as EnumOption)).text}
+        />
+      );
+    }
 
     return (
       <>
         <Dropdown
           {...controlProps}
-          options={
-            filterSource
-              ? listSource.$enum.filter(
-                  (v: any) => v[filterColumn] === owner.getValue(filterSource)
-                )
-              : listSource.$enum
-          }
+          options={options}
           name={source}
           selection={true}
           value={owner.getValue(source)}
+          disabled={this.props.readOnly}
           onChange={this.handleSelectChange}
         />
 

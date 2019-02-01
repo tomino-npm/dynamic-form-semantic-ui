@@ -35,6 +35,7 @@ export class RadioComponent extends React.Component<FormControlProps> {
               className={formRadio}
               name={source}
               label={item.text}
+              readOnly={this.props.readOnly}
               value={item.value}
               checked={owner.getValue(source) === item.value}
               onChange={this.handleToggleChange}

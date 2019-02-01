@@ -2,16 +2,11 @@ import * as React from 'react';
 
 import { observer } from 'mobx-react';
 import { Checkbox, CheckboxProps, Form } from 'semantic-ui-react';
-import { DataSet, FormElement } from '@tomino/dynamic-form';
 
 import { ErrorView } from './error_view';
+import { FormControlProps } from './common';
 
-type Props = {
-  formControl: FormElement;
-  owner: DataSet;
-};
-
-export class CheckboxComponent extends React.Component<Props> {
+export class CheckboxComponent extends React.Component<FormControlProps> {
   handleToggleChange = (_e: any, control: CheckboxProps) => {
     // find value
     this.props.owner.setValue(this.props.formControl.source, control.checked ? true : undefined);
@@ -29,6 +24,7 @@ export class CheckboxComponent extends React.Component<Props> {
           {...controlProps}
           name={source}
           label={label}
+          readOnly={this.props.readOnly}
           checked={!!owner.getValue(source)}
           onChange={this.handleToggleChange}
         />

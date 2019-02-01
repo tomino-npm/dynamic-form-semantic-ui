@@ -15,20 +15,22 @@ const noItems = css`
 
 type RowProps = FormControlProps & {
   data: DataSet;
+  index: number;
 };
 
 class RepeaterRow extends React.PureComponent<RowProps> {
-  // handlers = {
-  //   delete: () => {
-  //     this.props.owner.removeRowData(this.props.formControl.source, this.props.data);
-  //   }
-  // };
+  handlers = {
+    deleteRow: () => {
+      this.props.owner.removeRowData(this.props.formControl.source, this.props.data);
+    }
+  };
   render() {
     return (
       <FormView
         owner={this.props.data}
         formControl={this.props.formControl}
-        handlers={this.props.handlers}
+        handlers={this.handlers as any}
+        readOnly={this.props.readOnly}
       />
     );
   }
@@ -53,6 +55,7 @@ export class RepeaterComponent extends React.Component<FormControlProps> {
     const { formControl, owner } = this.props;
     const source = formControl.source;
     const list: DataSet[] = owner.getValue(source);
+
     return (
       <>
         {list == null || list.length === 0 ? (
@@ -61,16 +64,23 @@ export class RepeaterComponent extends React.Component<FormControlProps> {
           <>
             {list.map((listItemDataSet: DataSet, i) => (
               <RepeaterRow
+                index={i}
                 key={i + Date.now()}
                 owner={owner}
                 formControl={formControl}
                 data={listItemDataSet}
                 handlers={this.props.handlers}
+                readOnly={this.props.readOnly}
               />
             ))}
           </>
         )}
-        <Button primary icon="plus" content="Add" labelPosition="left" onClick={this.addRow} />
+        {!this.props.readOnly && (
+          <>
+            <Button primary icon="plus" content="Add" labelPosition="left" onClick={this.addRow} />
+          </>
+        )}
+
         <ErrorView owner={owner} source={source} pointing="left" />
       </>
     );

@@ -14,9 +14,12 @@ import './tests/input_view.test';
 import './tests/radio_view.test';
 import './tests/repeater_view.test';
 import './tests/select_view.test';
-// import './tests/signature_view.test';
+import './tests/signature_view.test';
 import './tests/table_view.test';
 import './tests/form_editor.test';
+import './tests/text_area_view.test';
+import './tests/buttons.view.test';
+import './tests/comment_view.test';
 
 // render luis ui to '#react-root'
 renderLuis();

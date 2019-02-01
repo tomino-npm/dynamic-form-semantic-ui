@@ -29,6 +29,22 @@ const fieldSet = css`
   }
 `;
 
+const formStyle = css`
+  .form .disabled,
+  .form :disabled {
+    opacity: 1 !important;
+    cursor: auto;
+  }
+
+  .form label {
+    cursor: auto !important;
+  }
+
+  .form label:before {
+    border: solid 1px #d4d4d5 !important;
+  }
+`;
+
 export class FormView extends React.Component<Props> {
   lastRow = -1;
   lastColumn = -1;
@@ -75,7 +91,7 @@ export class FormView extends React.Component<Props> {
                 {schema.minItems > 0 && <Icon color="red" size="small" name="asterisk" />}
               </legend>
             )}
-            {renderControl(control, this.props.owner, this.props.handlers)}
+            {renderControl(control, this.props.owner, this.props.handlers, this.props.readOnly)}
           </fieldset>
         ) : (
           <>
@@ -89,7 +105,7 @@ export class FormView extends React.Component<Props> {
                   {formControl.label}
                 </label>
               )}
-            {renderControl(control, this.props.owner, this.props.handlers)}
+            {renderControl(control, this.props.owner, this.props.handlers, this.props.readOnly)}
           </>
         )}
       </Form.Field>
@@ -108,10 +124,13 @@ export class FormView extends React.Component<Props> {
     return (
       <>
         {css}
-        <div className="ui form">
+        <div className={'ui form ' + this.props.readOnly ? formStyle : ''}>
           {rows.map(row => (
             <Form.Group key={row.key}>
-              {row.values.map(element => this.renderColumn(element))}
+              {(this.props.readOnly
+                ? row.values.filter(r => r.control.indexOf('Button') === -1) // in readonly mode we do not render any buttons
+                : row.values
+              ).map(element => this.renderColumn(element))}
             </Form.Group>
           ))}
         </div>

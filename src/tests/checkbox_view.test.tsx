@@ -1,11 +1,10 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
-import { Segment } from 'semantic-ui-react';
 import { JSONSchema, FormModel, config } from '@tomino/dynamic-form';
 
-import { FormView } from '../form_view';
 import { create } from './form_query_data';
+import { TestComponent } from './common';
 
 describe('Form', () => {
   const setDirty = jest.fn();
@@ -73,11 +72,7 @@ describe('Form', () => {
       form.validateWithReport();
 
       // just another notation
-      return (
-        <Segment className="ui form">
-          <FormView formControl={form} owner={form.dataSet} />
-        </Segment>
-      );
+      return <TestComponent form={form} />;
     }
 
     it('renders correctly', () => {

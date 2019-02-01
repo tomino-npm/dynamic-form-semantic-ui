@@ -31,7 +31,7 @@ export class InputComponent extends React.Component<FormControlProps> {
           {...controlProps}
           name={source}
           {...label}
-          disabled={owner.getSchema(source).readOnly}
+          disabled={this.props.readOnly || owner.getSchema(source).readOnly}
           error={!!owner.getError(source)}
           value={value}
           onChange={this.handleInputChange}
@@ -69,6 +69,7 @@ export class FormComponent extends React.Component<InputBoundProps & InputProps>
           error={!!owner.getError(name)}
           value={owner.getValue(name)}
           onChange={this.handleInputChange}
+          disabled={this.props.readOnly}
         />
 
         <ErrorLabel error={owner.getError(name)} />

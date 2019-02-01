@@ -28,17 +28,19 @@ class TableRow extends React.PureComponent<RowProps> {
       <Form.Group>
         {this.props.formControl.elements.map((e, i) => (
           <Form.Field width={e.width as any} key={i}>
-            {renderControl(e, this.props.owner, this.props.handlers)}
+            {renderControl(e, this.props.owner, this.props.handlers, this.props.readOnly)}
           </Form.Field>
         ))}
-        <Form.Field width={1}>
-          <Button
-            color="red"
-            icon="trash"
-            value={this.props.index}
-            onClick={this.handlers.delete}
-          />
-        </Form.Field>
+        {!this.props.readOnly && (
+          <Form.Field width={1}>
+            <Button
+              color="red"
+              icon="trash"
+              value={this.props.index}
+              onClick={this.handlers.delete}
+            />
+          </Form.Field>
+        )}
       </Form.Group>
     );
   }
@@ -76,10 +78,14 @@ export class TableComponent extends React.Component<FormControlProps> {
             owner={row}
             data={owner}
             handlers={this.props.handlers}
+            readOnly={this.props.readOnly}
           />
         ))}
 
-        <Button primary icon="plus" content="Add" labelPosition="left" onClick={this.addRow} />
+        {!this.props.readOnly && (
+          <Button primary icon="plus" content="Add" labelPosition="left" onClick={this.addRow} />
+        )}
+
         <ErrorView
           owner={this.props.owner}
           source={this.props.formControl.source}

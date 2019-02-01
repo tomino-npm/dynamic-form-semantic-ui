@@ -29,6 +29,7 @@ export type FormControlProps = {
   formControl: FormElement;
   owner: DataSet;
   handlers?: SignatureHandlers;
+  readOnly: boolean;
 };
 
 export const { css, renderCss } = initCss('d-form');

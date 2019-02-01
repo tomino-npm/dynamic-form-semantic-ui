@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
-import { Button, Segment } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import { JSONSchema, FormDefinition, undoManager, FormModel, config } from '@tomino/dynamic-form';
 
-import { TableView } from '../table_view';
 import { create } from './form_query_data';
+import { TestComponent } from './common';
 
 describe('Form', () => {
   const schema: JSONSchema = {
@@ -81,14 +81,14 @@ describe('Form', () => {
 
       // just another notation
       return (
-        <Segment className="ui form">
-          <TableView formControl={form.elements[0]} owner={form.dataSet} handlers={{} as any} />
+        <>
+          <TestComponent form={form} />
 
           <div style={{ marginTop: '20px' }}>
             <Button content="Undo" onClick={() => undoManager.undo()} />
             <Button content="Redo" onClick={() => undoManager.redo()} />
           </div>
-        </Segment>
+        </>
       );
     }
 

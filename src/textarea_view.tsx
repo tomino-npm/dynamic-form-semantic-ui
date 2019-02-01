@@ -26,9 +26,10 @@ export class TextAreaComponent extends React.Component<FormControlProps> {
       <React.Fragment>
         <TextArea
           {...controlProps}
+          placeholder={controlProps && controlProps.placeholder}
           name={source}
           {...label}
-          disabled={owner.getSchema(source).readOnly}
+          disabled={this.props.readOnly || owner.getSchema(source).readOnly}
           error={owner.getError(source) || ''}
           value={value}
           onChange={this.handleInputChange}

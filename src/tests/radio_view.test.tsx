@@ -1,11 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
-import { Segment } from 'semantic-ui-react';
-
-import { FormView } from '../form_view';
 import { create } from './form_query_data';
 import { JSONSchema, FormDefinition, FormModel, config } from '@tomino/dynamic-form';
+import { TestComponent } from './common';
 
 describe('Form', () => {
   const schema: JSONSchema = {
@@ -65,11 +63,7 @@ describe('Form', () => {
       const form = new FormModel(formDefinition, schema, controlData);
 
       // just another notation
-      return (
-        <Segment className="ui form">
-          <FormView formControl={form} owner={form.dataSet} />
-        </Segment>
-      );
+      return <TestComponent form={form} />;
     }
     it('renders correctly', () => {
       const component = renderer.create(componentWithData());

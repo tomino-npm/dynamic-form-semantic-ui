@@ -27,13 +27,13 @@
     "@types/react-test-renderer": "^16.0.3",
     "fuse-box": "^3.6.0",
     "jest": "^23.6.0",
-    "luis": "^2.6.6",
+    "luis": "^2.6.7",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
     "mobx-state-tree": "^3.10.1",
     "mst-middlewares": "^3.10.1",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "react": "16.8.0-alpha.1",
+    "react-dom": "16.8.0-alpha.1",
     "react-test-renderer": "^16.7.0",
     "semantic-ui-react": "^0.84.0",
     "ts-jest": "^23.10.5",
@@ -47,5 +47,8 @@
   },
   "jest": {
     "preset": "ts-jest/presets/default"
-  }
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
 }

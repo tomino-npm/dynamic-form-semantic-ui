@@ -1,11 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
-import { Segment } from 'semantic-ui-react';
-
-import { FormView } from '../form_view';
 import { create } from './form_query_data';
 import { JSONSchema, FormDefinition, FormModel, config } from '@tomino/dynamic-form';
+import { TestComponent } from './common';
 
 describe('Form', function() {
   const date = new Date('2018-10-15T00:05:32.000Z');
@@ -180,38 +178,26 @@ describe('Form', function() {
 
     function componentWithData() {
       const form = new FormModel(formDefinition, schema, controlData);
+      const handlers = {
+        sign: () => {
+          return new Promise(resolve =>
+            setTimeout(() => {
+              resolve({
+                date,
+                signature,
+                name: 'Alladin Hasan',
+                verifiedState: 'Verified'
+              } as any);
+            }, 1000)
+          );
+        },
+        verifySignature: () => Promise.resolve(results[ci++ % 3]),
+        signatureFont: () => 'Pacifico',
+        validateForm: () => true
+      };
 
       // just another notation
-      return (
-        <Segment className="ui form">
-          <FormView
-            formControl={form}
-            owner={form.dataSet}
-            handlers={{
-              signAndSubmit: () => {
-                return new Promise(resolve => setTimeout(resolve, 1000));
-              },
-              sign: () => {
-                return new Promise(resolve =>
-                  setTimeout(() => {
-                    resolve({
-                      date,
-                      signature,
-                      name: 'Alladin Hasan',
-                      verifiedState: 'Verified'
-                    } as any);
-                  }, 1000)
-                );
-              },
-              reject: () => {},
-              rejectAndSubmit: () => {},
-              verifySignature: () => Promise.resolve(results[ci++ % 3]),
-              signatureFont: () => 'Pacifico',
-              validateForm: () => true
-            }}
-          />
-        </Segment>
-      );
+      return <TestComponent form={form} handlers={handlers} />;
     }
 
     it('renders correctly', () => {

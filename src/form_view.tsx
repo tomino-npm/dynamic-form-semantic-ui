@@ -124,7 +124,7 @@ export class FormView extends React.Component<Props> {
     return (
       <>
         {css}
-        <div className={'ui form ' + this.props.readOnly ? formStyle : ''}>
+        <div className={'ui form ' + (this.props.readOnly ? formStyle : '')}>
           {rows.map(row => (
             <Form.Group key={row.key}>
               {(this.props.readOnly

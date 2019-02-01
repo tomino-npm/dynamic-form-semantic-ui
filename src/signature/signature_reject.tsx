@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { SignatureType, SignatureHandlers, css } from '../common';
-import { Modal, Header, Button, Icon, Input, Label } from 'semantic-ui-react';
+import { Modal, Header, Button, Icon, Input, Label, Message } from 'semantic-ui-react';
 import { FormElement, DataSet } from '@tomino/dynamic-form';
 
 type Props = {
@@ -62,6 +62,10 @@ export const SignatureReject: React.FC<Props> = ({
               : `Do you wish to reject this form? Upon rejecting, you will no longer be able to
                   make any changes. To make further changes to the form, you will need to withdraw your rejection.`}
           </p>
+          {reason && (
+            <Message icon="comment outline" header="You left a comment" content={reason} />
+          )}
+
           <form className={centered}>
             <label htmlFor="password">
               <b>Please provide your password to reject this form:</b>
@@ -78,14 +82,6 @@ export const SignatureReject: React.FC<Props> = ({
             {error && <Label color="red" content={error} className={errorLabel} />}
           </form>
         </div>
-        {reason && (
-          <p>
-            <b>
-              <Icon name="comment" /> Comment
-            </b>
-            <br /> {reason}
-          </p>
-        )}
       </Modal.Content>
 
       <Modal.Actions>

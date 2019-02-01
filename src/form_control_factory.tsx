@@ -42,7 +42,7 @@ export function renderControl(
             formControl={formElement}
             handlers={handlers}
             child={true}
-            readOnly={readOnly}
+            readOnly={readOnly || control.readOnly}
           />
         </div>
       );

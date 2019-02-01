@@ -42,7 +42,7 @@ export class Signature extends React.Component<FormControlProps & { handlers: Si
     password: '',
     loading: false,
     error: '',
-    fontReady: false
+    fontReady: typeof window === 'undefined' ? true : false
   };
 
   handleOpen = () => this.setState({ modalOpen: true });

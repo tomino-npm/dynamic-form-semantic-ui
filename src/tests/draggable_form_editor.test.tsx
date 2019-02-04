@@ -7,7 +7,11 @@ import { observable } from 'mobx';
 describe('Draggable Form Editor', () => {
   function componentWithData() {
     return (
-      <FormEditor owner={{ getSchema: () => null }} formControl={observable({ elements: [] })} />
+      <FormEditor
+        owner={{ getSchema: () => null as any } as any}
+        formControl={observable({ elements: [] })}
+        readOnly={false}
+      />
     );
   }
 

@@ -15,8 +15,8 @@ export interface IFieldOwner {
 
 type Props = FormControlProps & {
   child?: boolean;
-  fieldWrapper?: React.FC;
-  emptyField?: React.FC;
+  fieldWrapper?: any;
+  emptyField?: any;
   editMode?: boolean;
 };
 

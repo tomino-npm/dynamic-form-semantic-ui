@@ -66,6 +66,7 @@ export class FormEditor extends React.Component<FormControlProps> {
             </Grid.Column>
             <Grid.Column width={11}>
               <FormView
+                readOnly={false}
                 owner={this.props.owner}
                 formControl={this.props.formControl}
                 emptyField={DropCell}

@@ -5,7 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
-    "luis": "node fuse.js"
+    "luis": "node fuse.js",
+    "cosmos": "cosmos",
+    "cosmos:export": "cosmos-export"
   },
   "repository": {
     "type": "git",
@@ -20,12 +22,21 @@
   "author": "Tomi Trescak <tomi.trescak@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.1",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
     "@tomino/toolbelt": "^1.0.5",
     "@types/jest": "^23.3.12",
     "@types/node": "^10.12.18",
     "@types/react": "^16.7.20",
     "@types/react-test-renderer": "^16.0.3",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.0",
     "fuse-box": "^3.6.0",
+    "html-webpack-plugin": "^3.2.0",
     "jest": "^23.6.0",
     "luis": "^2.6.7",
     "mobx": "^5.9.0",
@@ -35,13 +46,16 @@
     "react": "16.8.0-alpha.1",
     "react-dom": "16.8.0-alpha.1",
     "react-test-renderer": "^16.7.0",
+    "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.84.0",
+    "style-loader": "^0.23.1",
     "ts-jest": "^23.10.5",
     "typescript": "^3.2.4"
   },
   "dependencies": {
     "@tomino/dynamic-form": "^1.0.7",
     "@types/webfontloader": "^1.6.29",
+    "react-cosmos": "^4.7.0",
     "react-dnd": "^7.0.2",
     "react-dnd-html5-backend": "^7.0.2",
     "styled-components": "^4.1.3",

@@ -16,7 +16,7 @@ setupTestBridge({ testResults: [] } as any);
 // import './tests/select_view.test';
 // import './tests/signature_view.test';
 // import './tests/table_view.test';
-import './tests/draggable_form_editor.test';
+import './tests/draggable_form_editor.jsxfixture';
 // import './tests/form_editor.test';
 // import './tests/text_area_view.test';
 // import './tests/buttons.view.test';

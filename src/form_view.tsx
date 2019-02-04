@@ -1,12 +1,13 @@
 import * as React from 'react';
 
-import { Form, Icon, SemanticWIDTHSNUMBER } from 'semantic-ui-react';
+import { Form, Icon, SemanticWIDTHSNUMBER, Button } from 'semantic-ui-react';
 
 import { groupByArray } from '@tomino/toolbelt/group-by-array';
 import { FormElement } from '@tomino/dynamic-form';
 
 import { renderControl } from './form_control_factory';
 import { renderCss, css, FormControlProps } from './common';
+import { Group } from '@tomino/toolbelt/common';
 
 export interface IFieldOwner {
   elements?: FormElement[];
@@ -14,6 +15,9 @@ export interface IFieldOwner {
 
 type Props = FormControlProps & {
   child?: boolean;
+  fieldWrapper?: React.FC;
+  emptyField?: React.FC;
+  editMode?: boolean;
 };
 
 const fieldSet = css`
@@ -45,18 +49,27 @@ const formStyle = css`
   }
 `;
 
-export class FormView extends React.Component<Props> {
+type State = {
+  rows: number;
+};
+
+export class FormView extends React.Component<Props, State> {
   lastRow = -1;
   lastColumn = -1;
 
+  state = {
+    rows: this.props.editMode ? 1 : 0
+  };
+
   renderColumn(control: FormElement) {
+    let columns = [];
+    const formControl = control;
+
     if (control.row !== this.lastRow) {
       this.lastRow = control.row;
       this.lastColumn = 0;
     }
     // we initialise all columns and add missing ones in between
-    let columns = [];
-    const formControl = control;
 
     if (formControl.control === 'DeleteButton') {
       formControl.label = '\xA0';
@@ -65,6 +78,7 @@ export class FormView extends React.Component<Props> {
     const schema = this.props.owner.getSchema(formControl.source);
 
     // insert missing start column
+    // EDITOR is using empty column
     if (control.column > this.lastColumn) {
       columns.push(
         <Form.Field
@@ -73,6 +87,27 @@ export class FormView extends React.Component<Props> {
         >
           &nbsp;
         </Form.Field>
+      );
+    }
+
+    let renderedControl = renderControl(
+      control,
+      this.props.owner,
+      this.props.handlers,
+      this.props.readOnly,
+      this.props.fieldWrapper,
+      this.props.emptyField,
+      this.props.editMode
+    );
+    if (this.props.editMode) {
+      renderedControl = (
+        <this.props.emptyField
+          owner={this.props.owner}
+          parentFormControl={this.props.formControl}
+          formControl={control}
+        >
+          {renderedControl}
+        </this.props.emptyField>
       );
     }
 
@@ -91,7 +126,11 @@ export class FormView extends React.Component<Props> {
                 {schema.minItems > 0 && <Icon color="red" size="small" name="asterisk" />}
               </legend>
             )}
-            {renderControl(control, this.props.owner, this.props.handlers, this.props.readOnly)}
+            {this.props.fieldWrapper ? (
+              <this.props.fieldWrapper>{renderedControl}</this.props.fieldWrapper>
+            ) : (
+              renderedControl
+            )}
           </fieldset>
         ) : (
           <>
@@ -105,7 +144,7 @@ export class FormView extends React.Component<Props> {
                   {formControl.label}
                 </label>
               )}
-            {renderControl(control, this.props.owner, this.props.handlers, this.props.readOnly)}
+            {renderedControl}
           </>
         )}
       </Form.Field>
@@ -115,12 +154,59 @@ export class FormView extends React.Component<Props> {
     return columns;
   }
 
+  prepareEditor(rows: Group<FormElement>[]) {
+    // EDITOR Preprocessing
+
+    for (let i = 0; i < this.state.rows; i++) {
+      let stringKey = i.toString();
+      let row = rows.find(r => r.key === stringKey);
+      if (!row) {
+        row = { key: stringKey, values: [] };
+        rows.push(row);
+      }
+      // fill in missing fields
+      let lastColumn = 15;
+      for (let rowElementIndex = row.values.length - 1; rowElementIndex >= 0; rowElementIndex--) {
+        let element = row.values[rowElementIndex];
+        let index = element.column;
+        for (let j = 0; j < lastColumn - index; j++) {
+          row.values.push({
+            row: i,
+            column: j,
+            width: 1,
+            control: 'EditorCell',
+            parent: this.props.formControl
+          });
+        }
+        lastColumn = index;
+      }
+      // fill from beginning
+      for (let j = lastColumn - 1; j >= 0; j--) {
+        row.values.push({
+          row: i,
+          column: j,
+          width: 1,
+          control: 'EditorCell',
+          parent: this.props.formControl
+        });
+      }
+
+      // now sort the row
+      rows[i].values = rows[i].values.sort((a, b) => (a.column < b.column ? -1 : 1));
+    }
+  }
+
   render() {
     this.lastColumn = 0;
     this.lastRow = 0;
 
-    const rows = groupByArray(this.props.formControl.elements, 'row');
+    let rows = groupByArray(this.props.formControl.elements, 'row');
     const css = !this.props.child && <style>{renderCss()}</style>;
+
+    if (this.props.editMode) {
+      this.prepareEditor(rows);
+    }
+
     return (
       <>
         {css}
@@ -133,6 +219,13 @@ export class FormView extends React.Component<Props> {
               ).map(element => this.renderColumn(element))}
             </Form.Group>
           ))}
+          {this.props.editMode && (
+            <Button
+              primary
+              content="Add Row"
+              onClick={() => this.setState({ rows: this.state.rows + 1 })}
+            />
+          )}
         </div>
       </>
     );

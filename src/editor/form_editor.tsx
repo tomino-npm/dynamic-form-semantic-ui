@@ -5,7 +5,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { DropCell } from './DropCell';
 import { ToolItem } from './ToolItem';
 import { css, FormControlProps } from '../common';
-import { Grid, Segment, Form, Header } from 'semantic-ui-react';
+import { Grid, Segment, Header } from 'semantic-ui-react';
 import { FormView } from '../form_view';
 import { observer } from 'mobx-react';
 
@@ -21,33 +21,6 @@ const editorGrid = css`
     border-left: dashed 1px #aaa !important;
   }
 `;
-
-const F = () => (
-  <Form.Field width={1}>
-    <DropCell />
-  </Form.Field>
-);
-
-const Row = () => (
-  <Form.Group>
-    <F />
-    <F />
-    <F />
-    <F />
-    <F />
-    <F />
-    <F />
-    <F />
-    <F />
-    <F />
-    <F />
-    <F />
-    <F />
-    <F />
-    <F />
-    <F />
-  </Form.Group>
-);
 
 @observer
 export class FormEditor extends React.Component<FormControlProps> {

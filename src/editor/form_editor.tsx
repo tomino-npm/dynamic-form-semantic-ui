@@ -1,57 +1,119 @@
 import * as React from 'react';
-import { DragDropContextProvider } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
+import * as styles from './editor_styles';
 
-import { DropCell } from './DropCell';
-import { ToolItem } from './ToolItem';
-import { css, FormControlProps } from '../common';
-import { Grid, Segment, Header } from 'semantic-ui-react';
-import { FormView } from '../form_view';
+import SplitPane from 'react-split-pane';
+import { config, FormElement } from '@tomino/dynamic-form';
 import { observer } from 'mobx-react';
+import { Input, Menu } from 'semantic-ui-react';
 
-const editorGrid = css`
-  .grid .fields .field {
-    border-right: dashed 1px #aaa !important;
-    border-bottom: dashed 1px #aaa !important;
-    border-top: dashed 1px #aaa !important;
-    padding: 0px !important;
-  }
+import { FormControlProps } from '../common';
+import { FormControls } from './form_controls';
+import { withDragDropContext } from './drag_drop_provider';
+import { PropertyPanel } from './property_panel';
+import { FormEditorView } from './editor_form_view';
 
-  .grid .fields .field:first-child {
-    border-left: dashed 1px #aaa !important;
-  }
-`;
+const minRows = 5;
 
-@observer
-export class FormEditor extends React.Component<FormControlProps> {
+export class FormEditorComponent extends React.Component<FormControlProps> {
+  elements: FormElement[];
+
+  // componentWillMount() {
+  //   let rowCount = this.props.formControl.elements.reduce(
+  //     (prev, next) => (prev <= next.row ? next.row + 1 : prev),
+  //     0
+  //   );
+  //   if (rowCount < minRows) {
+  //     rowCount = minRows;
+  //   }
+
+  //   // EDITOR Preprocessing
+  //   let rows = groupByArray(this.props.formControl.elements, 'row');
+  //   let result = [];
+
+  //   for (let i = 0; i < rowCount; i++) {
+  //     let row = rows.find(r => r.key === i);
+  //     if (!row) {
+  //       row = { key: i, values: [] };
+  //       rows.push(row);
+  //     }
+  //     // fill in missing fields
+  //     let lastColumn = 15;
+  //     for (let rowElementIndex = row.values.length - 1; rowElementIndex >= 0; rowElementIndex--) {
+  //       let element = row.values[rowElementIndex];
+  //       let index = element.column;
+  //       for (let j = 0; j < lastColumn - index; j++) {
+  //         row.values.push({
+  //           row: i,
+  //           column: lastColumn - j,
+  //           width: 1,
+  //           control: 'EditorCell',
+  //           parent: this.props.formControl
+  //         });
+  //       }
+  //       lastColumn = index;
+  //     }
+  //     // fill from beginning
+  //     for (let j = lastColumn - 1; j >= 0; j--) {
+  //       row.values.push({
+  //         row: i,
+  //         column: j,
+  //         width: 1,
+  //         control: 'EditorCell',
+  //         parent: this.props.formControl
+  //       });
+  //     }
+
+  //     // now sort the row
+  //     rows[i].values = rows[i].values.sort((a, b) => (a.column < b.column ? -1 : 1));
+
+  //     // add to the result
+  //     result.push(...rows[i].values);
+  //   }
+
+  //   this.elements = observable(result);
+  // }
+
   public render() {
     return (
-      <DragDropContextProvider backend={HTML5Backend}>
-        <Grid className={editorGrid}>
-          <Grid.Row stretched={true}>
-            <Grid.Column width={2}>
-              <Segment>
-                <Header>Tools</Header>
-                <ToolItem name="Input" />
-                <ToolItem name="Select" />
-                <ToolItem name="CheckBox" />
-              </Segment>
-            </Grid.Column>
-            <Grid.Column width={11}>
-              <FormView
-                readOnly={false}
-                owner={this.props.owner}
-                formControl={this.props.formControl}
-                emptyField={DropCell}
-                editMode={true}
-              />
-            </Grid.Column>
-            <Grid.Column width={3}>
-              <Segment>Properties 123</Segment>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </DragDropContextProvider>
+      <SplitPane
+        className={styles.editorGrid}
+        split="vertical"
+        minSize={100}
+        defaultSize={parseInt(localStorage.getItem('CORPIX.v-split-1') || '280px', 10)}
+        onChange={(size: number) => localStorage.setItem('CORPIX.v-split-1', size.toString())}
+      >
+        <div className={styles.paneContent}>
+          <Menu secondary inverted color="blue">
+            <Menu.Item icon="caret down" className={styles.caret} />
+            <Menu.Item icon="database" content={config.i18n`Data`} />
+            <Menu.Item fitted className={styles.flexed}>
+              <Input icon="search" placeholder="Search ..." fluid />
+            </Menu.Item>
+          </Menu>
+
+          <div>werwer</div>
+
+          <FormControls />
+        </div>
+        <SplitPane
+          primary="second"
+          split="vertical"
+          minSize={100}
+          defaultSize={parseInt(localStorage.getItem('CORPIX.v-split-2') || '280px', 10)}
+          onChange={(size: number) => localStorage.setItem('CORPIX.v-split-2', size.toString())}
+        >
+          <div className={styles.editorPane}>
+            <FormEditorView
+              readOnly={true}
+              owner={this.props.owner}
+              formControl={this.props.formControl}
+            />
+          </div>
+          <PropertyPanel />
+        </SplitPane>
+      </SplitPane>
     );
   }
 }
+
+export const FormEditor = withDragDropContext(observer(FormEditorComponent));

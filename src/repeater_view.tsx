@@ -16,9 +16,6 @@ const noItems = css`
 type RowProps = FormControlProps & {
   data: DataSet;
   index: number;
-  fieldWrapper: React.FC;
-  emptyField: React.FC;
-  editMode: boolean;
 };
 
 class RepeaterRow extends React.PureComponent<RowProps> {
@@ -34,18 +31,13 @@ class RepeaterRow extends React.PureComponent<RowProps> {
         formControl={this.props.formControl}
         handlers={this.handlers as any}
         readOnly={this.props.readOnly}
-        editMode={this.props.editMode}
-        emptyField={this.props.emptyField}
-        fieldWrapper={this.props.fieldWrapper}
       />
     );
   }
 }
 
 type RepeaterProps = FormControlProps & {
-  fieldWrapper: React.FC;
-  emptyField: React.FC;
-  editMode: boolean;
+  editField: React.FC;
 };
 
 export class RepeaterComponent extends React.Component<RepeaterProps> {
@@ -82,10 +74,8 @@ export class RepeaterComponent extends React.Component<RepeaterProps> {
                 formControl={formControl}
                 data={listItemDataSet}
                 handlers={this.props.handlers}
+                editField={this.props.editField}
                 readOnly={this.props.readOnly}
-                editMode={this.props.editMode}
-                emptyField={this.props.emptyField}
-                fieldWrapper={this.props.fieldWrapper}
               />
             ))}
           </>

@@ -25,16 +25,11 @@ export function renderControl(
   control: FormElement,
   dataSet: DataSet,
   handlers: SignatureHandlers & { deleteRow?: any; approve?: any; reject?: any },
-  readOnly: boolean,
-  fieldWrapper: React.FC,
-  EmptyField: React.FC,
-  editMode: boolean
+  readOnly: boolean
 ) {
   const formElement = control as FormElement;
 
   switch (formElement.control) {
-    case 'EditorCell':
-      return <div>ewr</div>;
     case 'Formula':
       return <FormulaView owner={dataSet} formControl={formElement} readOnly={readOnly} />;
     case 'Input':
@@ -48,9 +43,6 @@ export function renderControl(
             handlers={handlers}
             child={true}
             readOnly={readOnly || control.readOnly}
-            editMode={editMode}
-            emptyField={EmptyField}
-            fieldWrapper={fieldWrapper}
           />
         </div>
       );
@@ -67,9 +59,6 @@ export function renderControl(
           formControl={formElement}
           handlers={handlers}
           readOnly={readOnly}
-          editMode={editMode}
-          emptyField={EmptyField}
-          fieldWrapper={fieldWrapper}
         />
       );
     case 'Table':

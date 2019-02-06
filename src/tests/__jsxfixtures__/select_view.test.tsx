@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
-import { create } from './form_query_data';
+import { create } from '../form_query_data';
 import { JSONSchema, FormDefinition, FormModel, config } from '@tomino/dynamic-form';
-import { TestComponent } from './common';
+import { TestComponent } from '../common';
 
 const schema: JSONSchema = {
   type: 'object',
@@ -59,37 +59,11 @@ const formDefinition: FormDefinition = create.form({
   ]
 });
 
-describe('Select', function() {
-  const setDirty = jest.fn();
+function componentWithData() {
+  const form = new FormModel(formDefinition, schema, controlData);
 
-  beforeAll(() => {
-    config.setDirty = () => setDirty();
-  });
+  // just another notation
+  return <TestComponent form={form} />;
+}
 
-  function componentWithData() {
-    const form = new FormModel(formDefinition, schema, controlData);
-
-    // just another notation
-    return <TestComponent form={form} />;
-  }
-
-  it('renders correctly', () => {
-    const component = renderer.create(componentWithData());
-    expect(component).toMatchSnapshot();
-  });
-
-  it('changes value and all related formulas', () => {
-    const component = renderer.create(componentWithData());
-    const root = component.root;
-    const country = root.findByProps({ name: 'country' });
-    country.props.onChange(null, { value: 'AU' });
-
-    const city = root.findByProps({ name: 'city' });
-    city.props.onChange(null, { value: 'SYD' });
-
-    expect(component).toMatchSnapshot();
-    expect(setDirty).toBeCalled();
-  });
-
-  return { componentWithData };
-});
+export default componentWithData();

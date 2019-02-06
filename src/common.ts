@@ -28,7 +28,7 @@ export type SignatureHandlers = {
 export type FormControlProps = {
   formControl: FormElement;
   owner: DataSet;
-  handlers?: SignatureHandlers;
+  handlers?: SignatureHandlers & { [index: string]: any };
   readOnly: boolean;
 };
 

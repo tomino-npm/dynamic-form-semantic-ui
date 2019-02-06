@@ -1,13 +1,35 @@
 import * as React from 'react';
 
 import { observer } from 'mobx-react';
-import { Dropdown, DropdownProps, Input } from 'semantic-ui-react';
+import { Dropdown, DropdownProps, Input, DropdownItemProps } from 'semantic-ui-react';
 
 import { ErrorView } from './error_view';
 import { FormControlProps } from './common';
 import { EnumOption } from '@tomino/dynamic-form/dist/json_schema';
 
 export class SelectComponent extends React.Component<FormControlProps> {
+  state = {
+    loading: false
+  };
+  options: DropdownItemProps[];
+
+  async componentWillMount() {
+    const { formControl, owner } = this.props;
+    const { list } = formControl;
+
+    if (formControl.handler) {
+      this.setState({ loading: true });
+      this.options = await this.props.handlers[formControl.handler]();
+      this.setState({ loading: false });
+    } else {
+      const listSource = owner.getSchema(list);
+      if (listSource == null) {
+        debugger;
+      }
+      this.options = listSource.$enum;
+    }
+  }
+
   handleSelectChange = (_e: any, control: DropdownProps) => {
     // React.ChangeEvent<HTMLInputElement>
     // find value
@@ -18,15 +40,11 @@ export class SelectComponent extends React.Component<FormControlProps> {
 
   render() {
     const { formControl, owner } = this.props;
-    const { source, controlProps, list, filterSource, filterColumn } = formControl;
+    const { source, controlProps, filterSource, filterColumn } = formControl;
 
-    const listSource = owner.getSchema(list);
-    if (listSource == null) {
-      debugger;
-    }
     const options = filterSource
-      ? listSource.$enum.filter((v: any) => v[filterColumn] === owner.getValue(filterSource))
-      : listSource.$enum;
+      ? this.options.filter((v: any) => v[filterColumn] === owner.getValue(filterSource))
+      : this.options;
 
     if (this.props.readOnly) {
       return (
@@ -46,6 +64,7 @@ export class SelectComponent extends React.Component<FormControlProps> {
           options={options}
           name={source}
           selection={true}
+          loading={this.state.loading}
           value={owner.getValue(source)}
           disabled={this.props.readOnly}
           onChange={this.handleSelectChange}

@@ -16,6 +16,7 @@ import { TextAreaView } from './textarea_view';
 import { css, SignatureHandlers } from './common';
 import { Button } from 'semantic-ui-react';
 import { CommentView } from './comment_view';
+import { SearchView } from './search_view';
 
 const formText = css`
   margin-top: 20px;
@@ -34,6 +35,15 @@ export function renderControl(
       return <FormulaView owner={dataSet} formControl={formElement} readOnly={readOnly} />;
     case 'Input':
       return <InputView owner={dataSet} formControl={formElement} readOnly={readOnly} />;
+    case 'Search':
+      return (
+        <SearchView
+          owner={dataSet}
+          formControl={formElement}
+          readOnly={readOnly}
+          handlers={handlers}
+        />
+      );
     case 'Form':
       return (
         <div className="ui form">

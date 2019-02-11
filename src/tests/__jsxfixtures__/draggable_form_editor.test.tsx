@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { FormEditor } from '../editor/form_editor';
+import { FormEditor } from '../../editor/form_editor';
 
 const element = {
   elements: [
@@ -15,15 +15,23 @@ const element = {
       row: 0,
       column: 9,
       width: 2,
-      control: 'Input'
+      control: 'Input',
+      label: '123'
     },
     {
       row: 1,
       column: 4,
       width: 4,
-      control: 'Input'
+      control: 'Input',
+      label: ''
     }
   ]
 };
 
-export default <FormEditor owner={{ getSchema: () => null as any } as any} formControl={element} />;
+export default (
+  <FormEditor
+    owner={{ getSchema: () => null as any } as any}
+    formControl={element as any}
+    readOnly={false}
+  />
+);

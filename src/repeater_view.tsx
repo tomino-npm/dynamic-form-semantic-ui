@@ -36,9 +36,7 @@ class RepeaterRow extends React.PureComponent<RowProps> {
   }
 }
 
-type RepeaterProps = FormControlProps & {
-  editField: React.FC;
-};
+type RepeaterProps = FormControlProps & {};
 
 export class RepeaterComponent extends React.Component<RepeaterProps> {
   handleToggleChange = (_e: React.ChangeEvent<HTMLInputElement>, control: HTMLInputElement) => {
@@ -74,7 +72,6 @@ export class RepeaterComponent extends React.Component<RepeaterProps> {
                 formControl={formControl}
                 data={listItemDataSet}
                 handlers={this.props.handlers}
-                editField={this.props.editField}
                 readOnly={this.props.readOnly}
               />
             ))}

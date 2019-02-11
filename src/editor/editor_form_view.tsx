@@ -46,9 +46,7 @@ export class FormEditorView extends React.Component<Props, State> {
     let columns = [];
     const formControl = control;
 
-    let renderedControl = renderEditControl(control.control);
-    let column = control.column;
-    console.log(column);
+    let renderedControl = renderEditControl(control);
 
     columns.push(
       <Form.Field
@@ -89,6 +87,7 @@ export class FormEditorView extends React.Component<Props, State> {
 
   prepareEditor(rows: Group<FormElement>[]) {
     // EDITOR Preprocessing
+    rows.sort((a, b) => (a.key < b.key ? -1 : 1));
 
     for (let i = 0; i < this.state.rows; i++) {
       let row = rows.find(r => r.key === i);

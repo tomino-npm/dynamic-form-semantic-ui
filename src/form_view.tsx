@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Form, Icon, SemanticWIDTHSNUMBER, Button } from 'semantic-ui-react';
+import { Form, Icon, SemanticWIDTHSNUMBER } from 'semantic-ui-react';
 
 import { groupByArray } from '@tomino/toolbelt/group-by-array';
 import { FormElement } from '@tomino/dynamic-form';
@@ -56,7 +56,7 @@ type State = {
   rows: number;
 };
 
-const sortRow = (a: FormElement, b: FormElement) => (a.column < b.column ? -1 : 1);
+// const sortRow = (a: FormElement, b: FormElement) => (a.column < b.column ? -1 : 1);
 
 @observer
 export class FormView extends React.Component<Props, State> {
@@ -120,6 +120,7 @@ export class FormView extends React.Component<Props, State> {
         ) : (
           <>
             {formControl.label &&
+              formControl.control.indexOf('Button') === -1 &&
               formControl.control !== 'Image' &&
               formControl.control !== 'Text' &&
               formControl.control !== 'Signature' &&

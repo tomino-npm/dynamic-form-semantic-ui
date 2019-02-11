@@ -17,6 +17,7 @@ import { css, SignatureHandlers } from './common';
 import { Button } from 'semantic-ui-react';
 import { CommentView } from './comment_view';
 import { SearchView } from './search_view';
+import { DateView } from './date_time_view';
 
 const formText = css`
   margin-top: 20px;
@@ -25,7 +26,7 @@ const formText = css`
 export function renderControl(
   control: FormElement,
   dataSet: DataSet,
-  handlers: SignatureHandlers & { deleteRow?: any; approve?: any; reject?: any },
+  handlers: SignatureHandlers & { deleteRow?: any; approve?: any; reject?: any; submit?: any },
   readOnly: boolean
 ) {
   const formElement = control as FormElement;
@@ -57,7 +58,14 @@ export function renderControl(
         </div>
       );
     case 'Select':
-      return <SelectView owner={dataSet} formControl={formElement} readOnly={readOnly} />;
+      return (
+        <SelectView
+          owner={dataSet}
+          formControl={formElement}
+          readOnly={readOnly}
+          handlers={handlers}
+        />
+      );
     case 'Checkbox':
       return <CheckboxView owner={dataSet} formControl={formElement} readOnly={readOnly} />;
     case 'Radio':
@@ -95,7 +103,7 @@ export function renderControl(
             }
             handlers.approve();
           }}
-          content={config.i18n`Approve`}
+          content={control.label || config.i18n`Approve`}
           labelPosition="left"
         />
       );
@@ -110,7 +118,17 @@ export function renderControl(
             }
             handlers.reject();
           }}
-          content={config.i18n`Reject`}
+          content={control.label || config.i18n`Reject`}
+          labelPosition="left"
+        />
+      );
+    case 'SubmitButton':
+      return (
+        <Button
+          icon="check"
+          primary
+          onClick={() => handlers.submit(dataSet)}
+          content={control.label || config.i18n`Submit`}
           labelPosition="left"
         />
       );
@@ -146,6 +164,19 @@ export function renderControl(
           formControl={formElement}
           handlers={handlers as any}
           readOnly={readOnly}
+        />
+      );
+    case 'Date':
+    case 'DateTime':
+    case 'Time':
+    case 'DateRange':
+      return (
+        <DateView
+          owner={dataSet}
+          formControl={formElement}
+          handlers={handlers as any}
+          readOnly={readOnly}
+          type={formElement.control}
         />
       );
   }

@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { create } from './form_query_data';
-import { JSONSchema, FormDefinition, FormModel, config } from '@tomino/dynamic-form';
-import { TestComponent } from './common';
+import { create } from '../form_query_data';
+import { JSONSchema, FormDefinition, FormModel } from '@tomino/dynamic-form';
+import { TestComponent } from '../common';
 
 const schema: JSONSchema = {
   type: 'object',

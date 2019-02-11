@@ -1,20 +1,17 @@
 import * as React from 'react';
 
 // import { Button } from 'semantic-ui-react';
-import { FormElement, DataSet, config, FormControl } from '@tomino/dynamic-form';
-import { Input } from 'semantic-ui-react';
-import { css } from '../common';
+import { FormElement } from '@tomino/dynamic-form';
+import { Input, Radio } from 'semantic-ui-react';
 
-const formText = css`
-  margin-top: 20px;
-`;
-
-export function renderEditControl(control: FormControl) {
-  switch (control) {
+export function renderEditControl(formElement: FormElement) {
+  switch (formElement.control) {
     // case 'Formula':
     //   return <FormulaView owner={dataSet} formControl={formElement} readOnly={readOnly} />;
     case 'Input':
       return <Input disabled placeholder="Input" />;
+    case 'Radio':
+      return <Radio disabled label={formElement.control} />;
     case 'EditorCell':
       return '';
     // case 'Form':
@@ -129,5 +126,5 @@ export function renderEditControl(control: FormControl) {
     //   );
   }
 
-  throw new Error('Not implemented: ' + control);
+  throw new Error('Not implemented: ' + formElement.control);
 }

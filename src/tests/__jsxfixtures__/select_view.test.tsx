@@ -1,9 +1,10 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 
 import { create } from '../form_query_data';
-import { JSONSchema, FormDefinition, FormModel, config } from '@tomino/dynamic-form';
+import { JSONSchema, FormDefinition, FormModel } from '@tomino/dynamic-form';
 import { TestComponent } from '../common';
+
+const countries = [{ text: 'Australia', value: 'AU' }, { text: 'Slovakia', value: 'SK' }];
 
 const schema: JSONSchema = {
   type: 'object',
@@ -15,7 +16,7 @@ const schema: JSONSchema = {
       type: 'string'
     },
     countries: {
-      $enum: [{ text: 'Australia', value: 'AU' }, { text: 'Slovakia', value: 'SK' }]
+      $enum: countries
     },
     cities: {
       $enum: [
@@ -39,8 +40,7 @@ const formDefinition: FormDefinition = create.form({
       list: 'countries',
       control: 'Select',
       label: 'Country',
-      source: 'country',
-      inline: true
+      source: 'country'
     }),
     create.formElement({
       row: 0,
@@ -51,10 +51,20 @@ const formDefinition: FormDefinition = create.form({
       filterSource: 'country',
       filterColumn: 'country',
       controlProps: {
-        search: true
+        search: true,
+        selection: true
       },
       source: 'city',
       label: 'City'
+    }),
+    create.formElement({
+      row: 0,
+      column: 0,
+      width: 8,
+      handler: 'countries',
+      control: 'Select',
+      label: 'Async',
+      source: 'country'
     })
   ]
 });
@@ -63,7 +73,20 @@ function componentWithData() {
   const form = new FormModel(formDefinition, schema, controlData);
 
   // just another notation
-  return <TestComponent form={form} />;
+  return (
+    <TestComponent
+      form={form}
+      handlers={{
+        countries(_value: string) {
+          return new Promise(resolve => {
+            setTimeout(() => {
+              resolve(countries);
+            }, 500);
+          });
+        }
+      }}
+    />
+  );
 }
 
 export default componentWithData();

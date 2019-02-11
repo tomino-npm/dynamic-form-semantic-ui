@@ -4,7 +4,6 @@ import * as styles from './editor_styles';
 import { Menu, Input } from 'semantic-ui-react';
 import { ToolItem } from './ToolItem';
 import { config } from '@tomino/dynamic-form';
-import { renderControl } from '../form_control_factory';
 
 const standard = [
   // 'ApproveButton',

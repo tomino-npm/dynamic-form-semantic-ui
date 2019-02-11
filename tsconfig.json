@@ -19,7 +19,7 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "strictNullChecks": false,
-    "target": "es2017",
+    "target": "esnext",
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },

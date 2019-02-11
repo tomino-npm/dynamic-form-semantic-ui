@@ -5,16 +5,17 @@ import SplitPane from 'react-split-pane';
 import { config, FormElement } from '@tomino/dynamic-form';
 import { observer } from 'mobx-react';
 import { Input, Menu } from 'semantic-ui-react';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 import { FormControlProps } from '../common';
 import { FormControls } from './form_controls';
-import { withDragDropContext } from './drag_drop_provider';
 import { PropertyPanel } from './property_panel';
 import { FormEditorView } from './editor_form_view';
 
-const minRows = 5;
-
-export class FormEditorComponent extends React.Component<FormControlProps> {
+@DragDropContext(HTML5Backend)
+@observer
+export class FormEditor extends React.Component<FormControlProps> {
   elements: FormElement[];
 
   // componentWillMount() {
@@ -115,5 +116,3 @@ export class FormEditorComponent extends React.Component<FormControlProps> {
     );
   }
 }
-
-export const FormEditor = withDragDropContext(observer(FormEditorComponent));

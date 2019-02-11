@@ -53,7 +53,7 @@ export const controlsMenu = css`
   }
 
   .controls .item div div {
-    transform: scale(0.8);
+    /* transform: scale(0.8); */
   }
 
   .controls .header.item {

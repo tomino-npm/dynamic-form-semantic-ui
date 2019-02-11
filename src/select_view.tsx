@@ -18,8 +18,12 @@ export class SelectComponent extends React.Component<FormControlProps> {
     const { list } = formControl;
 
     if (formControl.handler) {
+      if (!this.props.handlers['loadDropdownOptions']) {
+        throw new Error('Missing handler: loadDropdownOptions(dropdownName: string)');
+      }
+      this.options = [];
       this.setState({ loading: true });
-      this.options = await this.props.handlers[formControl.handler]();
+      this.options = await this.props.handlers.loadDropdownOptions(formControl.handler);
       this.setState({ loading: false });
     } else {
       const listSource = owner.getSchema(list);
@@ -52,7 +56,11 @@ export class SelectComponent extends React.Component<FormControlProps> {
           {...controlProps}
           name={source}
           disabled={true}
-          value={(options.find(f => f.value === owner.getValue(source)) || ({} as EnumOption)).text}
+          value={
+            this.state.loading
+              ? ''
+              : (options.find(f => f.value === owner.getValue(source)) || ({} as EnumOption)).text
+          }
         />
       );
     }
@@ -65,7 +73,7 @@ export class SelectComponent extends React.Component<FormControlProps> {
           name={source}
           selection={true}
           loading={this.state.loading}
-          value={owner.getValue(source)}
+          value={(owner.getValue(source) || '').toString()}
           disabled={this.props.readOnly}
           onChange={this.handleSelectChange}
         />

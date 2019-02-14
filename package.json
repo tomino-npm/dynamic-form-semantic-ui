@@ -27,7 +27,8 @@
     "@types/react": "*",
     "@types/react-test-renderer": "*",
     "@types/webfontloader": "^1.6.29",
-    "jest": "^23.6.0",
+    "jest": "^24.1.0",
+    "jest-dot-reporter": "^1.0.7",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-test-renderer": "^16.8.1",
@@ -38,7 +39,7 @@
   },
   "dependencies": {
     "@tomino/dynamic-form": "^1.0.7",
-    "luis": "^3.1.1",
+    "luis": "^3.1.7",
     "mobx": "*",
     "mobx-react": "*",
     "mobx-state-tree": "*",

@@ -21,8 +21,18 @@ module.exports = function(wallaby) {
       initial: 1,
       regular: 1
     },
-    testFramework: 'jest',
+    testFramework: 'mocha',
     setup() {
+      const expect = require('expect');
+      const toMatchSnapshot = require('expect-mocha-snapshot');
+      expect.extend({
+        toMatchSnapshot: (_args, ctx) => {
+          return toMatchSnapshot({ ..._args, ...ctx });
+        }
+      });
+
+      global.expect = expect;
+
       process.env.JEST_ROOT_OUTPUT_PATH = require('path').resolve(
         '/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src'
       );

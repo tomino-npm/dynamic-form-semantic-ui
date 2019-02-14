@@ -51,6 +51,7 @@ exports[`Search renders 1`] = `
             />
           </div>
         </div>
+        o
       </div>
       <div
         className="six wide field"
@@ -85,40 +86,7 @@ exports[`Search renders 1`] = `
             />
           </div>
         </div>
-      </div>
-      <div
-        className="four wide field"
-      >
-        <label
-          htmlFor="selectedCountry"
-        >
-          Selected
-        </label>
-        <div
-          className="ui loading search"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseDown={[Function]}
-        >
-          <div
-            className="ui icon input"
-          >
-            <input
-              autoComplete="off"
-              className="prompt"
-              onChange={[Function]}
-              onClick={[Function]}
-              tabIndex="0"
-              type="text"
-              value=""
-            />
-            <i
-              aria-hidden="true"
-              className="search icon"
-              onClick={[Function]}
-            />
-          </div>
-        </div>
+        o1
       </div>
     </div>
   </div>
@@ -163,26 +131,6 @@ exports[`Search renders 1`] = `
           htmlFor="country"
         >
           Country With Control
-        </label>
-        <div
-          className="ui disabled input"
-        >
-          <input
-            disabled={true}
-            onChange={[Function]}
-            tabIndex={-1}
-            type="text"
-            value=""
-          />
-        </div>
-      </div>
-      <div
-        className="four wide field"
-      >
-        <label
-          htmlFor="selectedCountry"
-        >
-          Selected
         </label>
         <div
           className="ui disabled input"

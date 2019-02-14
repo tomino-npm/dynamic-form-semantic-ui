@@ -1,10 +1,6 @@
 import { renderLuis } from 'luis';
 
-const testResults = require('./summary.json');
-const snapshots = require('./snapshots');
-
 renderLuis({
-  testResults,
-  snapshots,
+  ...require('./summary'),
   tests: () => require('**.test')
 });

@@ -35,17 +35,17 @@ const formDefinition: FormDefinition = create.form({
       control: 'Search',
       label: 'Country',
       source: 'country'
+    }),
+    create.formElement({
+      row: 0,
+      column: 6,
+      width: 6,
+      handler: 'findCountryWithControl',
+      control: 'Search',
+      label: 'Country With Control',
+      source: 'country',
+      renderer: `<table><tr><td width="100">{0}<!--country--></td><td>{1}<!--city--></td></tr></table>`
     })
-    // create.formElement({
-    //   row: 0,
-    //   column: 6,
-    //   width: 6,
-    //   handler: 'findCountryWithControl',
-    //   control: 'Search',
-    //   label: 'Country With Control',
-    //   source: 'country',
-    //   renderer: `<table><tr><td width="100">{0}<!--country--></td><td>{1}<!--city--></td></tr></table>`
-    // }),
     // create.formElement({
     //   row: 0,
     //   column: 12,
@@ -99,9 +99,20 @@ function componentWithData() {
   );
 }
 
-describe('Search', () => {
-  it('renders', () => {
+// Note: cache should not be re-used by repeated calls to JSON.stringify.
+
+// describe('foo', function() {
+//   it('matches the snapshot', function() {
+//     console.log();
+
+//     expect({ foo: 'bar' }).toMatchSnapshot(this);
+//   });
+// });
+
+describe('Search', function() {
+  it('renders', function() {
     const component = renderer.create(componentWithData());
+
     expect(component).toMatchSnapshot();
   });
   console.log(process.env.JEST_ROOT_OUTPUT_PATH);

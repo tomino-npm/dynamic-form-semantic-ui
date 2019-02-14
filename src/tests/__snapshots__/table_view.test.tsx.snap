@@ -1,133 +1,272 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Form Table renders correctly 1`] = `
-<div
-  className="ui segment ui form"
->
+exports[`Table renders correctly 1`] = `
+Array [
   <div
-    className="ui form"
+    className="ui segment ui form"
   >
     <div
-      className="fields d-form-Abdgbhfjheg"
+      className="ui dividing header"
+    >
+      Standard
+    </div>
+    <style>
+      
+    </style>
+    <div
+      className="ui form "
     >
       <div
-        className="eight wide field"
+        className="fields"
       >
-        <label>
-          Name
-        </label>
-      </div>
-      <div
-        className="eight wide field"
-      >
-        <label>
-          Capital
-        </label>
+        <div
+          className="sixteen wide field"
+        >
+          <div
+            className="ui form"
+          >
+            <div
+              className="fields d-form-Abdgbhfjheg"
+            >
+              <div
+                className="eight wide field"
+              >
+                <label>
+                  Name
+                </label>
+              </div>
+              <div
+                className="eight wide field"
+              >
+                <label>
+                  Capital
+                </label>
+              </div>
+            </div>
+            <div
+              className="fields"
+            >
+              <div
+                className="eight wide field"
+              >
+                <div
+                  className="ui input"
+                >
+                  <input
+                    name="name"
+                    onChange={[Function]}
+                    type="text"
+                    value="Slovakia"
+                  />
+                </div>
+              </div>
+              <div
+                className="eight wide field"
+              >
+                <div
+                  className="ui input"
+                >
+                  <input
+                    name="capital"
+                    onChange={[Function]}
+                    type="text"
+                    value="Bratislava"
+                  />
+                </div>
+              </div>
+              <div
+                className="one wide field"
+              >
+                <button
+                  className="ui blue icon button"
+                  onClick={[Function]}
+                  value={0}
+                >
+                  <i
+                    aria-hidden="true"
+                    className="trash icon"
+                    onClick={[Function]}
+                  />
+                </button>
+              </div>
+            </div>
+            <div
+              className="fields"
+            >
+              <div
+                className="eight wide field"
+              >
+                <div
+                  className="ui input"
+                >
+                  <input
+                    name="name"
+                    onChange={[Function]}
+                    type="text"
+                    value="Australia"
+                  />
+                </div>
+              </div>
+              <div
+                className="eight wide field"
+              >
+                <div
+                  className="ui input"
+                >
+                  <input
+                    name="capital"
+                    onChange={[Function]}
+                    type="text"
+                    value="Canberra"
+                  />
+                </div>
+              </div>
+              <div
+                className="one wide field"
+              >
+                <button
+                  className="ui blue icon button"
+                  onClick={[Function]}
+                  value={1}
+                >
+                  <i
+                    aria-hidden="true"
+                    className="trash icon"
+                    onClick={[Function]}
+                  />
+                </button>
+              </div>
+            </div>
+            <button
+              className="ui icon primary left labeled button"
+              onClick={[Function]}
+            >
+              <i
+                aria-hidden="true"
+                className="plus icon"
+                onClick={[Function]}
+              />
+              Add
+            </button>
+          </div>
+        </div>
       </div>
     </div>
     <div
-      className="fields"
+      className="ui dividing header"
     >
-      <div
-        className="eight wide field"
-      >
-        <div
-          className="ui input"
-        >
-          <input
-            name="name"
-            onChange={[Function]}
-            type="text"
-            value="Slovakia"
-          />
-        </div>
-      </div>
-      <div
-        className="eight wide field"
-      >
-        <div
-          className="ui input"
-        >
-          <input
-            name="capital"
-            onChange={[Function]}
-            type="text"
-            value="Bratislava"
-          />
-        </div>
-      </div>
-      <div
-        className="one wide field"
-      >
-        <button
-          className="ui red icon button"
-          onClick={[Function]}
-          value={0}
-        >
-          <i
-            aria-hidden="true"
-            className="trash icon"
-          />
-        </button>
-      </div>
+      Readonly
     </div>
+    <style>
+      
+    </style>
     <div
-      className="fields"
+      className="ui form form-hjcaghiia"
     >
       <div
-        className="eight wide field"
+        className="fields"
       >
         <div
-          className="ui input"
+          className="sixteen wide field"
         >
-          <input
-            name="name"
-            onChange={[Function]}
-            type="text"
-            value="Australia"
-          />
+          <div
+            className="ui form"
+          >
+            <div
+              className="fields d-form-Abdgbhfjheg"
+            >
+              <div
+                className="eight wide field"
+              >
+                <label>
+                  Name
+                </label>
+              </div>
+              <div
+                className="eight wide field"
+              >
+                <label>
+                  Capital
+                </label>
+              </div>
+            </div>
+            <div
+              className="fields"
+            >
+              <div
+                className="eight wide field"
+              >
+                <div
+                  className="ui disabled input"
+                >
+                  <input
+                    disabled={true}
+                    name="name"
+                    onChange={[Function]}
+                    tabIndex={-1}
+                    type="text"
+                    value="Slovakia"
+                  />
+                </div>
+              </div>
+              <div
+                className="eight wide field"
+              >
+                <div
+                  className="ui disabled input"
+                >
+                  <input
+                    disabled={true}
+                    name="capital"
+                    onChange={[Function]}
+                    tabIndex={-1}
+                    type="text"
+                    value="Bratislava"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="fields"
+            >
+              <div
+                className="eight wide field"
+              >
+                <div
+                  className="ui disabled input"
+                >
+                  <input
+                    disabled={true}
+                    name="name"
+                    onChange={[Function]}
+                    tabIndex={-1}
+                    type="text"
+                    value="Australia"
+                  />
+                </div>
+              </div>
+              <div
+                className="eight wide field"
+              >
+                <div
+                  className="ui disabled input"
+                >
+                  <input
+                    disabled={true}
+                    name="capital"
+                    onChange={[Function]}
+                    tabIndex={-1}
+                    type="text"
+                    value="Canberra"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div
-        className="eight wide field"
-      >
-        <div
-          className="ui input"
-        >
-          <input
-            name="capital"
-            onChange={[Function]}
-            type="text"
-            value="Canberra"
-          />
-        </div>
-      </div>
-      <div
-        className="one wide field"
-      >
-        <button
-          className="ui red icon button"
-          onClick={[Function]}
-          value={1}
-        >
-          <i
-            aria-hidden="true"
-            className="trash icon"
-          />
-        </button>
       </div>
     </div>
-    <button
-      className="ui icon primary left labeled button"
-      onClick={[Function]}
-    >
-      <i
-        aria-hidden="true"
-        className="plus icon"
-      />
-      Add
-    </button>
-  </div>
+  </div>,
   <div
     style={
       Object {
@@ -147,6 +286,6 @@ exports[`Form Table renders correctly 1`] = `
     >
       Redo
     </button>
-  </div>
-</div>
+  </div>,
+]
 `;

@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { create } from '../form_query_data';
+import { create } from './form_query_data';
 import { JSONSchema, FormDefinition, FormModel } from '@tomino/dynamic-form';
-import { TestComponent } from '../common';
+import { TestComponent } from './common';
 
 const schema: JSONSchema = {
   type: 'object',
@@ -61,4 +61,8 @@ function componentWithData() {
   return <TestComponent form={form} />;
 }
 
-export default componentWithData();
+describe('DateView', () => {
+  return {
+    componentWithData
+  };
+});

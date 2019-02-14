@@ -1,0 +1,561 @@
+{
+  "numFailedTestSuites": 6,
+  "numFailedTests": 2,
+  "numPassedTestSuites": 8,
+  "numPassedTests": 11,
+  "numPendingTestSuites": 0,
+  "numPendingTests": 0,
+  "numRuntimeErrorTestSuites": 4,
+  "numTotalTestSuites": 14,
+  "numTotalTests": 13,
+  "openHandles": [],
+  "snapshot": {
+    "added": 0,
+    "didUpdate": false,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 10,
+    "total": 10,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0
+  },
+  "success": false,
+  "testResults": [
+    {
+      "console": [],
+      "failureMessage": null,
+      "numFailingTests": 0,
+      "numPassingTests": 1,
+      "numPendingTests": 0,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 1,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/tests/repeater_view.test.tsx",
+      "testResults": [
+        {
+          "ancestorTitles": [
+            "Repeater"
+          ],
+          "duration": 75,
+          "failureMessages": [],
+          "fullName": "Repeater renders correctly",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "renders correctly"
+        }
+      ],
+      "sourceMaps": {},
+      "skipped": false,
+      "leaks": false
+    },
+    {
+      "console": [
+        {
+          "message": "{ name: [Getter/Setter],\n  age: [Getter/Setter],\n  history: [Getter/Setter],\n  errors: [Getter/Setter] }",
+          "origin": "undefined:3",
+          "type": "log"
+        },
+        {
+          "message": "{ name: [Getter/Setter],\n  age: [Getter/Setter],\n  history: [Getter/Setter],\n  errors: [Getter/Setter] }",
+          "origin": "undefined:3",
+          "type": "log"
+        }
+      ],
+      "failureMessage": "  ● Input › changes value and all related formulas\n\n    Expected 1 but found 2 instances with props: {\"name\":\"age\"}\n\n       97 |     const component = renderer.create(componentWithData());\n       98 |     const root = component.root;\n    >  99 |     const age = root.findByProps({ name: 'age' });\n          |                      ^\n      100 |     age.props.onChange({ currentTarget: { value: '40' } });\n      101 |     expect(component).toMatchSnapshot();\n      102 |     expect(setDirty).toBeCalled();\n\n      at expectOne (../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:12593:9)\n      at ReactTestInstance.findByProps (../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:12492:12)\n      at Object.it (src/tests/input_view.test.tsx:99:22)\n",
+      "numFailingTests": 1,
+      "numPassingTests": 1,
+      "numPendingTests": 0,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 1,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/tests/input_view.test.tsx",
+      "testResults": [
+        {
+          "ancestorTitles": [
+            "Input"
+          ],
+          "duration": 69,
+          "failureMessages": [],
+          "fullName": "Input renders correctly",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "renders correctly"
+        },
+        {
+          "ancestorTitles": [
+            "Input"
+          ],
+          "duration": 31,
+          "failureMessages": [
+            "Error: Expected 1 but found 2 instances with props: {\"name\":\"age\"}\n    at expectOne (/Users/tomi/Github/apps/interfaces/node_modules/react-test-renderer/cjs/react-test-renderer.development.js:12593:9)\n    at ReactTestInstance.findByProps (/Users/tomi/Github/apps/interfaces/node_modules/react-test-renderer/cjs/react-test-renderer.development.js:12492:12)\n    at Object.it (/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/tests/input_view.test.tsx:99:22)\n    at Object.asyncJestTest (/Users/tomi/Github/apps/interfaces/node_modules/jest-jasmine2/build/jasmine_async.js:108:37)\n    at resolve (/Users/tomi/Github/apps/interfaces/node_modules/jest-jasmine2/build/queue_runner.js:56:12)\n    at new Promise (<anonymous>)\n    at mapper (/Users/tomi/Github/apps/interfaces/node_modules/jest-jasmine2/build/queue_runner.js:43:19)\n    at promise.then (/Users/tomi/Github/apps/interfaces/node_modules/jest-jasmine2/build/queue_runner.js:87:41)\n    at processTicksAndRejections (internal/process/next_tick.js:81:5)"
+          ],
+          "fullName": "Input changes value and all related formulas",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "failed",
+          "title": "changes value and all related formulas"
+        }
+      ],
+      "sourceMaps": {},
+      "skipped": false,
+      "leaks": false
+    },
+    {
+      "console": [],
+      "failureMessage": "  ● Checkbox › changes value and all related formulas\n\n    Expected 1 but found 2 instances with props: {\"name\":\"agree\"}\n\n      83 |     const component = renderer.create(componentWithData());\n      84 |     const root = component.root;\n    > 85 |     const agree = root.findByProps({ name: 'agree' });\n         |                        ^\n      86 |     agree.props.onChange(null, { checked: false });\n      87 | \n      88 |     const disagree = root.findByProps({ name: 'disagree' });\n\n      at expectOne (../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:12593:9)\n      at ReactTestInstance.findByProps (../node_modules/react-test-renderer/cjs/react-test-renderer.development.js:12492:12)\n      at Object.it (src/tests/checkbox_view.test.tsx:85:24)\n",
+      "numFailingTests": 1,
+      "numPassingTests": 1,
+      "numPendingTests": 0,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 1,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/tests/checkbox_view.test.tsx",
+      "testResults": [
+        {
+          "ancestorTitles": [
+            "Checkbox"
+          ],
+          "duration": 70,
+          "failureMessages": [],
+          "fullName": "Checkbox renders correctly",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "renders correctly"
+        },
+        {
+          "ancestorTitles": [
+            "Checkbox"
+          ],
+          "duration": 30,
+          "failureMessages": [
+            "Error: Expected 1 but found 2 instances with props: {\"name\":\"agree\"}\n    at expectOne (/Users/tomi/Github/apps/interfaces/node_modules/react-test-renderer/cjs/react-test-renderer.development.js:12593:9)\n    at ReactTestInstance.findByProps (/Users/tomi/Github/apps/interfaces/node_modules/react-test-renderer/cjs/react-test-renderer.development.js:12492:12)\n    at Object.it (/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/tests/checkbox_view.test.tsx:85:24)\n    at Object.asyncJestTest (/Users/tomi/Github/apps/interfaces/node_modules/jest-jasmine2/build/jasmine_async.js:108:37)\n    at resolve (/Users/tomi/Github/apps/interfaces/node_modules/jest-jasmine2/build/queue_runner.js:56:12)\n    at new Promise (<anonymous>)\n    at mapper (/Users/tomi/Github/apps/interfaces/node_modules/jest-jasmine2/build/queue_runner.js:43:19)\n    at promise.then (/Users/tomi/Github/apps/interfaces/node_modules/jest-jasmine2/build/queue_runner.js:87:41)\n    at processTicksAndRejections (internal/process/next_tick.js:81:5)"
+          ],
+          "fullName": "Checkbox changes value and all related formulas",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "failed",
+          "title": "changes value and all related formulas"
+        }
+      ],
+      "sourceMaps": {},
+      "skipped": false,
+      "leaks": false
+    },
+    {
+      "console": [
+        {
+          "message": "Pending",
+          "origin": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/signature_view.tsx:55",
+          "type": "log"
+        },
+        {
+          "message": "Verified",
+          "origin": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/signature_view.tsx:55",
+          "type": "log"
+        },
+        {
+          "message": "Rejected",
+          "origin": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/signature_view.tsx:55",
+          "type": "log"
+        },
+        {
+          "message": "Pending",
+          "origin": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/signature_view.tsx:55",
+          "type": "log"
+        },
+        {
+          "message": "Verified",
+          "origin": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/signature_view.tsx:55",
+          "type": "log"
+        },
+        {
+          "message": "Rejected",
+          "origin": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/signature_view.tsx:55",
+          "type": "log"
+        }
+      ],
+      "failureMessage": null,
+      "numFailingTests": 0,
+      "numPassingTests": 1,
+      "numPendingTests": 0,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 1,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/tests/signature_view.test.tsx",
+      "testResults": [
+        {
+          "ancestorTitles": [
+            "Signature"
+          ],
+          "duration": 173,
+          "failureMessages": [],
+          "fullName": "Signature renders correctly",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "renders correctly"
+        }
+      ],
+      "sourceMaps": {},
+      "skipped": false,
+      "leaks": false
+    },
+    {
+      "console": [],
+      "failureMessage": null,
+      "numFailingTests": 0,
+      "numPassingTests": 1,
+      "numPendingTests": 0,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 1,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/tests/search_view.test.tsx",
+      "testResults": [
+        {
+          "ancestorTitles": [
+            "Search"
+          ],
+          "duration": 26,
+          "failureMessages": [],
+          "fullName": "Search renders",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "renders"
+        }
+      ],
+      "sourceMaps": {},
+      "skipped": false,
+      "leaks": false
+    },
+    {
+      "console": [],
+      "failureMessage": null,
+      "numFailingTests": 0,
+      "numPassingTests": 1,
+      "numPendingTests": 0,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 1,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/tests/text_area_view.test.tsx",
+      "testResults": [
+        {
+          "ancestorTitles": [
+            "TextArea"
+          ],
+          "duration": 17,
+          "failureMessages": [],
+          "fullName": "TextArea renders correctly",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "renders correctly"
+        }
+      ],
+      "sourceMaps": {},
+      "skipped": false,
+      "leaks": false
+    },
+    {
+      "console": [],
+      "failureMessage": null,
+      "numFailingTests": 0,
+      "numPassingTests": 2,
+      "numPendingTests": 0,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 1,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/tests/table_view.test.tsx",
+      "testResults": [
+        {
+          "ancestorTitles": [
+            "Table"
+          ],
+          "duration": 39,
+          "failureMessages": [],
+          "fullName": "Table renders correctly",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "renders correctly"
+        },
+        {
+          "ancestorTitles": [
+            "Table"
+          ],
+          "duration": 0,
+          "failureMessages": [],
+          "fullName": "Table changes value and all related formulas",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "changes value and all related formulas"
+        }
+      ],
+      "sourceMaps": {},
+      "skipped": false,
+      "leaks": false
+    },
+    {
+      "console": [],
+      "failureMessage": null,
+      "numFailingTests": 0,
+      "numPassingTests": 1,
+      "numPendingTests": 0,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 1,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/tests/buttons.view.test.tsx",
+      "testResults": [
+        {
+          "ancestorTitles": [
+            "Buttons"
+          ],
+          "duration": 21,
+          "failureMessages": [],
+          "fullName": "Buttons renders correctly",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "renders correctly"
+        }
+      ],
+      "sourceMaps": {},
+      "skipped": false,
+      "leaks": false
+    },
+    {
+      "console": [],
+      "failureMessage": null,
+      "numFailingTests": 0,
+      "numPassingTests": 1,
+      "numPendingTests": 0,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 1,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/tests/form_editor.test.tsx",
+      "testResults": [
+        {
+          "ancestorTitles": [
+            "Form Editor"
+          ],
+          "duration": 48,
+          "failureMessages": [],
+          "fullName": "Form Editor renders correctly",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "renders correctly"
+        }
+      ],
+      "sourceMaps": {},
+      "skipped": false,
+      "leaks": false
+    },
+    {
+      "console": [],
+      "failureMessage": null,
+      "numFailingTests": 0,
+      "numPassingTests": 1,
+      "numPendingTests": 0,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 1,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/tests/comment_view.test.tsx",
+      "testResults": [
+        {
+          "ancestorTitles": [
+            "Comment"
+          ],
+          "duration": 19,
+          "failureMessages": [],
+          "fullName": "Comment renders correctly",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "renders correctly"
+        }
+      ],
+      "sourceMaps": {},
+      "skipped": false,
+      "leaks": false
+    },
+    {
+      "console": null,
+      "displayName": "",
+      "failureMessage": "  ● Test suite failed to run\n\n    Your test suite must contain at least one test.\n\n      at node_modules/jest-cli/build/TestScheduler.js:256:22\n",
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 0,
+      "numPendingTests": 0,
+      "openHandles": [],
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "uncheckedKeys": [],
+        "unmatched": 0,
+        "updated": 0
+      },
+      "sourceMaps": {},
+      "testExecError": {
+        "message": "Your test suite must contain at least one test.",
+        "stack": "Error: Your test suite must contain at least one test.\n    at /Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:256:22\n    at Generator.next (<anonymous>)\n    at step (/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:147:30)\n    at /Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:166:14\n    at new Promise (<anonymous>)\n    at /Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:144:12\n    at onResult (/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:291:23)\n    at /Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-runner/build/index.js:201:22\n    at processTicksAndRejections (internal/process/next_tick.js:81:5)"
+      },
+      "testFilePath": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/tests/radio_view.test.tsx",
+      "testResults": []
+    },
+    {
+      "console": null,
+      "displayName": "",
+      "failureMessage": "  ● Test suite failed to run\n\n    Your test suite must contain at least one test.\n\n      at node_modules/jest-cli/build/TestScheduler.js:256:22\n",
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 0,
+      "numPendingTests": 0,
+      "openHandles": [],
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "uncheckedKeys": [],
+        "unmatched": 0,
+        "updated": 0
+      },
+      "sourceMaps": {},
+      "testExecError": {
+        "message": "Your test suite must contain at least one test.",
+        "stack": "Error: Your test suite must contain at least one test.\n    at /Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:256:22\n    at Generator.next (<anonymous>)\n    at step (/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:147:30)\n    at /Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:166:14\n    at new Promise (<anonymous>)\n    at /Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:144:12\n    at onResult (/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:291:23)\n    at /Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-runner/build/index.js:201:22\n    at processTicksAndRejections (internal/process/next_tick.js:81:5)"
+      },
+      "testFilePath": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/tests/select_view.test.tsx",
+      "testResults": []
+    },
+    {
+      "console": null,
+      "displayName": "",
+      "failureMessage": "  ● Test suite failed to run\n\n    Your test suite must contain at least one test.\n\n      at node_modules/jest-cli/build/TestScheduler.js:256:22\n",
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 0,
+      "numPendingTests": 0,
+      "openHandles": [],
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "uncheckedKeys": [],
+        "unmatched": 0,
+        "updated": 0
+      },
+      "sourceMaps": {},
+      "testExecError": {
+        "message": "Your test suite must contain at least one test.",
+        "stack": "Error: Your test suite must contain at least one test.\n    at /Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:256:22\n    at Generator.next (<anonymous>)\n    at step (/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:147:30)\n    at /Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:166:14\n    at new Promise (<anonymous>)\n    at /Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:144:12\n    at onResult (/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:291:23)\n    at /Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-runner/build/index.js:201:22\n    at processTicksAndRejections (internal/process/next_tick.js:81:5)"
+      },
+      "testFilePath": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/tests/date_view.test.tsx",
+      "testResults": []
+    },
+    {
+      "console": null,
+      "displayName": "",
+      "failureMessage": "  ● Test suite failed to run\n\n    Your test suite must contain at least one test.\n\n      at node_modules/jest-cli/build/TestScheduler.js:256:22\n",
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 0,
+      "numPendingTests": 0,
+      "openHandles": [],
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "uncheckedKeys": [],
+        "unmatched": 0,
+        "updated": 0
+      },
+      "sourceMaps": {},
+      "testExecError": {
+        "message": "Your test suite must contain at least one test.",
+        "stack": "Error: Your test suite must contain at least one test.\n    at /Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:256:22\n    at Generator.next (<anonymous>)\n    at step (/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:147:30)\n    at /Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:166:14\n    at new Promise (<anonymous>)\n    at /Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:144:12\n    at onResult (/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-cli/build/TestScheduler.js:291:23)\n    at /Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/node_modules/jest-runner/build/index.js:201:22\n    at processTicksAndRejections (internal/process/next_tick.js:81:5)"
+      },
+      "testFilePath": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/tests/draggable_form_editor.test.tsx",
+      "testResults": []
+    }
+  ],
+  "wasInterrupted": false
+}

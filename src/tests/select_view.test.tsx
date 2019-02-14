@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { create } from '../form_query_data';
+import { create } from './form_query_data';
 import { JSONSchema, FormDefinition, FormModel } from '@tomino/dynamic-form';
-import { TestComponent } from '../common';
+import { TestComponent } from './common';
 
 const countries = [{ text: 'Australia', value: 'AU' }, { text: 'Slovakia', value: 'SK' }];
 
@@ -89,4 +89,6 @@ function componentWithData() {
   );
 }
 
-export default componentWithData();
+describe('Select', () => {
+  return { componentWithData };
+});

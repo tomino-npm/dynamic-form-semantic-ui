@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
-    "luis": "node fuse.js",
+    "luis1": "node fuse.js",
+    "luis": "luis",
     "cosmos": "cosmos",
     "cosmos:export": "cosmos-export"
   },
@@ -51,10 +52,12 @@
   },
   "dependencies": {
     "@tomino/dynamic-form": "^1.0.7",
+    "luis": "^3.1.1",
     "mobx": "*",
     "mobx-react": "*",
     "mobx-state-tree": "*",
     "mst-middlewares": "*",
+    "proxyrequire": "^1.0.21",
     "react-dnd": "^7.0.2",
     "react-dnd-html5-backend": "^7.0.2",
     "react-split-pane": "^0.1.85",
@@ -64,7 +67,12 @@
     "webfontloader": "^1.6.28"
   },
   "jest": {
-    "preset": "ts-jest/presets/default"
+    "preset": "ts-jest/presets/default",
+    "testResultsProcessor": "luis/dist/bridges/jest/reporter",
+    "watchPathIgnorePatterns": [
+      "<rootDir>/src/summary.json",
+      "<rootDir>/src/snapshots.js"
+    ]
   },
   "browserslist": [
     "last 1 Chrome version"

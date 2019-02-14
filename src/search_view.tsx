@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { observer } from 'mobx-react';
-import { Search, SearchResultData, SearchProps } from 'semantic-ui-react';
+import { Search, SearchResultData, SearchProps, Input } from 'semantic-ui-react';
 
 import { FormControlProps } from './common';
 import { debounce } from '@tomino/toolbelt';
@@ -38,7 +38,7 @@ export class SearchComponent extends React.Component<FormControlProps, State> {
 
           this.setState({
             isLoading: false,
-            value: options && options.length && options[0].title
+            value: options && options.length ? options[0].title : ''
           });
         });
     }
@@ -101,6 +101,10 @@ export class SearchComponent extends React.Component<FormControlProps, State> {
 
   render() {
     const { isLoading, value, options } = this.state;
+
+    if (this.props.readOnly) {
+      return <Input disabled value={value} />;
+    }
 
     return (
       <>

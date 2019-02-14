@@ -1,8 +1,7 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 
 import { create } from './form_query_data';
-import { JSONSchema, FormDefinition, FormModel, config } from '@tomino/dynamic-form';
+import { JSONSchema, FormDefinition, FormModel } from '@tomino/dynamic-form';
 import { TestComponent } from './common';
 
 const schema: JSONSchema = {
@@ -51,35 +50,11 @@ const formDefinition: FormDefinition = create.form({
   ]
 });
 
+const form = new FormModel(formDefinition, schema, controlData);
+
+// just another notation
 describe('Radio', () => {
-  const setDirty = jest.fn();
-
-  beforeAll(() => {
-    config.setDirty = () => setDirty();
-  });
-
-  function componentWithData() {
-    const form = new FormModel(formDefinition, schema, controlData);
-
-    // just another notation
-    return <TestComponent form={form} />;
-  }
-  it('renders correctly', () => {
-    const component = renderer.create(componentWithData());
-    expect(component).toMatchSnapshot();
-  });
-
-  it('changes values', () => {
-    const component = renderer.create(componentWithData());
-    const root = component.root;
-    const agree = root.findAllByProps({ value: 'BU' });
-    agree[1].props.onChange(null, { value: 'BU' });
-
-    expect(component).toMatchSnapshot();
-    expect(setDirty).toHaveBeenCalled();
-  });
-
   return {
-    component: componentWithData()
+    componentWithData: () => <TestComponent form={form} />
   };
 });

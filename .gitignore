@@ -6,3 +6,5 @@ node_modules_yarn
 luis
 public
 dist
+summary.json
+snapshots.js

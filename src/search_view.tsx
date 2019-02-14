@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { observer } from 'mobx-react';
-import { Search, SearchResultData, SearchProps, Input } from 'semantic-ui-react';
+import { SearchResultData, SearchProps, Input } from 'semantic-ui-react';
 
 import { FormControlProps } from './common';
 import { debounce } from '@tomino/toolbelt';
@@ -108,10 +108,8 @@ export class SearchComponent extends React.Component<FormControlProps, State> {
 
     return (
       <>
-        <Search
+        <Input
           loading={isLoading}
-          onResultSelect={this.handleResultSelect}
-          onSearchChange={this.handleSearchChange}
           showNoResults={this.state.isLoading ? false : true}
           resultRenderer={this.props.formControl.renderer ? this.resultRenderer : undefined}
           results={options}

@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search renders 1`] = `
+<div
+  className="ui segment ui form"
+>
+  <div
+    className="ui dividing header"
+  >
+    Standard
+  </div>
+  <style>
+    
+  </style>
+  <div
+    className="ui form "
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="six wide field"
+      >
+        <label
+          htmlFor="country"
+        >
+          Country
+        </label>
+        <div
+          className="ui loading icon input"
+          results={Array []}
+          showNoResults={false}
+        >
+          <input
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+          <i
+            aria-hidden="true"
+            className="spinner icon"
+            onClick={[Function]}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ui dividing header"
+  >
+    Readonly
+  </div>
+  <style>
+    
+  </style>
+  <div
+    className="ui form form-hjcaghiia"
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="six wide field"
+      >
+        <label
+          htmlFor="country"
+        >
+          Country
+        </label>
+        <div
+          className="ui disabled input"
+        >
+          <input
+            disabled={true}
+            onChange={[Function]}
+            tabIndex={-1}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

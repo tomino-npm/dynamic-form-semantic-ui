@@ -1,0 +1,240 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input renders correctly 1`] = `
+<div
+  className="ui segment ui form"
+>
+  <div
+    className="ui dividing header"
+  >
+    Standard
+  </div>
+  <style>
+    
+  </style>
+  <div
+    className="ui form "
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="fourteen wide field"
+      >
+        <label
+          htmlFor="name"
+        >
+          Mimo
+        </label>
+        <div
+          className="ui labeled input"
+        >
+          <div
+            className="ui label label"
+            onClick={[Function]}
+          >
+            Name
+          </div>
+          <input
+            name="name"
+            onChange={[Function]}
+            type="text"
+            value="Tomas"
+          />
+        </div>
+      </div>
+      <div
+        className="two wide field"
+      >
+        <label
+          htmlFor="older"
+        >
+          Older
+        </label>
+        <div
+          className="ui input"
+        >
+          <input
+            name="older"
+            onChange={[Function]}
+            type="text"
+            value={43}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="fields"
+    >
+      <div
+        className="one wide field"
+      >
+         
+      </div>
+      <div
+        className="inline field"
+      >
+        <label
+          htmlFor="age"
+        >
+          Age: 
+        </label>
+        <div
+          className="ui input"
+        >
+          <input
+            name="age"
+            onChange={[Function]}
+            type="text"
+            value={33}
+          />
+        </div>
+      </div>
+      <div
+        className="two wide field"
+      >
+         
+      </div>
+      <div
+        className="inline field"
+      >
+        <label
+          htmlFor="younger"
+        >
+          Younger:
+        </label>
+        <div
+          className="ui input"
+        >
+          <input
+            name="younger"
+            onChange={[Function]}
+            type="text"
+            value={13}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ui dividing header"
+  >
+    Readonly
+  </div>
+  <style>
+    
+  </style>
+  <div
+    className="ui form form-hjcaghiia"
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="fourteen wide field"
+      >
+        <label
+          htmlFor="name"
+        >
+          Mimo
+        </label>
+        <div
+          className="ui disabled labeled input"
+        >
+          <div
+            className="ui label label"
+            onClick={[Function]}
+          >
+            Name
+          </div>
+          <input
+            disabled={true}
+            name="name"
+            onChange={[Function]}
+            tabIndex={-1}
+            type="text"
+            value="Tomas"
+          />
+        </div>
+      </div>
+      <div
+        className="two wide field"
+      >
+        <label
+          htmlFor="older"
+        >
+          Older
+        </label>
+        <div
+          className="ui disabled input"
+        >
+          <input
+            disabled={true}
+            name="older"
+            onChange={[Function]}
+            tabIndex={-1}
+            type="text"
+            value={43}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="fields"
+    >
+      <div
+        className="one wide field"
+      >
+         
+      </div>
+      <div
+        className="inline field"
+      >
+        <label
+          htmlFor="age"
+        >
+          Age: 
+        </label>
+        <div
+          className="ui disabled input"
+        >
+          <input
+            disabled={true}
+            name="age"
+            onChange={[Function]}
+            tabIndex={-1}
+            type="text"
+            value={33}
+          />
+        </div>
+      </div>
+      <div
+        className="two wide field"
+      >
+         
+      </div>
+      <div
+        className="inline field"
+      >
+        <label
+          htmlFor="younger"
+        >
+          Younger:
+        </label>
+        <div
+          className="ui disabled input"
+        >
+          <input
+            disabled={true}
+            name="younger"
+            onChange={[Function]}
+            tabIndex={-1}
+            type="text"
+            value={13}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

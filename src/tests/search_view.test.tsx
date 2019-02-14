@@ -35,26 +35,26 @@ const formDefinition: FormDefinition = create.form({
       control: 'Search',
       label: 'Country',
       source: 'country'
-    }),
-    create.formElement({
-      row: 0,
-      column: 6,
-      width: 6,
-      handler: 'findCountryWithControl',
-      control: 'Search',
-      label: 'Country With Control',
-      source: 'country',
-      renderer: `<table><tr><td width="100">{0}<!--country--></td><td>{1}<!--city--></td></tr></table>`
-    }),
-    create.formElement({
-      row: 0,
-      column: 12,
-      width: 4,
-      handler: 'findCountry',
-      control: 'Search',
-      label: 'Selected',
-      source: 'selectedCountry'
     })
+    // create.formElement({
+    //   row: 0,
+    //   column: 6,
+    //   width: 6,
+    //   handler: 'findCountryWithControl',
+    //   control: 'Search',
+    //   label: 'Country With Control',
+    //   source: 'country',
+    //   renderer: `<table><tr><td width="100">{0}<!--country--></td><td>{1}<!--city--></td></tr></table>`
+    // }),
+    // create.formElement({
+    //   row: 0,
+    //   column: 12,
+    //   width: 4,
+    //   handler: 'findCountry',
+    //   control: 'Search',
+    //   label: 'Selected',
+    //   source: 'selectedCountry'
+    // })
   ]
 });
 
@@ -104,5 +104,7 @@ describe('Search', () => {
     const component = renderer.create(componentWithData());
     expect(component).toMatchSnapshot();
   });
+  console.log(process.env.JEST_ROOT_OUTPUT_PATH);
+
   return { componentWithData };
 });

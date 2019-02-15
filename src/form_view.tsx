@@ -16,6 +16,7 @@ export interface IFieldOwner {
 
 type Props = FormControlProps & {
   child?: boolean;
+  renderCss?: boolean;
 };
 
 export const fieldSet = css`
@@ -145,7 +146,7 @@ export class FormView extends React.Component<Props, State> {
     this.lastRow = 0;
 
     let rows = groupByArray(this.props.formControl.elements, 'row');
-    const css = !this.props.child && <style>{renderCss()}</style>;
+    const css = this.props.renderCss && <style>{renderCss()}</style>;
 
     return (
       <>

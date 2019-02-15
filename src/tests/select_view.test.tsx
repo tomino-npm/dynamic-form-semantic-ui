@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 
 import { create } from './form_query_data';
 import { JSONSchema, FormDefinition, FormModel } from '@tomino/dynamic-form';
@@ -77,7 +78,7 @@ function componentWithData() {
     <TestComponent
       form={form}
       handlers={{
-        countries(_value: string) {
+        loadDropdownOptions(_value: string) {
           return new Promise(resolve => {
             setTimeout(() => {
               resolve(countries);
@@ -90,5 +91,11 @@ function componentWithData() {
 }
 
 describe('Select', () => {
-  return { componentWithData };
+  it('renders', function() {
+    const component = renderer.create(componentWithData());
+    expect(component).toMatchSnapshot();
+  });
+  return {
+    componentWithData
+  };
 });

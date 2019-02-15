@@ -1,0 +1,312 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio renders 1`] = `
+<div
+  className="ui segment ui form"
+>
+  <div
+    className="ui dividing header"
+  >
+    Standard
+  </div>
+  <div
+    className="ui form "
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="inline field"
+      >
+        <label
+          htmlFor="religion"
+        >
+          Religions
+        </label>
+        <div
+          className="ui radio checkbox d-form-Adiagibjfa"
+          onChange={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+        >
+          <input
+            checked={false}
+            className="hidden"
+            name="religion"
+            readOnly={true}
+            tabIndex={0}
+            type="radio"
+            value="CH"
+          />
+          <label>
+            Christian
+          </label>
+        </div>
+        <div
+          className="ui radio checkbox d-form-Adiagibjfa"
+          onChange={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+        >
+          <input
+            checked={false}
+            className="hidden"
+            name="religion"
+            readOnly={true}
+            tabIndex={0}
+            type="radio"
+            value="BU"
+          />
+          <label>
+            Buddhist
+          </label>
+        </div>
+        <div
+          className="ui checked radio checkbox d-form-Adiagibjfa"
+          onChange={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+        >
+          <input
+            checked={true}
+            className="hidden"
+            name="religion"
+            readOnly={true}
+            tabIndex={0}
+            type="radio"
+            value="JE"
+          />
+          <label>
+            Jedi
+          </label>
+        </div>
+      </div>
+    </div>
+    <div
+      className="fields"
+    >
+      <div
+        className="sixteen wide field"
+      >
+        <label
+          htmlFor="lined_religion"
+        >
+          Religions
+        </label>
+        <div
+          className="ui radio checkbox d-form-Adiagibjfa"
+          onChange={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+        >
+          <input
+            checked={false}
+            className="hidden"
+            name="lined_religion"
+            readOnly={true}
+            tabIndex={0}
+            type="radio"
+            value="CH"
+          />
+          <label>
+            Christian
+          </label>
+        </div>
+        <br />
+        <div
+          className="ui checked radio checkbox d-form-Adiagibjfa"
+          onChange={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+        >
+          <input
+            checked={true}
+            className="hidden"
+            name="lined_religion"
+            readOnly={true}
+            tabIndex={0}
+            type="radio"
+            value="BU"
+          />
+          <label>
+            Buddhist
+          </label>
+        </div>
+        <br />
+        <div
+          className="ui radio checkbox d-form-Adiagibjfa"
+          onChange={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+        >
+          <input
+            checked={false}
+            className="hidden"
+            name="lined_religion"
+            readOnly={true}
+            tabIndex={0}
+            type="radio"
+            value="JE"
+          />
+          <label>
+            Jedi
+          </label>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+  <div
+    className="ui dividing header"
+  >
+    Readonly
+  </div>
+  <div
+    className="ui form form-hjcaghiia"
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="inline field"
+      >
+        <label
+          htmlFor="religion"
+        >
+          Religions
+        </label>
+        <div
+          className="ui radio read-only checkbox d-form-Adiagibjfa"
+          onChange={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+        >
+          <input
+            checked={false}
+            className="hidden"
+            name="religion"
+            readOnly={true}
+            tabIndex={0}
+            type="radio"
+            value="CH"
+          />
+          <label>
+            Christian
+          </label>
+        </div>
+        <div
+          className="ui radio read-only checkbox d-form-Adiagibjfa"
+          onChange={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+        >
+          <input
+            checked={false}
+            className="hidden"
+            name="religion"
+            readOnly={true}
+            tabIndex={0}
+            type="radio"
+            value="BU"
+          />
+          <label>
+            Buddhist
+          </label>
+        </div>
+        <div
+          className="ui checked radio read-only checkbox d-form-Adiagibjfa"
+          onChange={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+        >
+          <input
+            checked={true}
+            className="hidden"
+            name="religion"
+            readOnly={true}
+            tabIndex={0}
+            type="radio"
+            value="JE"
+          />
+          <label>
+            Jedi
+          </label>
+        </div>
+      </div>
+    </div>
+    <div
+      className="fields"
+    >
+      <div
+        className="sixteen wide field"
+      >
+        <label
+          htmlFor="lined_religion"
+        >
+          Religions
+        </label>
+        <div
+          className="ui radio read-only checkbox d-form-Adiagibjfa"
+          onChange={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+        >
+          <input
+            checked={false}
+            className="hidden"
+            name="lined_religion"
+            readOnly={true}
+            tabIndex={0}
+            type="radio"
+            value="CH"
+          />
+          <label>
+            Christian
+          </label>
+        </div>
+        <br />
+        <div
+          className="ui checked radio read-only checkbox d-form-Adiagibjfa"
+          onChange={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+        >
+          <input
+            checked={true}
+            className="hidden"
+            name="lined_religion"
+            readOnly={true}
+            tabIndex={0}
+            type="radio"
+            value="BU"
+          />
+          <label>
+            Buddhist
+          </label>
+        </div>
+        <br />
+        <div
+          className="ui radio read-only checkbox d-form-Adiagibjfa"
+          onChange={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+        >
+          <input
+            checked={false}
+            className="hidden"
+            name="lined_religion"
+            readOnly={true}
+            tabIndex={0}
+            type="radio"
+            value="JE"
+          />
+          <label>
+            Jedi
+          </label>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
+`;

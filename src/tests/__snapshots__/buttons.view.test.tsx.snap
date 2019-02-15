@@ -9,9 +9,6 @@ exports[`Buttons renders correctly 1`] = `
   >
     Standard
   </div>
-  <style>
-    
-  </style>
   <div
     className="ui form "
   >
@@ -69,9 +66,6 @@ exports[`Buttons renders correctly 1`] = `
   >
     Readonly
   </div>
-  <style>
-    
-  </style>
   <div
     className="ui form form-hjcaghiia"
   >

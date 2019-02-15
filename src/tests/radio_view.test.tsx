@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 
 import { create } from './form_query_data';
 import { JSONSchema, FormDefinition, FormModel } from '@tomino/dynamic-form';
@@ -52,9 +53,15 @@ const formDefinition: FormDefinition = create.form({
 
 const form = new FormModel(formDefinition, schema, controlData);
 
+const componentWithData = () => <TestComponent form={form} />;
+
 // just another notation
 describe('Radio', () => {
+  it('renders', function() {
+    const component = renderer.create(componentWithData());
+    expect(component).toMatchSnapshot();
+  });
   return {
-    componentWithData: () => <TestComponent form={form} />
+    componentWithData
   };
 });

@@ -9,9 +9,6 @@ exports[`Repeater renders correctly 1`] = `
   >
     Standard
   </div>
-  <style>
-    
-  </style>
   <div
     className="ui form "
   >
@@ -21,9 +18,6 @@ exports[`Repeater renders correctly 1`] = `
       <div
         className="sixteen wide field"
       >
-        <style>
-          
-        </style>
         <div
           className="ui form "
         >
@@ -84,9 +78,6 @@ exports[`Repeater renders correctly 1`] = `
             </div>
           </div>
         </div>
-        <style>
-          
-        </style>
         <div
           className="ui form "
         >
@@ -166,9 +157,6 @@ exports[`Repeater renders correctly 1`] = `
   >
     Readonly
   </div>
-  <style>
-    
-  </style>
   <div
     className="ui form form-hjcaghiia"
   >
@@ -178,9 +166,6 @@ exports[`Repeater renders correctly 1`] = `
       <div
         className="sixteen wide field"
       >
-        <style>
-          
-        </style>
         <div
           className="ui form form-hjcaghiia"
         >
@@ -231,9 +216,6 @@ exports[`Repeater renders correctly 1`] = `
             </div>
           </div>
         </div>
-        <style>
-          
-        </style>
         <div
           className="ui form form-hjcaghiia"
         >

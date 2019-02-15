@@ -39,5 +39,8 @@ function componentWithData() {
 }
 
 describe('Editor', () => {
+  it('fails', () => {
+    expect(false).toBeFalsy();
+  });
   return { componentWithData };
 });

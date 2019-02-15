@@ -11,7 +11,7 @@ module.exports = function(wallaby) {
       '!src/**/*.test.+(ts|tsx)'
     ],
     filesWithNoCoverageCalculated: [],
-    tests: ['src/**/search_view.test.+(ts|tsx)'],
+    tests: ['src/**/*.test.+(ts|tsx)'],
 
     env: {
       type: 'node',

@@ -1,5 +1,210 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Checkbox changes value and all related formulas 1`] = `
+<div
+  className="ui segment ui form"
+>
+  <div
+    className="ui dividing header"
+  >
+    Standard
+  </div>
+  <div
+    className="ui form "
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="eight wide field"
+      >
+        <div
+          className="field"
+        >
+          <div
+            className="ui checkbox"
+            onChange={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+          >
+            <input
+              checked={false}
+              className="hidden"
+              name="agree"
+              readOnly={true}
+              tabIndex={0}
+              type="checkbox"
+            />
+            <label>
+              Agree With Terms and Conditions
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="fields"
+    >
+      <div
+        className="eight wide field"
+      >
+        <div
+          className="field"
+        >
+          <div
+            className="ui checked toggle checkbox"
+            onChange={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+          >
+            <input
+              checked={true}
+              className="hidden"
+              name="disagree"
+              readOnly={true}
+              tabIndex={0}
+              type="checkbox"
+            />
+            <label>
+              Disagree With Terms and Conditions
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="fields"
+    >
+      <div
+        className="eight wide field"
+      >
+        <div
+          className="field"
+        >
+          <div
+            className="ui checked checkbox"
+            onChange={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+          >
+            <input
+              checked={true}
+              className="hidden"
+              name="must"
+              readOnly={true}
+              tabIndex={0}
+              type="checkbox"
+            />
+            <label>
+              Must Agree With Terms and Conditions
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ui dividing header"
+  >
+    Readonly
+  </div>
+  <div
+    className="ui form form-hjcaghiia"
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="eight wide field"
+      >
+        <div
+          className="field"
+        >
+          <div
+            className="ui read-only checkbox"
+            onChange={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+          >
+            <input
+              checked={false}
+              className="hidden"
+              name="agree"
+              readOnly={true}
+              tabIndex={0}
+              type="checkbox"
+            />
+            <label>
+              Agree With Terms and Conditions
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="fields"
+    >
+      <div
+        className="eight wide field"
+      >
+        <div
+          className="field"
+        >
+          <div
+            className="ui checked read-only toggle checkbox"
+            onChange={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+          >
+            <input
+              checked={true}
+              className="hidden"
+              name="disagree"
+              readOnly={true}
+              tabIndex={0}
+              type="checkbox"
+            />
+            <label>
+              Disagree With Terms and Conditions
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="fields"
+    >
+      <div
+        className="eight wide field"
+      >
+        <div
+          className="field"
+        >
+          <div
+            className="ui checked read-only checkbox"
+            onChange={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+          >
+            <input
+              checked={true}
+              className="hidden"
+              name="must"
+              readOnly={true}
+              tabIndex={0}
+              type="checkbox"
+            />
+            <label>
+              Must Agree With Terms and Conditions
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Checkbox renders correctly 1`] = `
 <div
   className="ui segment ui form"
@@ -9,9 +214,6 @@ exports[`Checkbox renders correctly 1`] = `
   >
     Standard
   </div>
-  <style>
-    
-  </style>
   <div
     className="ui form "
   >
@@ -119,9 +321,6 @@ exports[`Checkbox renders correctly 1`] = `
   >
     Readonly
   </div>
-  <style>
-    
-  </style>
   <div
     className="ui form form-hjcaghiia"
   >

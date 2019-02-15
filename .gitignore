@@ -9,3 +9,4 @@ dist
 summary.json
 snapshots.js
 summary.ts
+coverage

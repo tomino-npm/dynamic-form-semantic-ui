@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 
 import { create } from './form_query_data';
 import { JSONSchema, FormDefinition, FormModel } from '@tomino/dynamic-form';
@@ -62,6 +63,10 @@ function componentWithData() {
 }
 
 describe('DateView', () => {
+  it('renders', function() {
+    const component = renderer.create(componentWithData());
+    expect(component).toMatchSnapshot();
+  });
   return {
     componentWithData
   };

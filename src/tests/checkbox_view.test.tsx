@@ -82,13 +82,13 @@ describe('Checkbox', () => {
   it('changes value and all related formulas', () => {
     const component = renderer.create(componentWithData());
     const root = component.root;
-    const agree = root.findByProps({ name: 'agree' });
+    const agree = root.findAllByProps({ name: 'agree' })[0];
     agree.props.onChange(null, { checked: false });
 
-    const disagree = root.findByProps({ name: 'disagree' });
+    const disagree = root.findAllByProps({ name: 'disagree' })[0];
     disagree.props.onChange(null, { checked: true });
 
-    const must = root.findByProps({ name: 'must' });
+    const must = root.findAllByProps({ name: 'must' })[0];
     must.props.onChange(null, { checked: true });
     expect(component).toMatchSnapshot();
     expect(setDirty).toBeCalled();

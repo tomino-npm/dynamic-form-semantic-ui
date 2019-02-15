@@ -115,7 +115,6 @@ describe('Search', function() {
 
     expect(component).toMatchSnapshot();
   });
-  console.log(process.env.JEST_ROOT_OUTPUT_PATH);
 
   return { componentWithData };
 });

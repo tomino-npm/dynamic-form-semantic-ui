@@ -9,9 +9,6 @@ exports[`Search renders 1`] = `
   >
     Standard
   </div>
-  <style>
-    
-  </style>
   <div
     className="ui form "
   >
@@ -51,7 +48,6 @@ exports[`Search renders 1`] = `
             />
           </div>
         </div>
-        o
       </div>
       <div
         className="six wide field"
@@ -86,7 +82,6 @@ exports[`Search renders 1`] = `
             />
           </div>
         </div>
-        o1
       </div>
     </div>
   </div>
@@ -95,9 +90,6 @@ exports[`Search renders 1`] = `
   >
     Readonly
   </div>
-  <style>
-    
-  </style>
   <div
     className="ui form form-hjcaghiia"
   >

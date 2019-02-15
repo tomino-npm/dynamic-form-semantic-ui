@@ -96,7 +96,7 @@ describe('Input', () => {
   it('changes value and all related formulas', () => {
     const component = renderer.create(componentWithData());
     const root = component.root;
-    const age = root.findByProps({ name: 'age' });
+    const age = root.findAllByProps({ name: 'age' })[0];
     age.props.onChange({ currentTarget: { value: '40' } });
     expect(component).toMatchSnapshot();
     expect(setDirty).toBeCalled();

@@ -18,6 +18,7 @@ import { Button } from 'semantic-ui-react';
 import { CommentView } from './comment_view';
 import { SearchView } from './search_view';
 import { DateView } from './date_time_view';
+import { MenuView } from './menu_view';
 
 const formText = css`
   margin-top: 20px;
@@ -57,6 +58,7 @@ export function renderControl(
           />
         </div>
       );
+
     case 'Select':
       return (
         <SelectView
@@ -73,6 +75,15 @@ export function renderControl(
     case 'Repeater':
       return (
         <RepeaterView
+          owner={dataSet}
+          formControl={formElement}
+          handlers={handlers}
+          readOnly={readOnly}
+        />
+      );
+    case 'Menu':
+      return (
+        <MenuView
           owner={dataSet}
           formControl={formElement}
           handlers={handlers}

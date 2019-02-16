@@ -1,10 +1,15 @@
 module.exports = {
+  globals: {
+    'ts-jest': {
+      diagnostics: false
+    }
+  },
   preset: 'ts-jest',
   testEnvironment: 'node',
   //collectCoverage: true,
   verbose: false,
   reporters: [
-    // 'jest-dot-reporter',
+    //'jest-dot-reporter'
     [
       'luis/dist/bridges/jest/reporter',
       {

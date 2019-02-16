@@ -118,6 +118,7 @@ export class SearchComponent extends React.Component<FormControlProps, State> {
           value={value}
           {...this.props.formControl.controlProps || {}}
         />
+
         <ErrorView owner={this.props.owner} source={this.props.formControl.source} />
       </>
     );

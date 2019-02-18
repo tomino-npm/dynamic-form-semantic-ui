@@ -18,7 +18,8 @@ import { Button } from 'semantic-ui-react';
 import { CommentView } from './comment_view';
 import { SearchView } from './search_view';
 import { DateView } from './date_time_view';
-import { MenuView } from './menu_view';
+import { MenuSelectionView } from './menu_selection_view';
+import { MenuProjectionView } from './menu_projection_view';
 
 const formText = css`
   margin-top: 20px;
@@ -82,8 +83,18 @@ export function renderControl(
         />
       );
     case 'Menu':
+      if (formElement.source) {
+        return (
+          <MenuSelectionView
+            owner={dataSet}
+            formControl={formElement}
+            handlers={handlers}
+            readOnly={readOnly}
+          />
+        );
+      }
       return (
-        <MenuView
+        <MenuProjectionView
           owner={dataSet}
           formControl={formElement}
           handlers={handlers}

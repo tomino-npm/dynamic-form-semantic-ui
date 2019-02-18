@@ -49,7 +49,7 @@ const formData = {
 };
 
 describe('Buttons', () => {
-  function componentWithData() {
+  function component() {
     const form = new FormModel(formDefinition, schema, formData);
 
     // just another notation
@@ -57,9 +57,9 @@ describe('Buttons', () => {
   }
 
   it('renders correctly', () => {
-    const component = renderer.create(componentWithData());
-    expect(component).toMatchSnapshot();
+    const wrapper = renderer.create(component());
+    expect(wrapper).toMatchSnapshot();
   });
 
-  return { componentWithData };
+  return { component };
 });

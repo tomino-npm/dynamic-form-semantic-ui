@@ -47,7 +47,7 @@ const formData = {
 };
 
 describe('TextArea', () => {
-  function componentWithData() {
+  function component() {
     const form = new FormModel(formDefinition, schema, formData);
 
     // just another notation
@@ -55,9 +55,9 @@ describe('TextArea', () => {
   }
 
   it('renders correctly', () => {
-    const component = renderer.create(componentWithData());
-    expect(component).toMatchSnapshot();
+    const wrapper = renderer.create(component());
+    expect(wrapper).toMatchSnapshot();
   });
 
-  return { componentWithData };
+  return { component };
 });

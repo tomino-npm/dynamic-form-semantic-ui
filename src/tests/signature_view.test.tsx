@@ -175,7 +175,7 @@ describe('Signature', function() {
     config.setDirty = () => setDirty();
   });
 
-  function componentWithData() {
+  function component() {
     const form = new FormModel(formDefinition, schema, controlData);
     const handlers = {
       sign: () => {
@@ -200,12 +200,12 @@ describe('Signature', function() {
   }
 
   it('renders correctly', () => {
-    const component = renderer.create(componentWithData());
-    expect(component).toMatchSnapshot();
+    const wrapper = renderer.create(component());
+    expect(wrapper).toMatchSnapshot();
   });
 
   // it('changes value and all related formulas', () => {
-  //   const component = renderer.create(componentWithData());
+  //   const wrapper = renderer.create(component());
   //   const root = component.root;
   //   const country = root.findByProps({ name: 'country' });
   //   country.props.onChange(null, { value: 'AU' });
@@ -213,9 +213,9 @@ describe('Signature', function() {
   //   const city = root.findByProps({ name: 'city' });
   //   city.props.onChange(null, { value: 'SYD' });
 
-  //   expect(component).toMatchSnapshot();
+  //   expect(wrapper).toMatchSnapshot();
   //   expect(setDirty).toBeCalled();
   // });
 
-  return { componentWithData };
+  return { component };
 });

@@ -53,15 +53,15 @@ const formDefinition: FormDefinition = create.form({
 
 const form = new FormModel(formDefinition, schema, controlData);
 
-const componentWithData = () => <TestComponent form={form} />;
+const component = () => <TestComponent form={form} />;
 
 // just another notation
 describe('Radio', () => {
   it('renders', function() {
-    const component = renderer.create(componentWithData());
-    expect(component).toMatchSnapshot();
+    const wrapper = renderer.create(component());
+    expect(wrapper).toMatchSnapshot();
   });
   return {
-    componentWithData
+    component
   };
 });

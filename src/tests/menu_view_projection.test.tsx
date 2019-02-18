@@ -4,6 +4,7 @@ import * as renderer from 'react-test-renderer';
 import { create } from './form_query_data';
 import { JSONSchema, FormDefinition, FormModel } from '@tomino/dynamic-form';
 import { TestComponent } from './common';
+import { clone } from '@tomino/toolbelt';
 
 describe('Menu', () => {
   describe('Projection', () => {
@@ -107,19 +108,71 @@ describe('Menu', () => {
     });
 
     describe('Tabular', () => {
-      function componentWithData() {
+      function component() {
         const form = new FormModel(formDefinition, schema, formData);
 
         // just another notation
         return <TestComponent form={form} />;
       }
 
-      it('renders tab menu', () => {
-        const component = renderer.create(componentWithData());
-        expect(component).toMatchSnapshot();
+      it('renders', () => {
+        const wrapper = renderer.create(component());
+        expect(wrapper).toMatchSnapshot();
       });
 
-      return { componentWithData };
+      return { component };
+    });
+
+    describe('Side Menu', () => {
+      function component() {
+        let modified: FormDefinition = clone(formDefinition);
+        let menu = modified.elements[0];
+        menu.controlProps = {
+          menuProps: {
+            vertical: true,
+            secondary: true
+          },
+          contentProps: {
+            style: { float: 'left' }
+          }
+        };
+
+        const form = new FormModel(modified, schema, formData);
+
+        // just another notation
+        return <TestComponent form={form} />;
+      }
+
+      it('renders', () => {
+        const wrapper = renderer.create(component());
+        expect(wrapper).toMatchSnapshot();
+      });
+
+      return { component };
+    });
+
+    describe('Top Menu', () => {
+      function component() {
+        let modified: FormDefinition = clone(formDefinition);
+        let menu = modified.elements[0];
+        menu.controlProps = {
+          menuProps: {
+            secondary: true
+          }
+        };
+
+        const form = new FormModel(modified, schema, formData);
+
+        // just another notation
+        return <TestComponent form={form} />;
+      }
+
+      it('renders', () => {
+        const wrapper = renderer.create(component());
+        expect(wrapper).toMatchSnapshot();
+      });
+
+      return { component };
     });
   });
 });

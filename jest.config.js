@@ -9,9 +9,9 @@ module.exports = {
   //collectCoverage: true,
   verbose: false,
   reporters: [
-    //'jest-dot-reporter'
+    'jest-dot-reporter',
     [
-      'luis/dist/bridges/jest/reporter',
+      'luis/reporter',
       {
         path: '/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/summary.ts',
         merge: true
@@ -19,6 +19,7 @@ module.exports = {
     ]
   ],
   // testResultsProcessor: 'luis/dist/bridges/jest/reporter',
+  modulePathIgnorePatterns: ['<rootDir>/coverage/'],
   watchPathIgnorePatterns: ['<rootDir>/src/summary.ts'],
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)']

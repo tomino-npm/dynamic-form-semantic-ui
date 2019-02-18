@@ -1,0 +1,604 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu Selection Side Menu renders tab menu 1`] = `
+<div
+  className="ui segment ui form"
+>
+  <div
+    className="ui dividing header"
+  >
+    Standard
+  </div>
+  <div
+    className="ui form "
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="sixteen wide field"
+      >
+        <div
+          className="vertical-bfaadidijh"
+        >
+          <div
+            className="ui secondary vertical menu"
+          >
+            <a
+              className="active item"
+              onClick={[Function]}
+            >
+              Tomas Trescak
+            </a>
+            <a
+              className="item"
+              onClick={[Function]}
+            >
+              Valeria Toscani
+            </a>
+            <a
+              className="item"
+              onClick={[Function]}
+            >
+              Princess
+            </a>
+          </div>
+          <div />
+          <div
+            className="ui segment"
+            style={
+              Object {
+                "float": "left",
+              }
+            }
+          >
+            <div
+              className="ui form "
+            >
+              <div
+                className="fields"
+              >
+                <div
+                  className="eight wide field"
+                >
+                  <label
+                    htmlFor="name"
+                  >
+                    Name
+                  </label>
+                  <div
+                    className="ui input"
+                  >
+                    <input
+                      name="name"
+                      onChange={[Function]}
+                      type="text"
+                      value="Tomas Trescak"
+                    />
+                  </div>
+                </div>
+                <div
+                  className="eight wide field"
+                >
+                  <label
+                    htmlFor="address"
+                  >
+                    Address
+                  </label>
+                  <div
+                    className="ui input"
+                  >
+                    <input
+                      name="address"
+                      onChange={[Function]}
+                      type="text"
+                      value="Sydney, Slovakia"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ui dividing header"
+  >
+    Readonly
+  </div>
+  <div
+    className="ui form form-hjcaghiia"
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="sixteen wide field"
+      >
+        <div
+          className="vertical-bfaadidijh"
+        >
+          <div
+            className="ui secondary vertical menu"
+          >
+            <a
+              className="active item"
+              onClick={[Function]}
+            >
+              Tomas Trescak
+            </a>
+            <a
+              className="item"
+              onClick={[Function]}
+            >
+              Valeria Toscani
+            </a>
+            <a
+              className="item"
+              onClick={[Function]}
+            >
+              Princess
+            </a>
+          </div>
+          <div />
+          <div
+            className="ui segment"
+            style={
+              Object {
+                "float": "left",
+              }
+            }
+          >
+            <div
+              className="ui form form-hjcaghiia"
+            >
+              <div
+                className="fields"
+              >
+                <div
+                  className="eight wide field"
+                >
+                  <label
+                    htmlFor="name"
+                  >
+                    Name
+                  </label>
+                  <div
+                    className="ui disabled input"
+                  >
+                    <input
+                      disabled={true}
+                      name="name"
+                      onChange={[Function]}
+                      tabIndex={-1}
+                      type="text"
+                      value="Tomas Trescak"
+                    />
+                  </div>
+                </div>
+                <div
+                  className="eight wide field"
+                >
+                  <label
+                    htmlFor="address"
+                  >
+                    Address
+                  </label>
+                  <div
+                    className="ui disabled input"
+                  >
+                    <input
+                      disabled={true}
+                      name="address"
+                      onChange={[Function]}
+                      tabIndex={-1}
+                      type="text"
+                      value="Sydney, Slovakia"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Menu Selection Tabular renders tab menu 1`] = `
+<div
+  className="ui segment ui form"
+>
+  <div
+    className="ui dividing header"
+  >
+    Standard
+  </div>
+  <div
+    className="ui form "
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="sixteen wide field"
+      >
+        <div
+          className="none"
+        >
+          <div
+            className="ui top attached tabular menu"
+          >
+            <a
+              className="active item"
+              onClick={[Function]}
+            >
+              Tomas Trescak
+            </a>
+            <a
+              className="item"
+              onClick={[Function]}
+            >
+              Valeria Toscani
+            </a>
+            <a
+              className="item"
+              onClick={[Function]}
+            >
+              Princess
+            </a>
+          </div>
+          <div
+            className="ui bottom attached segment"
+          >
+            <div
+              className="ui form "
+            >
+              <div
+                className="fields"
+              >
+                <div
+                  className="eight wide field"
+                >
+                  <label
+                    htmlFor="name"
+                  >
+                    Name
+                  </label>
+                  <div
+                    className="ui input"
+                  >
+                    <input
+                      name="name"
+                      onChange={[Function]}
+                      type="text"
+                      value="Tomas Trescak"
+                    />
+                  </div>
+                </div>
+                <div
+                  className="eight wide field"
+                >
+                  <label
+                    htmlFor="address"
+                  >
+                    Address
+                  </label>
+                  <div
+                    className="ui input"
+                  >
+                    <input
+                      name="address"
+                      onChange={[Function]}
+                      type="text"
+                      value="Sydney, Slovakia"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ui dividing header"
+  >
+    Readonly
+  </div>
+  <div
+    className="ui form form-hjcaghiia"
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="sixteen wide field"
+      >
+        <div
+          className="none"
+        >
+          <div
+            className="ui top attached tabular menu"
+          >
+            <a
+              className="active item"
+              onClick={[Function]}
+            >
+              Tomas Trescak
+            </a>
+            <a
+              className="item"
+              onClick={[Function]}
+            >
+              Valeria Toscani
+            </a>
+            <a
+              className="item"
+              onClick={[Function]}
+            >
+              Princess
+            </a>
+          </div>
+          <div
+            className="ui bottom attached segment"
+          >
+            <div
+              className="ui form form-hjcaghiia"
+            >
+              <div
+                className="fields"
+              >
+                <div
+                  className="eight wide field"
+                >
+                  <label
+                    htmlFor="name"
+                  >
+                    Name
+                  </label>
+                  <div
+                    className="ui disabled input"
+                  >
+                    <input
+                      disabled={true}
+                      name="name"
+                      onChange={[Function]}
+                      tabIndex={-1}
+                      type="text"
+                      value="Tomas Trescak"
+                    />
+                  </div>
+                </div>
+                <div
+                  className="eight wide field"
+                >
+                  <label
+                    htmlFor="address"
+                  >
+                    Address
+                  </label>
+                  <div
+                    className="ui disabled input"
+                  >
+                    <input
+                      disabled={true}
+                      name="address"
+                      onChange={[Function]}
+                      tabIndex={-1}
+                      type="text"
+                      value="Sydney, Slovakia"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Menu Selection Top Menu renders tab menu 1`] = `
+<div
+  className="ui segment ui form"
+>
+  <div
+    className="ui dividing header"
+  >
+    Standard
+  </div>
+  <div
+    className="ui form "
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="sixteen wide field"
+      >
+        <div
+          className="none"
+        >
+          <div
+            className="ui secondary menu"
+          >
+            <a
+              className="active item"
+              onClick={[Function]}
+            >
+              Tomas Trescak
+            </a>
+            <a
+              className="item"
+              onClick={[Function]}
+            >
+              Valeria Toscani
+            </a>
+            <a
+              className="item"
+              onClick={[Function]}
+            >
+              Princess
+            </a>
+          </div>
+          <div
+            className="ui segment"
+          >
+            <div
+              className="ui form "
+            >
+              <div
+                className="fields"
+              >
+                <div
+                  className="eight wide field"
+                >
+                  <label
+                    htmlFor="name"
+                  >
+                    Name
+                  </label>
+                  <div
+                    className="ui input"
+                  >
+                    <input
+                      name="name"
+                      onChange={[Function]}
+                      type="text"
+                      value="Tomas Trescak"
+                    />
+                  </div>
+                </div>
+                <div
+                  className="eight wide field"
+                >
+                  <label
+                    htmlFor="address"
+                  >
+                    Address
+                  </label>
+                  <div
+                    className="ui input"
+                  >
+                    <input
+                      name="address"
+                      onChange={[Function]}
+                      type="text"
+                      value="Sydney, Slovakia"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ui dividing header"
+  >
+    Readonly
+  </div>
+  <div
+    className="ui form form-hjcaghiia"
+  >
+    <div
+      className="fields"
+    >
+      <div
+        className="sixteen wide field"
+      >
+        <div
+          className="none"
+        >
+          <div
+            className="ui secondary menu"
+          >
+            <a
+              className="active item"
+              onClick={[Function]}
+            >
+              Tomas Trescak
+            </a>
+            <a
+              className="item"
+              onClick={[Function]}
+            >
+              Valeria Toscani
+            </a>
+            <a
+              className="item"
+              onClick={[Function]}
+            >
+              Princess
+            </a>
+          </div>
+          <div
+            className="ui segment"
+          >
+            <div
+              className="ui form form-hjcaghiia"
+            >
+              <div
+                className="fields"
+              >
+                <div
+                  className="eight wide field"
+                >
+                  <label
+                    htmlFor="name"
+                  >
+                    Name
+                  </label>
+                  <div
+                    className="ui disabled input"
+                  >
+                    <input
+                      disabled={true}
+                      name="name"
+                      onChange={[Function]}
+                      tabIndex={-1}
+                      type="text"
+                      value="Tomas Trescak"
+                    />
+                  </div>
+                </div>
+                <div
+                  className="eight wide field"
+                >
+                  <label
+                    htmlFor="address"
+                  >
+                    Address
+                  </label>
+                  <div
+                    className="ui disabled input"
+                  >
+                    <input
+                      disabled={true}
+                      name="address"
+                      onChange={[Function]}
+                      tabIndex={-1}
+                      type="text"
+                      value="Sydney, Slovakia"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -75,7 +75,7 @@ const formData = {
 };
 
 describe('Input', () => {
-  function componentWithData() {
+  function component() {
     const form = new FormModel(formDefinition, schema, formData);
 
     // just another notation
@@ -89,18 +89,18 @@ describe('Input', () => {
   });
 
   it('renders correctly', () => {
-    const component = renderer.create(componentWithData());
-    expect(component).toMatchSnapshot();
+    const wrapper = renderer.create(component());
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('changes value and all related formulas', () => {
-    const component = renderer.create(componentWithData());
-    const root = component.root;
+    const wrapper = renderer.create(component());
+    const root = wrapper.root;
     const age = root.findAllByProps({ name: 'age' })[0];
     age.props.onChange({ currentTarget: { value: '40' } });
-    expect(component).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
     expect(setDirty).toBeCalled();
   });
 
-  return { componentWithData };
+  return { component };
 });

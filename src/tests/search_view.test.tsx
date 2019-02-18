@@ -58,7 +58,7 @@ const formDefinition: FormDefinition = create.form({
   ]
 });
 
-function componentWithData() {
+function component() {
   const form = new FormModel(formDefinition, schema, { selectedCountry: 'SVK' });
 
   // just another notation
@@ -111,10 +111,10 @@ function componentWithData() {
 
 describe('Search', function() {
   it('renders', function() {
-    const component = renderer.create(componentWithData());
+    const wrapper = renderer.create(component());
 
-    expect(component).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
-  return { componentWithData };
+  return { component };
 });

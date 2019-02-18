@@ -74,7 +74,7 @@ const formDefinition: FormDefinition = create.form({
 });
 
 describe('Table', () => {
-  function componentWithData() {
+  function component() {
     config.setDirty = () => console.log('Now it dirty');
     const form = new FormModel(formDefinition, schema, controlData);
 
@@ -92,21 +92,21 @@ describe('Table', () => {
   }
 
   it('renders correctly', () => {
-    const component = renderer.create(componentWithData());
-    expect(component).toMatchSnapshot();
+    const wrapper = renderer.create(component());
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('changes value and all related formulas', () => {
-    // const component = renderer.create(data.component);
+    // const wrapper = renderer.create(data.component);
     // const root = component.root;
     // const agree = root.findByProps({ name: 'agree' });
     // agree.props.onChange(null, { value: false });
     // const disagree = root.findByProps({ name: 'disagree' });
     // disagree.props.onChange(null, { value: true });
-    // expect(component).toMatchSnapshot();
+    // expect(wrapper).toMatchSnapshot();
   });
 
   return {
-    componentWithData
+    component
   };
 });

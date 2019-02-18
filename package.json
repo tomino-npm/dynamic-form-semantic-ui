@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
+    "test-watch": "jest --watch --runInBand",
     "luis1": "node fuse.js",
     "luis": "luis"
   },
@@ -39,7 +40,7 @@
   },
   "dependencies": {
     "@tomino/dynamic-form": "^1.0.7",
-    "luis": "^3.1.12",
+    "luis": "^3.2.2",
     "mobx": "*",
     "mobx-react": "*",
     "mobx-state-tree": "*",

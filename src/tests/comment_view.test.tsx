@@ -33,7 +33,7 @@ const formData = {
 };
 
 describe('Comment', () => {
-  function componentWithData() {
+  function component() {
     const form = new FormModel(formDefinition, schema, formData);
 
     // just another notation
@@ -41,9 +41,9 @@ describe('Comment', () => {
   }
 
   it('renders correctly', () => {
-    const component = renderer.create(componentWithData());
-    expect(component).toMatchSnapshot();
+    const comment = renderer.create(component());
+    expect(comment).toMatchSnapshot();
   });
 
-  return { componentWithData };
+  return { component };
 });

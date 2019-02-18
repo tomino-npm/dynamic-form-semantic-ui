@@ -28,7 +28,7 @@ const element = {
   ]
 };
 
-function componentWithData() {
+function component() {
   return (
     <FormEditor
       owner={{ getSchema: () => null as any } as any}
@@ -42,5 +42,5 @@ describe('Editor', () => {
   it('fails', () => {
     expect(false).toBeFalsy();
   });
-  return { componentWithData };
+  return { component };
 });

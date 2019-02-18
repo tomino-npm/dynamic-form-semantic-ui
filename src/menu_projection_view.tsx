@@ -9,33 +9,37 @@ import { FormView } from './form_view';
 import { observable } from 'mobx';
 import { DataSet, FormElement } from '@tomino/dynamic-form';
 
+export const vertical = css`
+  .vertical {
+    display: flex;
+  }
+
+  .vertical div:nth-child(1) {
+    flex: 1 auto;
+  }
+
+  .vertical div:nth-child(2) {
+    flex: 1 16px;
+  }
+
+  .vertical div:nth-child(3) {
+    flex: 1 100%;
+    margin-top: 0px;
+  }
+`;
+
 export class MenuComponent extends React.Component<FormControlProps> {
   @observable selection: string = '';
 
-  handleToggleChange: any = (
-    _e: React.ChangeEvent<HTMLInputElement>,
-    control: HTMLInputElement
-  ) => {
-    // find value
-    this.props.owner.setValue(this.props.formControl.source, control.value);
-  };
-
   componentWillMount() {
-    const { source, list } = this.props.formControl;
-    if (source && list) {
-      let values = this.props.owner.getValue(source);
-      if (values && values.length) {
-        this.selection = values[0][list];
-      }
-    } else if (list) {
-      this.selection = this.props.owner.getSchema(list).$enum[0].value;
-    }
+    const { list } = this.props.formControl;
+    this.selection = this.props.owner.getSchema(list).$enum[0].value;
   }
 
   render() {
     const {
       formControl,
-      formControl: { source, controlProps, list },
+      formControl: { controlProps, list },
       owner,
       readOnly,
       handlers
@@ -46,15 +50,7 @@ export class MenuComponent extends React.Component<FormControlProps> {
     let currentOwner: DataSet;
     let currentFormControl: FormElement;
 
-    // 1. if source and list are defined, we will display as many menus as there are fields in the array
-    // 2. If only list is defined, we will take values from the enumerator and project into dataset
-
-    if (source && list) {
-      let values = owner.getValue(source) || [];
-      menus = values.map((v: any) => ({ text: v['title'] || v[list], value: v[list] }));
-      // all items share the same form control
-      currentFormControl = formControl.elements[0];
-    } else if (list) {
+    if (list) {
       menus = owner.getSchema(list).$enum;
       // each menu item holds reference to a different form control
       currentFormControl = formControl.elements.find(c => c.source === this.selection);
@@ -66,7 +62,7 @@ export class MenuComponent extends React.Component<FormControlProps> {
     currentOwner = owner.getValue(this.selection);
 
     return (
-      <>
+      <div className={menuProps && menuProps.vertical && vertical}>
         <Menu {...menuProps}>
           {menus.map((m, i) => (
             <Menu.Item
@@ -79,6 +75,8 @@ export class MenuComponent extends React.Component<FormControlProps> {
           ))}
         </Menu>
 
+        {menuProps && menuProps.vertical && <div />}
+
         <Segment {...contentProps}>
           <FormView
             formControl={currentFormControl}
@@ -87,9 +85,9 @@ export class MenuComponent extends React.Component<FormControlProps> {
             readOnly={readOnly}
           />
         </Segment>
-      </>
+      </div>
     );
   }
 }
 
-export const MenuView = observer(MenuComponent);
+export const MenuProjectionView = observer(MenuComponent);

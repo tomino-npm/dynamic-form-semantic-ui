@@ -55,7 +55,7 @@ const formDefinition: FormDefinition = create.form({
   ]
 });
 
-function componentWithData() {
+function component() {
   const form = new FormModel(formDefinition, schema, {});
 
   // just another notation
@@ -64,10 +64,10 @@ function componentWithData() {
 
 describe('DateView', () => {
   it('renders', function() {
-    const component = renderer.create(componentWithData());
-    expect(component).toMatchSnapshot();
+    const wrapper = renderer.create(component());
+    expect(wrapper).toMatchSnapshot();
   });
   return {
-    componentWithData
+    component
   };
 });

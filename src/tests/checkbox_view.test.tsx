@@ -12,7 +12,7 @@ beforeAll(() => {
   config.setDirty = () => setDirty();
 });
 describe('Checkbox', () => {
-  function componentWithData() {
+  function component() {
     const schema: JSONSchema = {
       type: 'object',
       properties: {
@@ -75,13 +75,13 @@ describe('Checkbox', () => {
   }
 
   it('renders correctly', () => {
-    const component = renderer.create(componentWithData());
-    expect(component).toMatchSnapshot();
+    const wrapper = renderer.create(component());
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('changes value and all related formulas', () => {
-    const component = renderer.create(componentWithData());
-    const root = component.root;
+    const wrapper = renderer.create(component());
+    const root = wrapper.root;
     const agree = root.findAllByProps({ name: 'agree' })[0];
     agree.props.onChange(null, { checked: false });
 
@@ -90,9 +90,9 @@ describe('Checkbox', () => {
 
     const must = root.findAllByProps({ name: 'must' })[0];
     must.props.onChange(null, { checked: true });
-    expect(component).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
     expect(setDirty).toBeCalled();
   });
 
-  return { componentWithData };
+  return { component };
 });

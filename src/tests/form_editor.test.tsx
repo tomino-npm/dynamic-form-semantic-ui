@@ -38,7 +38,7 @@ const Row = () => (
 );
 
 describe('Form Editor', () => {
-  function componentWithData() {
+  function component() {
     // just another notation
     return (
       <Grid className={editorGrid}>
@@ -65,9 +65,9 @@ describe('Form Editor', () => {
   }
 
   it('renders correctly', () => {
-    const component = renderer.create(componentWithData());
-    expect(component).toMatchSnapshot();
+    const wrapper = renderer.create(component());
+    expect(wrapper).toMatchSnapshot();
   });
 
-  return { componentWithData };
+  return { component };
 });

@@ -73,7 +73,7 @@ const formDefinition: FormDefinition = create.form({
 });
 
 describe('Repeater', () => {
-  function componentWithData() {
+  function component() {
     const form = new FormModel(formDefinition, schema, controlData);
 
     // just another notation
@@ -81,21 +81,21 @@ describe('Repeater', () => {
   }
 
   it('renders correctly', () => {
-    const comp = renderer.create(componentWithData());
+    const comp = renderer.create(component());
     expect(comp).toMatchSnapshot();
   });
 
   return {
-    componentWithData
+    component
   };
 
   // it('changes value and all related formulas', () => {
-  //   // const component = renderer.create(data.component);
+  //   // const wrapper = renderer.create(data.component);
   //   // const root = component.root;
   //   // const agree = root.findByProps({ name: 'agree' });
   //   // agree.props.onChange(null, { value: false });
   //   // const disagree = root.findByProps({ name: 'disagree' });
   //   // disagree.props.onChange(null, { value: true });
-  //   // expect(component).toMatchSnapshot();
+  //   // expect(wrapper).toMatchSnapshot();
   // });
 });

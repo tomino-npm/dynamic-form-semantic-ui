@@ -11,7 +11,7 @@ import { Group } from '@tomino/toolbelt/common';
 import { observer } from 'mobx-react';
 import { editorState } from '../editor/editor_state';
 import { renderEditControl } from './editor_form_control_factory';
-import { DropCell } from './DropCell';
+import { DropCell } from './editor_cell';
 import { fieldSet, formStyle } from '../form_view';
 
 export interface IFieldOwner {
@@ -93,7 +93,7 @@ export class FormEditorView extends React.Component<Props, State> {
       let row = rows.find(r => r.key === i);
       if (!row) {
         row = { key: i, values: [] };
-        rows.push(row);
+        rows.splice(i, 0, row);
       }
 
       // sort this row
@@ -128,6 +128,16 @@ export class FormEditorView extends React.Component<Props, State> {
       // now sort the row
       rows[i].values = rows[i].values.sort(sortRow);
     }
+
+    // initiate grid
+    for (let i = 0; i < rows.length; i++) {
+      let row: any = {};
+      for (let j = 0; j < 16; j++) {
+        row[j] = 0;
+      }
+      editorState.grid[i] = observable(row);
+    }
+    console.log('Init');
   }
 
   render() {

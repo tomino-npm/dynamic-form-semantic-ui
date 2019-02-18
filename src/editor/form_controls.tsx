@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as styles from './editor_styles';
 
 import { Menu, Input } from 'semantic-ui-react';
-import { ToolItem } from './ToolItem';
+import { ToolItem } from './tool_item';
 import { config } from '@tomino/dynamic-form';
 
 const standard = [

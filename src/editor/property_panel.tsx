@@ -38,24 +38,28 @@ let options: EditorProperty[] = [
   {
     label: config.i18n`Width:`,
     parse: (val, prev) => {
-      let current = parseInt(val, 10);
-      if (current < 1) {
-        current = 1;
+      let newWidth = parseInt(val, 10);
+      if (newWidth < 1) {
+        newWidth = 1;
       }
-      if (current > 15) {
-        current = 15;
+      if (newWidth > 15) {
+        newWidth = 15;
       }
       const element = editorState.selectedElement;
+      const currentColumn = element.column;
 
-      if (element.column + current - 1 > 15) {
-        current = 15 - element.column + 1;
+      if (element.column + newWidth - 1 > 15) {
+        element.column = 15 - newWidth + 1;
       }
       const conflict = findConflict(
         editorState.selectedParent.elements.filter(s => s.row === element.row && s !== element),
         element.column,
-        element.column + current - 1
+        element.column + newWidth - 1
       );
-      return conflict ? prev : current;
+      if (conflict) {
+        element.column = currentColumn;
+      }
+      return conflict ? prev : newWidth;
     },
     source: 'width',
     type: 'number'

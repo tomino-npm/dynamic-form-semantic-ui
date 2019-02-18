@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DropTarget, DropTargetConnector, DropTargetMonitor, ConnectDropTarget } from 'react-dnd';
 import ItemTypes from './ItemTypes';
-import { ToolItem } from './ToolItem';
+import { ToolItem } from './tool_item';
 import { DataSet, FormElement } from '@tomino/dynamic-form';
 import { observer } from 'mobx-react';
 import { editorState } from './editor_state';
@@ -30,21 +30,25 @@ function adjustPosition(
   parent: FormElement
 ) {
   // adjust from left or right
-  let column =
-    where === 'left' ? position.column : (source.column = position.column - source.width + 1);
+  let column = where === 'left' ? position.column : position.column - source.width + 1;
+  // if (adjust) {
+  //   source.column = position.column - source.width + 1;
+  // }
   // adjust to min width
   column = column < 0 ? 0 : column;
   // adjust to max width
   column = column + source.width > 15 ? 15 - source.width + 1 : column;
 
   let cells = parent.elements.filter(e => e.row === position.row && e !== source);
-  // try one adjustment
+  // try one adjustment moving the item left or right from the conflict cell
   let conflict = findConflict(cells, column, column + source.width - 1);
   if (conflict) {
     column = where === 'left' ? conflict.column - source.width : conflict.column + conflict.width;
   }
   // if it fails again we give up
-  conflict = findConflict(cells, column, column + source.width - 1);
+  if (column >= 0) {
+    conflict = findConflict(cells, column, column + source.width - 1);
+  }
   if (conflict) {
     return -1;
   }
@@ -53,7 +57,40 @@ function adjustPosition(
 
 @observer
 class DropCellView extends React.Component<DropCellProps> {
+  static lastHightLight: number[][] = [];
   static target = {
+    hover: action(
+      (props: DropCellProps, monitor: DropTargetMonitor, component: React.Component | null) => {
+        // clear last highlight
+        editorState.clearHighlight();
+
+        const item = monitor.getItem();
+
+        let dragElement = props.parentFormControl.elements.find(
+          e => e.row === item.row && e.column === item.column
+        ) || { width: 1 };
+
+        let { column, row } = props.formControl;
+        let width = dragElement.width;
+        const newColumn = adjustPosition(
+          item.position,
+          dragElement,
+          props.formControl,
+          props.parentFormControl
+          // false
+        );
+        column = newColumn >= 0 ? newColumn : column;
+
+        // error
+
+        for (let i = 0; i < width; i++) {
+          if (column + i < 16) {
+            editorState.grid[row][column + i] = newColumn < 0 ? 2 : 1;
+            editorState.lastHightLight.push([row, column + i]);
+          }
+        }
+      }
+    ),
     drop: action(
       (props: DropCellProps, monitor: DropTargetMonitor, component: React.Component | null) => {
         if (!component || !props.parentFormControl) {
@@ -61,12 +98,6 @@ class DropCellView extends React.Component<DropCellProps> {
         }
 
         const item = monitor.getItem();
-
-        // debugger;
-        // component.setState({
-        //   hasDropped: true,
-        //   dropped: item.name
-        // });
 
         // find the existing cell in the parent collection
         // if it exists we will only modify it
@@ -89,6 +120,7 @@ class DropCellView extends React.Component<DropCellProps> {
             clearCell,
             props.formControl,
             props.parentFormControl
+            // false
           );
           // const column = props.formControl.column;
           if (column === -1) {
@@ -137,12 +169,13 @@ class DropCellView extends React.Component<DropCellProps> {
     const isActive = canDrop && isOver;
 
     let backgroundColor = 'white';
-    if (editorState.selectedElement === formControl) {
+    let status = editorState.grid[formControl.row][formControl.column];
+    if (status === 0) {
       backgroundColor = 'transparent';
-    } else if (isActive) {
+    } else if (status === 1) {
       backgroundColor = 'grey';
-    } else if (canDrop) {
-      backgroundColor = 'white';
+    } else if (status === 2) {
+      backgroundColor = 'red';
     }
 
     let control =

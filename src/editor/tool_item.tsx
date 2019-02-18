@@ -3,6 +3,7 @@ import { ConnectDragSource, DragSource, DragSourceConnector, DragSourceMonitor }
 import ItemTypes from './ItemTypes';
 import { css } from '../common';
 import { FormElement } from '@tomino/dynamic-form';
+import { editorState } from './editor_state';
 
 const bareItem = css`
   border: 1px solid #deded2;
@@ -52,6 +53,7 @@ class ToolItemView extends React.Component<BoxProps & BoxCollectedProps> {
     },
 
     endDrag(_props: BoxProps, _monitor: DragSourceMonitor) {
+      editorState.clearHighlight();
       // const item = monitor.getItem();
       // const dropResult = monitor.getDropResult();
       // if (dropResult) {

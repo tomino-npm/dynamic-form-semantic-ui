@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Form, SemanticWIDTHSNUMBER, Button } from 'semantic-ui-react';
 
 import { groupByArray } from '@tomino/toolbelt/group-by-array';
-import { FormElement } from '@tomino/dynamic-form';
+import { FormElement, DataSet, FormControl } from '@tomino/dynamic-form';
 import { observable } from 'mobx';
 
 import { css, FormControlProps } from '../common';
@@ -33,6 +33,14 @@ type State = {
 
 const sortRow = (a: FormElement, b: FormElement) => (a.column < b.column ? -1 : 1);
 
+export const borderHandler = css`
+  width: 2px;
+  background-color: red;
+  height: 100%;
+  float: left;
+  cursor: ew-resize;
+`;
+
 @observer
 export class FormEditorView extends React.Component<Props, State> {
   state = {
@@ -42,11 +50,52 @@ export class FormEditorView extends React.Component<Props, State> {
     )
   };
 
-  renderColumn(control: FormElement, parent: FormElement) {
+  control: FormElement = null;
+
+  allowDrop(ev) {
+    console.log(this);
+    ev.preventDefault();
+  }
+
+  drag(ev) {
+    ev.dataTransfer.setData('text', ev.target.id);
+  }
+
+  dragEnter = ev => {
+    ev.currentTarget.style.backgroundColor = 'blue';
+    if (this.control) {
+      let row = ev.currentTarget.attributes['data-row'].value;
+      let column = ev.currentTarget.attributes['data-column'].value;
+
+      if (this.control.row != row) {
+        return;
+      }
+
+      if (this.control.column > column) {
+        this.control.width += this.control.column - column;
+        this.control.column = column;
+      } else if (this.control.column < column) {
+        // this.control.width +=
+      }
+    }
+    console.log(ev.currentTarget.attributes['data-row'].value);
+  };
+
+  dragExit(ev) {
+    ev.currentTarget.style.backgroundColor = 'red';
+  }
+
+  drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData('text');
+    ev.target.appendChild(document.getElementById(data));
+  }
+
+  renderColumn(control: FormElement, parent: FormElement, dataset: DataSet) {
     let columns = [];
     const formControl = control;
 
-    let renderedControl = renderEditControl(control);
+    let renderedControl = renderEditControl(control, dataset);
 
     columns.push(
       <Form.Field
@@ -55,6 +104,18 @@ export class FormEditorView extends React.Component<Props, State> {
         width={formControl.inline ? undefined : (control.width as SemanticWIDTHSNUMBER)}
         inline={formControl.inline}
       >
+        <div
+          className={borderHandler}
+          draggable={true}
+          onDragStart={ev => {
+            ev.dataTransfer.setData('text', '');
+            this.control = control;
+          }}
+          onDragEnter={this.dragEnter}
+          onDragLeave={this.dragExit}
+          data-row={formControl.row}
+          data-column={formControl.column}
+        />
         <DropCell formControl={formControl} owner={this.props.owner} parentFormControl={parent}>
           <>
             {formControl.elements && formControl.elements.length && formControl.label ? (
@@ -69,7 +130,7 @@ export class FormEditorView extends React.Component<Props, State> {
                   formControl.control !== 'Text' &&
                   formControl.control !== 'Signature' &&
                   formControl.control !== 'Checkbox' &&
-                  formControl.label !== 'Radio' && (
+                  formControl.control !== 'Radio' && (
                     <label htmlFor={(formControl.source && formControl.source) || undefined}>
                       {formControl.label}
                     </label>
@@ -151,7 +212,9 @@ export class FormEditorView extends React.Component<Props, State> {
         <div className={'ui form ' + (this.props.readOnly ? formStyle : '')}>
           {rows.map(row => (
             <Form.Group key={row.key}>
-              {row.values.map(element => this.renderColumn(element, this.props.formControl))}
+              {row.values.map(element =>
+                this.renderColumn(element, this.props.formControl, this.props.owner)
+              )}
             </Form.Group>
           ))}
 

@@ -135,7 +135,11 @@ class DropCellView extends React.Component<DropCellProps> {
             column: props.formControl.column,
             control: item.name,
             width,
-            label: ''
+            label: '',
+            elements:
+              item.name === 'Form' || item.name === 'Repeater' || item.name === 'Table'
+                ? []
+                : undefined
           });
           clearCell = props.parentFormControl.elements[props.parentFormControl.elements.length - 1];
         }
@@ -186,7 +190,9 @@ class DropCellView extends React.Component<DropCellProps> {
         {/* {isActive ? 'Release to drop' : 'Drag a box here: ' + this.state.dropped} */}
         {control ? (
           <ToolItem
-            name={this.props.formControl.control}
+            control={this.props.formControl.control}
+            title={this.props.formControl.control}
+            icon={undefined}
             row={this.props.formControl.row}
             column={this.props.formControl.column}
           >
@@ -200,6 +206,8 @@ class DropCellView extends React.Component<DropCellProps> {
   }
 }
 
-export const DropCell = DropTarget(ItemTypes.BOX, DropCellView.target, DropCellView.dropCollector)(
-  DropCellView
-);
+export const DropCell = DropTarget(
+  ItemTypes.TOOLITEM,
+  DropCellView.target,
+  DropCellView.dropCollector
+)(DropCellView);

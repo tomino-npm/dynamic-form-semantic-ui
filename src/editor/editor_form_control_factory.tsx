@@ -1,40 +1,34 @@
 import * as React from 'react';
 
 // import { Button } from 'semantic-ui-react';
-import { FormElement } from '@tomino/dynamic-form';
-import { Input, Radio } from 'semantic-ui-react';
+import { FormElement, config, DataSet } from '@tomino/dynamic-form';
+import { Input, Radio, Button, TextArea, Dropdown, Checkbox } from 'semantic-ui-react';
+import { FormEditorView } from './editor_form_view';
 
-export function renderEditControl(formElement: FormElement) {
+export function renderEditControl(formElement: FormElement, owner: DataSet) {
   switch (formElement.control) {
-    // case 'Formula':
-    //   return <FormulaView owner={dataSet} formControl={formElement} readOnly={readOnly} />;
+    case 'Formula':
+      return <Input disabled placeholder="#Formula" />;
     case 'Input':
       return <Input disabled placeholder="Input" />;
     case 'Radio':
       return <Radio disabled label={formElement.control} />;
     case 'EditorCell':
       return '';
-    // case 'Form':
-    //   return (
-    //     <div className="ui form">
-    //       <FormView
-    //         owner={control.source ? dataSet.getValue(control.source) : dataSet}
-    //         formControl={formElement}
-    //         handlers={handlers}
-    //         child={true}
-    //         readOnly={readOnly || control.readOnly}
-    //         editMode={editMode}
-    //         emptyField={EmptyField}
-    //         fieldWrapper={fieldWrapper}
-    //       />
-    //     </div>
-    //   );
-    // case 'Select':
-    //   return <SelectView owner={dataSet} formControl={formElement} readOnly={readOnly} />;
-    // case 'Checkbox':
-    //   return <CheckboxView owner={dataSet} formControl={formElement} readOnly={readOnly} />;
-    // case 'Radio':
-    //   return <RadioView owner={dataSet} formControl={formElement} readOnly={readOnly} />;
+    case 'Form':
+      return (
+        <div className="ui form">
+          <FormEditorView
+            readOnly={true}
+            owner={formElement.source ? owner.getValue(formElement.source) : owner}
+            formControl={formElement}
+          />
+        </div>
+      );
+    case 'Select':
+      return <Dropdown select readOnly={true} />;
+    case 'Checkbox':
+      return <Checkbox readOnly={true} />;
     // case 'Repeater':
     //   return (
     //     <RepeaterView
@@ -56,40 +50,14 @@ export function renderEditControl(formElement: FormElement) {
     //       readOnly={readOnly}
     //     />
     //   );
-    // case 'Textarea':
-    //   return <TextAreaView owner={dataSet} formControl={formElement} readOnly={readOnly} />;
+    case 'Textarea':
+      return <TextArea formControl={formElement} readOnly={true} />;
     // case 'DeleteButton':
     //   return <Button icon="trash" color="red" onClick={handlers && handlers.deleteRow} />;
-    // case 'ApproveButton':
-    //   return (
-    //     <Button
-    //       icon="check"
-    //       primary
-    //       onClick={() => {
-    //         if (control.source) {
-    //           dataSet.setValue(control.source, true);
-    //         }
-    //         handlers.approve();
-    //       }}
-    //       content={config.i18n`Approve`}
-    //       labelPosition="left"
-    //     />
-    //   );
-    // case 'RejectButton':
-    //   return (
-    //     <Button
-    //       icon="ban"
-    //       color="red"
-    //       onClick={() => {
-    //         if (control.source) {
-    //           dataSet.setValue(control.source, true);
-    //         }
-    //         handlers.reject();
-    //       }}
-    //       content={config.i18n`Reject`}
-    //       labelPosition="left"
-    //     />
-    //   );
+    case 'ApproveButton':
+      return <Button icon="check" primary content={config.i18n`Approve`} labelPosition="left" />;
+    case 'RejectButton':
+      return <Button icon="ban" color="red" content={config.i18n`Reject`} labelPosition="left" />;
     // case 'Value':
     //   return (
     //     <span className="formText" {...formElement.controlProps}>

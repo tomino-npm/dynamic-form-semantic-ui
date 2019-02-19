@@ -3,26 +3,27 @@ import * as styles from './editor_styles';
 
 import { Menu, Input } from 'semantic-ui-react';
 import { ToolItem } from './tool_item';
-import { config } from '@tomino/dynamic-form';
+import { config, FormControl } from '@tomino/dynamic-form';
+import { SemanticICONS } from 'semantic-ui-react/dist/commonjs/generic';
 
-const standard = [
-  // 'ApproveButton',
-  // 'CheckBox',
-  // 'Comment',
-  // 'DeleteButton',
-  // 'Form',
-  // 'Formula',
-  // 'Image',
-  'Input',
-  'Radio'
-  // 'RejectButton',
-  // 'Repeater',
-  //'Select'
-  // 'Signature',
-  // 'Table',
-  // 'Text',
-  // 'Textarea',
-  // 'Value'
+const standard: Array<{ control: FormControl; title: string; icon: SemanticICONS }> = [
+  { control: 'ApproveButton', title: 'Approve Button', icon: 'check' },
+  { control: 'Checkbox', title: 'CheckBox', icon: 'check square outline' },
+  { control: 'Comment', title: 'Comment', icon: 'comment' },
+  { control: 'DeleteButton', title: 'Delet Button', icon: 'trash' },
+  { control: 'Form', title: 'Form', icon: 'wpforms' },
+  { control: 'Formula', title: 'Formula', icon: 'code' },
+  { control: 'Image', title: 'Image', icon: 'image outline' },
+  { control: 'Input', title: 'Input', icon: 'square outline' },
+  { control: 'Radio', title: 'Radio', icon: 'dot circle outline' },
+  { control: 'RejectButton', title: 'Reject Button', icon: 'ban' },
+  { control: 'Repeater', title: 'Repeater', icon: 'list' },
+  { control: 'Select', title: 'Select', icon: 'dropdown' },
+  { control: 'Signature', title: 'Signature', icon: 'edit' },
+  { control: 'Table', title: 'Table', icon: 'table' },
+  { control: 'Text', title: 'Text', icon: 'font' },
+  { control: 'Textarea', title: 'Textarea', icon: 'window maximize outline' },
+  { control: 'Value', title: 'Value', icon: 'dollar sign' }
 ];
 
 export const FormControls = () => (
@@ -39,8 +40,8 @@ export const FormControls = () => (
       <Menu.Item header>Controls</Menu.Item>
 
       {standard.map(s => (
-        <Menu.Item key={s}>
-          <ToolItem name={s} />
+        <Menu.Item key={s.control}>
+          <ToolItem {...s} />
         </Menu.Item>
       ))}
     </Menu>

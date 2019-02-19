@@ -4,6 +4,7 @@ import ItemTypes from './ItemTypes';
 import { css } from '../common';
 import { FormElement } from '@tomino/dynamic-form';
 import { editorState } from './editor_state';
+import { Icon, SemanticICONS } from 'semantic-ui-react';
 
 const bareItem = css`
   border: 1px solid #deded2;
@@ -17,7 +18,9 @@ const style = css`
 `;
 
 interface BoxProps {
-  name: string;
+  control: string;
+  title: string;
+  icon: SemanticICONS;
   row?: number;
   column?: number;
   formElement?: FormElement;
@@ -36,7 +39,7 @@ class ToolItemView extends React.Component<BoxProps & BoxCollectedProps> {
   static source = {
     beginDrag(props: BoxProps, monitor: DragSourceMonitor) {
       let element = document.querySelector(
-        `div[data-coordinate="${createCoordinate(props.name, props.row, props.column)}"]`
+        `div[data-coordinate="${createCoordinate(props.control, props.row, props.column)}"]`
       );
       let elementLeft = window.scrollX + element.getBoundingClientRect().left;
       let elementWidth = element.clientWidth;
@@ -45,7 +48,7 @@ class ToolItemView extends React.Component<BoxProps & BoxCollectedProps> {
       let position = dragStart.x - elementLeft < elementWidth / 2 ? 'left' : 'right';
 
       return {
-        name: props.name,
+        name: props.control,
         row: props.row,
         column: props.column,
         position
@@ -76,21 +79,30 @@ class ToolItemView extends React.Component<BoxProps & BoxCollectedProps> {
 
   public render() {
     const { isDragging, connectDragSource } = this.props;
-    const { name, children, row, column } = this.props;
+    const { control, title, icon, children, row, column } = this.props;
     const opacity = isDragging ? 0.4 : 1;
 
     return connectDragSource(
       <div
         className={style}
         style={{ opacity }}
-        data-coordinate={createCoordinate(name, row, column)}
+        data-coordinate={createCoordinate(control, row, column)}
       >
-        {children ? children : <div className={bareItem}>{name}</div>}
+        {children ? (
+          children
+        ) : (
+          <div className={bareItem}>
+            <Icon name={icon} />
+            {title}
+          </div>
+        )}
       </div>
     );
   }
 }
 
-export const ToolItem = DragSource(ItemTypes.BOX, ToolItemView.source, ToolItemView.dragCollector)(
-  ToolItemView
-);
+export const ToolItem = DragSource(
+  ItemTypes.TOOLITEM,
+  ToolItemView.source,
+  ToolItemView.dragCollector
+)(ToolItemView);

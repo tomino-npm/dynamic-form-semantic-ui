@@ -76,43 +76,46 @@ export class FormEditor extends React.Component<FormControlProps> {
 
   public render() {
     return (
-      <SplitPane
-        className={styles.editorGrid}
-        split="vertical"
-        minSize={100}
-        defaultSize={parseInt(localStorage.getItem('CORPIX.v-split-1') || '280px', 10)}
-        onChange={(size: number) => localStorage.setItem('CORPIX.v-split-1', size.toString())}
-      >
-        <div className={styles.paneContent}>
-          <Menu secondary inverted color="blue">
-            <Menu.Item icon="caret down" className={styles.caret} />
-            <Menu.Item icon="database" content={config.i18n`Data`} />
-            <Menu.Item fitted className={styles.flexed}>
-              <Input icon="search" placeholder="Search ..." fluid />
-            </Menu.Item>
-          </Menu>
-
-          <div>werwer</div>
-
-          <FormControls />
-        </div>
+      <>
+        <Menu fixed="top" inverted color="blue" />
         <SplitPane
-          primary="second"
+          className={styles.editorGrid}
           split="vertical"
           minSize={100}
-          defaultSize={parseInt(localStorage.getItem('CORPIX.v-split-2') || '280px', 10)}
-          onChange={(size: number) => localStorage.setItem('CORPIX.v-split-2', size.toString())}
+          defaultSize={parseInt(localStorage.getItem('CORPIX.v-split-1') || '280px', 10)}
+          onChange={(size: number) => localStorage.setItem('CORPIX.v-split-1', size.toString())}
         >
-          <div className={styles.editorPane}>
-            <FormEditorView
-              readOnly={true}
-              owner={this.props.owner}
-              formControl={this.props.formControl}
-            />
+          <div className={styles.paneContent}>
+            <Menu secondary inverted color="blue">
+              <Menu.Item icon="caret down" className={styles.caret} />
+              <Menu.Item icon="database" content={config.i18n`Data`} />
+              <Menu.Item fitted className={styles.flexed}>
+                <Input icon="search" placeholder="Search ..." fluid />
+              </Menu.Item>
+            </Menu>
+
+            <div>werwer</div>
+
+            <FormControls />
           </div>
-          <PropertyPanel />
+          <SplitPane
+            primary="second"
+            split="vertical"
+            minSize={100}
+            defaultSize={parseInt(localStorage.getItem('CORPIX.v-split-2') || '280px', 10)}
+            onChange={(size: number) => localStorage.setItem('CORPIX.v-split-2', size.toString())}
+          >
+            <div className={styles.editorPane}>
+              <FormEditorView
+                readOnly={true}
+                owner={this.props.owner}
+                formControl={this.props.formControl}
+              />
+            </div>
+            <PropertyPanel />
+          </SplitPane>
         </SplitPane>
-      </SplitPane>
+      </>
     );
   }
 }

@@ -52,7 +52,7 @@ let options: EditorProperty[] = [
         element.column = 15 - newWidth + 1;
       }
       const conflict = findConflict(
-        editorState.selectedParent.elements.filter(s => s.row === element.row && s !== element),
+        element.parent.elements.filter(s => s.row === element.row && s !== element),
         element.column,
         element.column + newWidth - 1
       );

@@ -8,9 +8,9 @@ import { FormEditorView } from './editor_form_view';
 export function renderEditControl(formElement: FormElement, owner: DataSet) {
   switch (formElement.control) {
     case 'Formula':
-      return <Input disabled placeholder="#Formula" />;
+      return <Input fluid disabled placeholder="#Formula" />;
     case 'Input':
-      return <Input disabled placeholder="Input" />;
+      return <Input fluid disabled placeholder="Input" />;
     case 'Radio':
       return <Radio disabled label={formElement.control} />;
     case 'EditorCell':
@@ -26,7 +26,7 @@ export function renderEditControl(formElement: FormElement, owner: DataSet) {
         </div>
       );
     case 'Select':
-      return <Dropdown select readOnly={true} />;
+      return <Dropdown fluid select readOnly={true} />;
     case 'Checkbox':
       return <Checkbox readOnly={true} />;
     // case 'Repeater':

@@ -65,8 +65,9 @@ export const editorPane = css`
   .grid {
     padding: 12px;
   }
+`;
 
-  .grid .fields .field {
+/* .grid .fields .field {
     border-right: dashed 1px #aaa !important;
     border-bottom: dashed 1px #aaa !important;
     border-top: dashed 1px #aaa !important;
@@ -75,8 +76,7 @@ export const editorPane = css`
 
   .grid .fields .field:first-child {
     border-left: dashed 1px #aaa !important;
-  }
-`;
+  } */
 
 export const editorGrid = css`
   .grid .Resizer {

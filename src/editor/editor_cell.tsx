@@ -7,12 +7,18 @@ import { observer } from 'mobx-react';
 import { editorState } from './editor_state';
 import { action } from 'mobx';
 import { findConflict } from './editor_helpers';
+import { css } from '../common';
 
-const style: React.CSSProperties = {
-  overflow: 'hidden',
-  height: '100%',
-  padding: '2px'
-};
+const cell = css`
+  .cell {
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .cell.empty {
+    border: dotted 1px #dfdfdf;
+  }
+`;
 
 export interface DropCellProps {
   canDrop?: boolean;
@@ -186,7 +192,11 @@ class DropCellView extends React.Component<DropCellProps> {
       this.props.formControl.control === 'EditorCell' ? '' : this.props.formControl.control;
 
     return connectDropTarget(
-      <div style={{ ...style, backgroundColor }} onClick={this.toggleActive}>
+      <div
+        className={cell + ' ' + (this.props.formControl.control === 'EditorCell' ? 'empty' : '')}
+        style={{ backgroundColor }}
+        onClick={this.toggleActive}
+      >
         {/* {isActive ? 'Release to drop' : 'Drag a box here: ' + this.state.dropped} */}
         {control ? (
           <ToolItem

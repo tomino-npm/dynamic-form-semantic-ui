@@ -13,33 +13,33 @@ import { editorState } from '../editor/editor_state';
 import { renderEditControl } from './editor_form_control_factory';
 import { DropCell } from './editor_cell';
 import { fieldSet, formStyle } from '../form_view';
+import { dragElement } from './drag_drop_boundary';
 
 export interface IFieldOwner {
   elements?: FormElement[];
 }
 
-type Props = FormControlProps & {
-  child?: boolean;
-};
+const sortRow = (a: FormElement, b: FormElement) => (a.column < b.column ? -1 : 1);
 
 const selected = css`
   background-color: pink;
   overflow: hidden;
 `;
 
+const borderHandler = css`
+  width: 3px;
+  height: 100%;
+  flex: 1 3px;
+  cursor: ew-resize;
+`;
+
+type Props = FormControlProps & {
+  child?: boolean;
+};
+
 type State = {
   rows: number;
 };
-
-const sortRow = (a: FormElement, b: FormElement) => (a.column < b.column ? -1 : 1);
-
-export const borderHandler = css`
-  width: 2px;
-  background-color: red;
-  height: 100%;
-  float: left;
-  cursor: ew-resize;
-`;
 
 @observer
 export class FormEditorView extends React.Component<Props, State> {
@@ -52,91 +52,60 @@ export class FormEditorView extends React.Component<Props, State> {
 
   control: FormElement = null;
 
-  allowDrop(ev) {
-    console.log(this);
-    ev.preventDefault();
-  }
-
-  drag(ev) {
-    ev.dataTransfer.setData('text', ev.target.id);
-  }
-
-  dragEnter = ev => {
-    ev.currentTarget.style.backgroundColor = 'blue';
-    if (this.control) {
-      let row = ev.currentTarget.attributes['data-row'].value;
-      let column = ev.currentTarget.attributes['data-column'].value;
-
-      if (this.control.row != row) {
-        return;
-      }
-
-      if (this.control.column > column) {
-        this.control.width += this.control.column - column;
-        this.control.column = column;
-      } else if (this.control.column < column) {
-        // this.control.width +=
-      }
-    }
-    console.log(ev.currentTarget.attributes['data-row'].value);
-  };
-
-  dragExit(ev) {
-    ev.currentTarget.style.backgroundColor = 'red';
-  }
-
-  drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData('text');
-    ev.target.appendChild(document.getElementById(data));
-  }
-
-  renderColumn(control: FormElement, parent: FormElement, dataset: DataSet) {
+  renderColumn(formControl: FormElement, parent: FormElement, dataset: DataSet) {
     let columns = [];
-    const formControl = control;
 
-    let renderedControl = renderEditControl(control, dataset);
+    let renderedControl = renderEditControl(formControl, dataset);
+    formControl.parent = parent;
 
     columns.push(
       <Form.Field
         className={editorState.selectedElement === formControl ? selected : ''}
-        key={control.column}
-        width={formControl.inline ? undefined : (control.width as SemanticWIDTHSNUMBER)}
+        key={formControl.column}
+        width={formControl.inline ? undefined : (formControl.width as SemanticWIDTHSNUMBER)}
         inline={formControl.inline}
       >
-        <div
-          className={borderHandler}
-          draggable={true}
-          onDragStart={ev => {
-            ev.dataTransfer.setData('text', '');
-            this.control = control;
-          }}
-          onDragEnter={this.dragEnter}
-          onDragLeave={this.dragExit}
-          data-row={formControl.row}
-          data-column={formControl.column}
-        />
         <DropCell formControl={formControl} owner={this.props.owner} parentFormControl={parent}>
           <>
-            {formControl.elements && formControl.elements.length && formControl.label ? (
-              <fieldset className={fieldSet}>
-                {formControl.label && <legend>{formControl.label}</legend>}
-                {renderedControl}
-              </fieldset>
-            ) : (
-              <>
-                {formControl.label &&
-                  formControl.control !== 'Image' &&
-                  formControl.control !== 'Text' &&
-                  formControl.control !== 'Signature' &&
-                  formControl.control !== 'Checkbox' &&
-                  formControl.control !== 'Radio' && (
-                    <label htmlFor={(formControl.source && formControl.source) || undefined}>
-                      {formControl.label}
-                    </label>
-                  )}
-                {renderedControl}
-              </>
+            {formControl.control !== 'EditorCell' && (
+              <div
+                className={borderHandler}
+                draggable={true}
+                onDragStart={ev => dragElement(ev, formControl, 'left')}
+                data-row={formControl.row}
+                data-column={formControl.column}
+              />
+            )}
+            <div style={{ flex: '1 100%' }}>
+              {formControl.elements && formControl.elements.length && formControl.label ? (
+                <fieldset className={fieldSet}>
+                  {formControl.label && <legend>{formControl.label}</legend>}
+                  {renderedControl}
+                </fieldset>
+              ) : (
+                <>
+                  {formControl.label &&
+                    formControl.control !== 'Image' &&
+                    formControl.control !== 'Text' &&
+                    formControl.control !== 'Signature' &&
+                    formControl.control !== 'Checkbox' &&
+                    formControl.control !== 'Radio' && (
+                      <label htmlFor={(formControl.source && formControl.source) || undefined}>
+                        {formControl.label}
+                      </label>
+                    )}
+                  {renderedControl}
+                </>
+              )}
+            </div>
+            {formControl.control !== 'EditorCell' && (
+              <div
+                className={borderHandler}
+                draggable={true}
+                onDragStart={ev => dragElement(ev, formControl, 'right')}
+                data-row={formControl.row}
+                data-column={formControl.column}
+              />
             )}
           </>
         </DropCell>
@@ -209,7 +178,7 @@ export class FormEditorView extends React.Component<Props, State> {
     this.prepareEditor(rows);
     return (
       <>
-        <div className={'ui form ' + (this.props.readOnly ? formStyle : '')}>
+        <div className={'ui form ' + (this.props.readOnly ? formStyle : '')} id="editorForm">
           {rows.map(row => (
             <Form.Group key={row.key}>
               {row.values.map(element =>

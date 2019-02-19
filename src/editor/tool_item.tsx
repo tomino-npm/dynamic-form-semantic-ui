@@ -10,11 +10,14 @@ const bareItem = css`
   border: 1px solid #deded2;
   background-color: white;
   padding: 0.5rem 1rem;
+  width: 100%;
 `;
 
 const style = css`
   cursor: move;
   width: 100%;
+  height: 100%;
+  display: flex;
 `;
 
 interface BoxProps {
@@ -33,7 +36,7 @@ interface BoxCollectedProps {
 }
 
 const createCoordinate = (name: string, row: number, column: number) =>
-  `${name}[${row || '-'}:${column || '-'}]`;
+  `${name}[${row == null ? '-' : row}:${column == null ? '-' : column}]`;
 
 class ToolItemView extends React.Component<BoxProps & BoxCollectedProps> {
   static source = {

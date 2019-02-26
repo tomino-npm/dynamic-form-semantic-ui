@@ -49,7 +49,6 @@ export const formStyle = css`
 
 const selected = css`
   background-color: pink;
-  overflow: hidden;
 `;
 
 type State = {

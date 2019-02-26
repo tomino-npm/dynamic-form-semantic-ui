@@ -10,12 +10,10 @@ import { findConflict } from './editor_helpers';
 import { css } from '../common';
 
 const cell = css`
-  .cell {
-    overflow: hidden;
-    height: 100%;
-  }
+  /* name:cell*/
+  height: 100%;
 
-  .cell.empty {
+  &.empty {
     border: dotted 1px #dfdfdf;
   }
 `;
@@ -169,7 +167,10 @@ class DropCellView extends React.Component<DropCellProps> {
     };
   }
 
-  toggleActive = () => {
+  toggleActive = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
     editorState.selectedElement = this.props.formControl;
     editorState.selectedParent = this.props.parentFormControl;
   };
@@ -193,7 +194,9 @@ class DropCellView extends React.Component<DropCellProps> {
 
     return connectDropTarget(
       <div
-        className={cell + ' ' + (this.props.formControl.control === 'EditorCell' ? 'empty' : '')}
+        className={
+          cell + ' cellContent ' + (this.props.formControl.control === 'EditorCell' ? 'empty' : '')
+        }
         style={{ backgroundColor }}
         onClick={this.toggleActive}
       >

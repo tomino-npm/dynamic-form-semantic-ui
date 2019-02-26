@@ -28,8 +28,8 @@ export type SignatureHandlers = {
 export type FormControlProps = {
   formControl: FormElement;
   owner: DataSet;
-  handlers?: SignatureHandlers & { [index: string]: any };
+  handlers?: { [index: string]: any };
   readOnly: boolean;
 };
 
-export const { css, renderCss } = initCss('d-form');
+export const { css, renderCss } = initCss('form-');

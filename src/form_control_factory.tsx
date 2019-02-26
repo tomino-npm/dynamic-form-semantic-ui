@@ -156,9 +156,9 @@ export function renderControl(
       );
     case 'Value':
       return (
-        <span className="formText" {...formElement.controlProps}>
+        <div className="formText" {...formElement.controlProps}>
           {dataSet.getValue(formElement.source)}
-        </span>
+        </div>
       );
     case 'Text':
       return (

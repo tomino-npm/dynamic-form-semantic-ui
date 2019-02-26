@@ -1,6 +1,8 @@
 import * as React from 'react';
 
 import { FormEditor } from '../editor/form_editor';
+import { JSONSchema, FormModel } from '@tomino/dynamic-form';
+import { baseForm, baseSchema } from './fixtures';
 
 const element = {
   elements: [
@@ -33,6 +35,9 @@ function component() {
     <FormEditor
       owner={{ getSchema: () => null as any } as any}
       formControl={element as any}
+      handlers={{
+        loadGlobalDatasets: () => Promise.resolve() as any
+      }}
       readOnly={false}
     />
   );

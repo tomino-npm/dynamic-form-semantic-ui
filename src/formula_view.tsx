@@ -20,9 +20,11 @@ export class FormulaComponent extends React.Component<FormControlProps> {
       owner
     } = this.props;
 
+    const value = source ? owner.getValue(source) : undefined;
+
     return (
       <div className="ui input">
-        <div className={formula}>{owner.getValue(source)}</div>
+        <div className={formula}>{value == null ? '#Formula' : value}</div>
       </div>
     );
   }

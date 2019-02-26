@@ -10,7 +10,7 @@ const standard: Array<{ control: FormControl; title: string; icon: SemanticICONS
   { control: 'ApproveButton', title: 'Approve Button', icon: 'check' },
   { control: 'Checkbox', title: 'CheckBox', icon: 'check square outline' },
   { control: 'Comment', title: 'Comment', icon: 'comment' },
-  { control: 'DeleteButton', title: 'Delet Button', icon: 'trash' },
+  { control: 'DeleteButton', title: 'Delete Button', icon: 'trash' },
   { control: 'Form', title: 'Form', icon: 'wpforms' },
   { control: 'Formula', title: 'Formula', icon: 'code' },
   { control: 'Image', title: 'Image', icon: 'image outline' },

@@ -14,12 +14,20 @@ export function dragElement(
 
   // create a clone of the currentTarget element
   // const form = document.querySelector('#editorForm');
-  const sibling = (direction === 'left'
-    ? e.currentTarget.nextSibling
-    : e.currentTarget.previousSibling) as HTMLDivElement;
+  // const sibling = (direction === 'left'
+  //   ? e.currentTarget.nextSibling
+  //   : e.currentTarget.previousSibling) as HTMLDivElement;
+
+  const sibling = e.currentTarget.parentElement;
   const clone = sibling.cloneNode(true) as HTMLDivElement;
+
+  console.log(clone.className);
+
+  sibling.parentElement.classList.remove('content');
+  sibling.parentElement.style.opacity = '0.1';
+
   const rect = sibling.getBoundingClientRect();
-  const parentRect = sibling.parentElement.parentElement.parentElement.getBoundingClientRect();
+  const parentRect = sibling.parentElement.parentElement.getBoundingClientRect();
 
   // debugger;
 
@@ -36,6 +44,9 @@ export function dragElement(
   // TODO: position the clone appropriately
   document.body.appendChild(clone);
 
+  clone.style.outline = 'dotted 3px blue';
+  clone.style.outlineOffset = '-1px';
+  clone.style.backgroundColor = 'white';
   clone.style.position = 'absolute';
   clone.style.top = rect.top + 'px';
   clone.style.left = rect.left + 'px';
@@ -52,6 +63,8 @@ export function dragElement(
       element.width = newFormWidth();
     }
 
+    sibling.parentElement.classList.add('content');
+    sibling.parentElement.style.opacity = '1';
     document.body.removeChild(clone);
   });
 
@@ -73,7 +86,7 @@ export function dragElement(
 
   function validateDrag() {
     // try one adjustment moving the item left or right from the conflict cell
-    console.log(`${newColumn()}`);
+    // console.log(`${newColumn()}`);
 
     return !findConflict(cells, newColumn(), newColumn() + newFormWidth() - 1);
   }

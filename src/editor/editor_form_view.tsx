@@ -4,7 +4,7 @@ import { Form, SemanticWIDTHSNUMBER, Button } from 'semantic-ui-react';
 
 import { groupByArray } from '@tomino/toolbelt/group-by-array';
 import { FormElement, DataSet, FormControl } from '@tomino/dynamic-form';
-import { observable } from 'mobx';
+import { observable, isObservable } from 'mobx';
 
 import { css, FormControlProps } from '../common';
 import { Group } from '@tomino/toolbelt/common';
@@ -22,19 +22,26 @@ export interface IFieldOwner {
 const sortRow = (a: FormElement, b: FormElement) => (a.column < b.column ? -1 : 1);
 
 const selected = css`
-  background-color: pink;
-  overflow: hidden;
+  /* name:selected */
+  &.field > .cellContent {
+    outline: dotted 3px #919191;
+    outline-offset: -1px;
+  }
 `;
 
 const borderHandler = css`
-  width: 3px;
+  width: 5px;
   height: 100%;
-  flex: 1 3px;
+  flex: 1 5px;
   cursor: ew-resize;
+`;
+const cellContent = css`
+  flex: 1 100%;
 `;
 
 type Props = FormControlProps & {
   child?: boolean;
+  disableAdd?: boolean;
 };
 
 type State = {
@@ -51,6 +58,15 @@ export class FormEditorView extends React.Component<Props, State> {
   };
 
   control: FormElement = null;
+
+  componentWillMount() {
+    if (!isObservable(this.props.formControl.elements)) {
+      this.props.formControl.elements = observable(this.props.formControl.elements);
+    }
+    if (this.state.rows === 0) {
+      this.setState({ rows: 1 });
+    }
+  }
 
   renderColumn(formControl: FormElement, parent: FormElement, dataset: DataSet) {
     let columns = [];
@@ -69,14 +85,17 @@ export class FormEditorView extends React.Component<Props, State> {
           <>
             {formControl.control !== 'EditorCell' && (
               <div
-                className={borderHandler}
+                className={borderHandler + ' handle'}
                 draggable={true}
                 onDragStart={ev => dragElement(ev, formControl, 'left')}
                 data-row={formControl.row}
                 data-column={formControl.column}
               />
             )}
-            <div style={{ flex: '1 100%' }}>
+            <div
+              className={cellContent}
+              style={formControl.control === 'Select' ? undefined : { overflow: 'hidden' }}
+            >
               {formControl.elements && formControl.elements.length && formControl.label ? (
                 <fieldset className={fieldSet}>
                   {formControl.label && <legend>{formControl.label}</legend>}
@@ -100,7 +119,7 @@ export class FormEditorView extends React.Component<Props, State> {
             </div>
             {formControl.control !== 'EditorCell' && (
               <div
-                className={borderHandler}
+                className={borderHandler + ' handle'}
                 draggable={true}
                 onDragStart={ev => dragElement(ev, formControl, 'right')}
                 data-row={formControl.row}
@@ -167,12 +186,9 @@ export class FormEditorView extends React.Component<Props, State> {
       }
       editorState.grid[i] = observable(row);
     }
-    console.log('Init');
   }
 
   render() {
-    this.props.formControl.elements = observable(this.props.formControl.elements);
-
     let rows = groupByArray(this.props.formControl.elements, 'row');
 
     this.prepareEditor(rows);
@@ -187,11 +203,13 @@ export class FormEditorView extends React.Component<Props, State> {
             </Form.Group>
           ))}
 
-          <Button
-            primary
-            content="Add Row"
-            onClick={() => this.setState({ rows: this.state.rows + 1 })}
-          />
+          {!this.props.disableAdd && (
+            <Button
+              primary
+              content="Add Row"
+              onClick={() => this.setState({ rows: this.state.rows + 1 })}
+            />
+          )}
         </div>
       </>
     );

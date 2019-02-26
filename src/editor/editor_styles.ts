@@ -62,9 +62,14 @@ export const controlsMenu = css`
 `;
 
 export const editorPane = css`
-  .grid {
-    padding: 12px;
-  }
+  /* name:editorPane */
+  padding: 12px;
+  overflow: auto;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
 `;
 
 /* .grid .fields .field {
@@ -79,6 +84,7 @@ export const editorPane = css`
   } */
 
 export const editorGrid = css`
+  padding-top: 41px;
   .Resizer {
     background: #000;
     opacity: 0.2;
@@ -142,4 +148,12 @@ export const propertyLabel = css`
 
 export const searchItem = css`
   width: 100%;
+`;
+
+export const marginLess = css`
+  margin: 0px !important;
+`;
+
+export const noRoundCorners = css`
+  border-radius: 0px !important;
 `;

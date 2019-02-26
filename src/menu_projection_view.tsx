@@ -10,19 +10,18 @@ import { observable } from 'mobx';
 import { DataSet, FormElement } from '@tomino/dynamic-form';
 
 export const vertical = css`
-  .vertical {
-    display: flex;
-  }
+  /* name:vertical */
+  display: flex;
 
-  .vertical div:nth-child(1) {
+  div:nth-child(1) {
     flex: 1 auto;
   }
 
-  .vertical div:nth-child(2) {
+  div:nth-child(2) {
     flex: 1 16px;
   }
 
-  .vertical div:nth-child(3) {
+  div:nth-child(3) {
     flex: 1 100%;
     margin-top: 0px;
   }

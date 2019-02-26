@@ -20,30 +20,29 @@ type Props = FormControlProps & {
 };
 
 export const fieldSet = css`
-  .fieldSet {
-    border: solid 1px #ddd;
-    border-radius: 5px;
-    background-color: #fafafa;
-  }
+  /* name: fieldset */
+  border: solid 1px #ddd;
+  border-radius: 5px;
+  background-color: #fafafa;
 
-  .fieldSet legend {
+  legend {
     padding: 0px 6px;
     font-weight: bold;
   }
 `;
 
 export const formStyle = css`
-  .form .disabled,
-  .form :disabled {
+  .disabled,
+  :disabled {
     opacity: 1 !important;
     cursor: auto;
   }
 
-  .form label {
+  label {
     cursor: auto !important;
   }
 
-  .form label:before {
+  label:before {
     border: solid 1px #d4d4d5 !important;
   }
 `;

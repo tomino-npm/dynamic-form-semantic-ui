@@ -34,7 +34,7 @@ class TableRow extends React.PureComponent<RowProps> {
         {!this.props.readOnly && (
           <Form.Field width={1}>
             <Button
-              color="blue"
+              color="red"
               icon="trash"
               value={this.props.index}
               onClick={this.handlers.delete}

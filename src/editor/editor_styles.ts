@@ -24,13 +24,14 @@ export const paneContent = css`
 `;
 
 export const propertyFields = css`
-  .properties .menu {
+  /* name: properties */
+  .menu {
     margin-bottom: 0px !important;
   }
-  .properties input {
+  input {
     padding: 6px !important;
   }
-  .properties .fields {
+  .fields {
     margin-bottom: 3px !important;
   }
 `;
@@ -41,22 +42,21 @@ export const flexibleContent = css`
 `;
 
 export const controlsMenu = css`
-  .controls {
-    overflow: auto;
-    padding: 6px 12px 6px 12px;
-    margin-top: 0px !important;
-  }
+  /* name: controls */
+  overflow: auto;
+  padding: 6px 12px 6px 12px;
+  margin-top: 0px !important;
 
-  .controls .item {
+  .item {
     margin: 0px !important;
     padding: 0px !important;
   }
 
-  .controls .item div div {
+  .item div div {
     /* transform: scale(0.8); */
   }
 
-  .controls .header.item {
+  .header.item {
     padding: 12px 0px 6px 0px !important;
   }
 `;
@@ -79,7 +79,7 @@ export const editorPane = css`
   } */
 
 export const editorGrid = css`
-  .grid .Resizer {
+  .Resizer {
     background: #000;
     opacity: 0.2;
     z-index: 1;
@@ -91,12 +91,12 @@ export const editorGrid = css`
     background-clip: padding-box;
   }
 
-  .grid .Resizer:hover {
+  .Resizer:hover {
     -webkit-transition: all 2s ease;
     transition: all 2s ease;
   }
 
-  .grid .Resizer.horizontal {
+  .Resizer.horizontal {
     height: 11px;
     margin: -5px 0;
     border-top: 5px solid rgba(255, 255, 255, 0);
@@ -105,12 +105,12 @@ export const editorGrid = css`
     width: 100%;
   }
 
-  .grid .Resizer.horizontal:hover {
+  .Resizer.horizontal:hover {
     border-top: 5px solid rgba(0, 0, 0, 0.5);
     border-bottom: 5px solid rgba(0, 0, 0, 0.5);
   }
 
-  .grid .Resizer.vertical {
+  .Resizer.vertical {
     width: 11px;
     margin: 0 -5px;
     border-left: 5px solid rgba(255, 255, 255, 0);
@@ -118,14 +118,14 @@ export const editorGrid = css`
     cursor: col-resize;
   }
 
-  .grid .Resizer.vertical:hover {
+  .Resizer.vertical:hover {
     border-left: 5px solid rgba(0, 0, 0, 0.5);
     border-right: 5px solid rgba(0, 0, 0, 0.5);
   }
-  .grid .Resizer.disabled {
+  .Resizer.disabled {
     cursor: not-allowed;
   }
-  .grid .Resizer.disabled:hover {
+  .Resizer.disabled:hover {
     border-color: transparent;
   }
 `;

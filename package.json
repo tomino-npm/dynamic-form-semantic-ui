@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@tomino/dynamic-form": "^1.0.7",
-    "luis": "^3.2.3",
+    "luis": "^3.2.9-rc1",
     "mobx": "*",
     "mobx-react": "*",
     "mobx-state-tree": "*",

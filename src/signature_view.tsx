@@ -8,25 +8,23 @@ import { SignatureRejected } from './signature/signature_rejected';
 import { SignatureRoot } from './signature/signature';
 
 const signatureStyle = css`
-  .signature {
-    border: solid 1px #ededed;
-    border-radius: 5px;
-  }
+  border: solid 1px #ededed;
+  border-radius: 5px;
 
-  .signature .image {
+  .image {
     width: 32px !important;
   }
 
-  .signature .button {
+  .button {
     margin-top: 6px !important;
   }
 
-  .signature .items,
-  .signature .list {
+  .items,
+  .list {
     margin-top: 6px !important;
   }
 
-  .signature img {
+  img {
     width: 32px !important;
     vertical-align: middle;
     margin-right: 6px;

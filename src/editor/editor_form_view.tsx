@@ -60,9 +60,9 @@ export class FormEditorView extends React.Component<Props, State> {
   control: FormElement = null;
 
   componentWillMount() {
-    if (!isObservable(this.props.formControl.elements)) {
-      this.props.formControl.elements = observable(this.props.formControl.elements);
-    }
+    // if (!isObservable(this.props.formControl.elements)) {
+    //   this.props.formControl.elements = observable(this.props.formControl.elements);
+    // }
     if (this.state.rows === 0) {
       this.setState({ rows: 1 });
     }
@@ -72,7 +72,7 @@ export class FormEditorView extends React.Component<Props, State> {
     let columns = [];
 
     let renderedControl = renderEditControl(formControl, dataset);
-    formControl.parent = parent;
+    // formControl.parent = parent;
 
     columns.push(
       <Form.Field

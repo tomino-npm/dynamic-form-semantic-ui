@@ -1,7 +1,14 @@
 import * as React from 'react';
 import * as styles from './editor_styles';
 
-import { Menu, Input, DropdownProps, DropdownItemProps, Dropdown } from 'semantic-ui-react';
+import {
+  Menu,
+  Input,
+  DropdownProps,
+  DropdownItemProps,
+  Dropdown,
+  Divider
+} from 'semantic-ui-react';
 import { config, DataSet } from '@tomino/dynamic-form';
 
 export type Props = {
@@ -32,19 +39,16 @@ const GlobalHandlers: React.FC<Props> = ({ context, handlers }) => {
   }
 
   return (
-    <>
-      <label>Import Global Schemas</label>
-      <Dropdown
-        className={styles.noRoundCorners}
-        placeholder="Global schemas"
-        fluid
-        multiple
-        search
-        selection
-        options={options}
-        value={values.length ? values : undefined}
-      />
-    </>
+    <Menu text vertical fluid>
+      <Menu.Item header content={config.i18n`Shared Data`} />
+      <Menu.Item>ererer</Menu.Item>
+      <Divider />
+      <Menu.Item header content={config.i18n`Process Data`} />
+      <Menu.Item>ererer</Menu.Item>
+      <Divider />
+      <Menu.Item header content={config.i18n`Custom Types`} />
+      <Menu.Item>ererer</Menu.Item>
+    </Menu>
   );
 };
 

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as styles from './editor_styles';
 
-import SplitPane from 'react-split-pane';
 import { FormElement, FormModel } from '@tomino/dynamic-form';
 import { observer } from 'mobx-react';
 import { Menu } from 'semantic-ui-react';
@@ -13,20 +12,20 @@ import { FormControls } from './form_controls';
 import { PropertyPanel } from './property_panel';
 import { FormEditorView } from './editor_form_view';
 import { DatasetEditor } from './dataset_editor';
-import { baseForm, baseSchema } from '../tests/fixtures';
+import { TopMenu } from './editor_top.menu';
+
+const SplitPane = require('react-split-pane');
 
 @DragDropContext(HTML5Backend)
 export class FormEditor extends React.Component<FormControlProps> {
   elements: FormElement[];
 
   public render() {
-    let formModel = new FormModel(baseForm, baseSchema, {});
+    // let formModel = new FormModel(baseForm, baseSchema, {});
 
     return (
       <>
-        <Menu fixed="top" inverted color="blue">
-          <Menu.Item icon="lightbulb outline" content="Formix" />
-        </Menu>
+        <TopMenu />
         <SplitPane
           className={styles.editorGrid}
           split="vertical"
@@ -35,10 +34,7 @@ export class FormEditor extends React.Component<FormControlProps> {
           onChange={(size: number) => localStorage.setItem('CORPIX.v-split-1', size.toString())}
         >
           <div className={styles.paneContent}>
-            <DatasetEditor
-              context={{ dataset: formModel.dataSet }}
-              handlers={this.props.handlers}
-            />
+            <DatasetEditor context={{ dataset: this.props.owner }} handlers={this.props.handlers} />
 
             <FormControls />
           </div>
@@ -50,7 +46,11 @@ export class FormEditor extends React.Component<FormControlProps> {
             onChange={(size: number) => localStorage.setItem('CORPIX.v-split-2', size.toString())}
           >
             <div className={styles.editorPane}>
-              <FormEditorView readOnly={true} owner={formModel.dataSet} formControl={formModel} />
+              <FormEditorView
+                readOnly={true}
+                owner={this.props.owner}
+                formControl={this.props.formControl}
+              />
             </div>
             <PropertyPanel />
           </SplitPane>

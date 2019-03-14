@@ -2,12 +2,12 @@ import * as React from 'react';
 import { DropTarget, DropTargetConnector, DropTargetMonitor, ConnectDropTarget } from 'react-dnd';
 import ItemTypes from './ItemTypes';
 import { ToolItem } from './tool_item';
-import { DataSet, FormElement } from '@tomino/dynamic-form';
 import { observer } from 'mobx-react';
 import { editorState } from './editor_state';
 import { action } from 'mobx';
 import { findConflict } from './editor_helpers';
 import { css } from '../common';
+import { FormDataSet } from './form_store';
 
 const cell = css`
   /* name:cell*/
@@ -22,16 +22,16 @@ export interface DropCellProps {
   canDrop?: boolean;
   isOver?: boolean;
   connectDropTarget?: ConnectDropTarget;
-  owner?: DataSet;
-  formControl?: FormElement;
-  parentFormControl?: FormElement;
+  owner?: FormDataSet;
+  formControl?: FormDataSet;
+  parentFormControl?: FormDataSet;
 }
 
 function adjustPosition(
   where: string,
-  source: FormElement,
-  position: FormElement,
-  parent: FormElement
+  source: FormDataSet,
+  position: FormDataSet,
+  parent: FormDataSet
 ) {
   // adjust from left or right
   let column = where === 'left' ? position.column : position.column - source.width + 1;
@@ -130,8 +130,8 @@ class DropCellView extends React.Component<DropCellProps> {
           if (column === -1) {
             return;
           }
-          clearCell.row = props.formControl.row;
-          clearCell.column = column;
+          clearCell.setValue('row', props.formControl.row);
+          clearCell.setValue('column', column);
           // we can grab by left part or right part
         } else {
           props.parentFormControl.elements.push({

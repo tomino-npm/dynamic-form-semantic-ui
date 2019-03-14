@@ -180,9 +180,9 @@ export const PropertyPair: React.FC<EditorProps> = observer(
       <Form.Input
         width={10}
         type={type}
-        value={activeElement[source]}
+        value={activeElement.getValue(source)}
         onChange={e =>
-          (activeElement[source] = parse(e.currentTarget.value, activeElement[source]))
+          activeElement.setValue(source, parse(e.currentTarget.value, activeElement[source]))
         }
       />
     </Form.Group>

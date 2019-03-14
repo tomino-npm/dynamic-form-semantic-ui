@@ -1,10 +1,10 @@
-import { FormElement } from '@tomino/dynamic-form';
+import { FormElement, DataSet } from '@tomino/dynamic-form';
 import { action } from 'mobx';
 import { findConflict } from './editor_helpers';
 
 export function dragElement(
   e: React.MouseEvent<HTMLDivElement>,
-  element: FormElement,
+  element: DataSet<FormElement>,
   direction: 'left' | 'right'
 ) {
   // let widthPx = 0;
@@ -59,8 +59,8 @@ export function dragElement(
     document.onmousemove = null;
 
     if (validateDrag() && newFormWidth() > 0) {
-      element.column = newColumn();
-      element.width = newFormWidth();
+      element.setValue('column', newColumn());
+      element.setValue('width', newFormWidth());
     }
 
     sibling.parentElement.classList.add('content');

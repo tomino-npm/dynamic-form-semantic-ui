@@ -1,8 +1,10 @@
 import * as React from 'react';
 
 import { FormEditor } from '../editor/form_editor';
-import { JSONSchema, FormModel } from '@tomino/dynamic-form';
 import { baseForm, baseSchema } from './fixtures';
+import { buildFormEditorDataset } from '../editor/form_store';
+import { buildDataSet } from '@tomino/dynamic-form/dist/mst_builder';
+import { FormElement } from '@tomino/dynamic-form';
 
 const element = {
   elements: [
@@ -31,10 +33,13 @@ const element = {
 };
 
 function component() {
+  // let form = new FormModel(formDefinition as any, baseSchema, {}, true);
+  let formDefinition = buildFormEditorDataset(baseForm);
+  let dataSet = buildDataSet(baseSchema);
   return (
     <FormEditor
-      owner={{ getSchema: () => null as any } as any}
-      formControl={element as any}
+      owner={dataSet}
+      formControl={formDefinition}
       handlers={{
         loadGlobalDatasets: () => Promise.resolve() as any
       }}

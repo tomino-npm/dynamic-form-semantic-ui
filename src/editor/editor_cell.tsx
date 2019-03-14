@@ -64,7 +64,7 @@ class DropCellView extends React.Component<DropCellProps> {
   static lastHightLight: number[][] = [];
   static target = {
     hover: action(
-      (props: DropCellProps, monitor: DropTargetMonitor, component: React.Component | null) => {
+      (props: DropCellProps, monitor: DropTargetMonitor, _component: React.Component | null) => {
         // clear last highlight
         editorState.clearHighlight();
 
@@ -176,8 +176,12 @@ class DropCellView extends React.Component<DropCellProps> {
   };
 
   public render() {
-    const { canDrop, isOver, connectDropTarget, formControl } = this.props;
-    const isActive = canDrop && isOver;
+    const {
+      // canDrop, isOver,
+      connectDropTarget,
+      formControl
+    } = this.props;
+    // const isActive = canDrop && isOver;
 
     let backgroundColor = 'white';
     let status = editorState.grid[formControl.row][formControl.column];

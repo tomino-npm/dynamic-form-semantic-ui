@@ -8,6 +8,7 @@ import { EnumOption } from '@tomino/dynamic-form/dist/json_schema';
 import { FormView } from './form_view';
 import { observable } from 'mobx';
 import { DataSet, FormElement } from '@tomino/dynamic-form';
+import { PropMap } from '@tomino/dynamic-form/dist/form_definition';
 
 export const vertical = css`
   /* name:vertical */
@@ -61,7 +62,7 @@ export class MenuComponent extends React.Component<FormControlProps> {
     currentOwner = owner.getValue(this.selection);
 
     return (
-      <div className={menuProps && menuProps.vertical && vertical}>
+      <div className={menuProps && (menuProps as PropMap).vertical && vertical}>
         <Menu {...menuProps}>
           {menus.map((m, i) => (
             <Menu.Item
@@ -74,7 +75,7 @@ export class MenuComponent extends React.Component<FormControlProps> {
           ))}
         </Menu>
 
-        {menuProps && menuProps.vertical && <div />}
+        {menuProps && (menuProps as PropMap).vertical && <div />}
 
         <Segment {...contentProps}>
           <FormView

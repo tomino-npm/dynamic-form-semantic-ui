@@ -28,7 +28,7 @@ class TableRow extends React.PureComponent<RowProps> {
       <Form.Group>
         {this.props.formControl.elements.map((e, i) => (
           <Form.Field width={e.width as any} key={i}>
-            {renderControl(e, this.props.owner, this.props.handlers, this.props.readOnly)}
+            {renderControl(e, this.props.owner, this.props.handlers as any, this.props.readOnly)}
           </Form.Field>
         ))}
         {!this.props.readOnly && (

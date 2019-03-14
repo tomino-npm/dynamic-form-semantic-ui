@@ -1,9 +1,7 @@
 import * as React from 'react';
 import * as styles from './editor_styles';
 
-import { FormElement, FormModel } from '@tomino/dynamic-form';
-import { observer } from 'mobx-react';
-import { Menu } from 'semantic-ui-react';
+import { FormElement } from '@tomino/dynamic-form';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 

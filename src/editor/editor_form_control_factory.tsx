@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-// import { Button } from 'semantic-ui-react';
 import { FormElement, config, DataSet } from '@tomino/dynamic-form';
 import { Input, Radio, Button, TextArea, Dropdown, Checkbox, Icon } from 'semantic-ui-react';
 import { FormEditorView } from './editor_form_view';
@@ -9,7 +8,6 @@ import { toJS } from 'mobx';
 import { CommentView } from '../comment_view';
 import { FormulaView } from '../formula_view';
 import { SignatureView } from '../signature_view';
-import { TableView } from '../table_view';
 
 const options = [{ value: '1', text: 'Option 1' }, { value: '2', text: 'Option 2' }];
 

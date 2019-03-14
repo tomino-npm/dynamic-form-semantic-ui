@@ -94,7 +94,7 @@ export class FormView extends React.Component<Props, State> {
     let renderedControl = renderControl(
       control,
       this.props.owner,
-      this.props.handlers,
+      this.props.handlers as any,
       this.props.readOnly
     );
 

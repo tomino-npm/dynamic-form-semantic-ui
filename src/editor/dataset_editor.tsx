@@ -1,14 +1,7 @@
 import * as React from 'react';
 import * as styles from './editor_styles';
 
-import {
-  Menu,
-  Input,
-  DropdownProps,
-  DropdownItemProps,
-  Dropdown,
-  Divider
-} from 'semantic-ui-react';
+import { Menu, Input, DropdownItemProps, Divider } from 'semantic-ui-react';
 import { config, DataSet } from '@tomino/dynamic-form';
 
 export type Props = {
@@ -20,9 +13,9 @@ export type Props = {
 
 const GlobalHandlers: React.FC<Props> = ({ context, handlers }) => {
   const [loaded, setLoaded] = React.useState(false);
-  const [options, setOptions] = React.useState([]);
+  const [options, setOptions] = React.useState(null);
 
-  if (!loaded) {
+  if (!loaded && !options) {
     handlers.loadGlobalDatasets().then((result: DropdownItemProps[]) => {
       setOptions(result || []);
       setLoaded(true);

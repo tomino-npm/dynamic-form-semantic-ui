@@ -9,6 +9,7 @@ import { FormView } from './form_view';
 import { observable } from 'mobx';
 import { DataSet, FormElement } from '@tomino/dynamic-form';
 import { vertical } from './menu_projection_view';
+import { PropMap } from '@tomino/dynamic-form/dist/form_definition';
 
 export class MenuComponent extends React.Component<FormControlProps> {
   @observable selection: string = '';
@@ -51,7 +52,7 @@ export class MenuComponent extends React.Component<FormControlProps> {
     currentOwner = owner.getValue(this.selection);
 
     return (
-      <div className={menuProps && menuProps.vertical ? vertical : 'none'}>
+      <div className={menuProps && (menuProps as PropMap).vertical ? vertical : 'none'}>
         <Menu {...menuProps}>
           {menus.map((m, i) => (
             <Menu.Item
@@ -64,7 +65,7 @@ export class MenuComponent extends React.Component<FormControlProps> {
           ))}
         </Menu>
 
-        {menuProps && menuProps.vertical && <div />}
+        {menuProps && (menuProps as PropMap).vertical && <div />}
 
         <Segment {...contentProps}>
           <FormView

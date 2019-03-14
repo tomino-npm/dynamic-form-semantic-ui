@@ -3,8 +3,8 @@ import * as React from 'react';
 import { Form, SemanticWIDTHSNUMBER, Button } from 'semantic-ui-react';
 
 import { groupByArray } from '@tomino/toolbelt/group-by-array';
-import { FormElement, DataSet, FormControl } from '@tomino/dynamic-form';
-import { observable, isObservable } from 'mobx';
+import { FormElement, DataSet } from '@tomino/dynamic-form';
+import { observable } from 'mobx';
 
 import { css, FormControlProps } from '../common';
 import { Group } from '@tomino/toolbelt/common';
@@ -87,7 +87,7 @@ export class FormEditorView extends React.Component<Props, State> {
               <div
                 className={borderHandler + ' handle'}
                 draggable={true}
-                onDragStart={ev => dragElement(ev, formControl, 'left')}
+                onDragStart={ev => dragElement(ev, formControl as any, 'left')}
                 data-row={formControl.row}
                 data-column={formControl.column}
               />
@@ -121,7 +121,7 @@ export class FormEditorView extends React.Component<Props, State> {
               <div
                 className={borderHandler + ' handle'}
                 draggable={true}
-                onDragStart={ev => dragElement(ev, formControl, 'right')}
+                onDragStart={ev => dragElement(ev, formControl as any, 'right')}
                 data-row={formControl.row}
                 data-column={formControl.column}
               />

@@ -107,7 +107,7 @@ export const SignatureSign: React.FC<Props> = ({
                 false,
                 password,
                 reason,
-                formControl.controlProps && formControl.controlProps.submit
+                formControl.controlProps && !!formControl.controlProps.submit
               );
               setLoading(false);
               // setPassword('');

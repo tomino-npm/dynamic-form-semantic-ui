@@ -105,7 +105,7 @@ export const SignatureReject: React.FC<Props> = ({
                 true,
                 password,
                 reason,
-                formControl.controlProps && formControl.controlProps.submit
+                formControl.controlProps && !!formControl.controlProps.submit
               )) as SignatureType;
               owner.setValue(formControl.source, rejection);
 

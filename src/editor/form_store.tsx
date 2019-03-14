@@ -2,12 +2,10 @@ import {
   JSONSchema,
   FormElement,
   buildStore,
-  Schema,
   FormDefinition,
   setUndoManager,
   DataSet
 } from '@tomino/dynamic-form';
-import { unprotect } from 'mobx-state-tree';
 
 export const formSchema: JSONSchema = {
   type: 'object',

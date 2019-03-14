@@ -1,8 +1,8 @@
 import { renderLuis } from 'luis';
 
-import './tests/proxies';
+// import './tests/proxies';
 
 renderLuis({
-  ...require('./summary'),
+  // ...require('./summary'),
   loadTests: () => require('**.test')
 });

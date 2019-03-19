@@ -4,23 +4,14 @@ import * as styles from './editor_styles';
 
 import { observer } from 'mobx-react';
 import { Menu, Input, Form } from 'semantic-ui-react';
-import { config, FormElement, FormControl } from '@tomino/dynamic-form';
+import { config } from '@tomino/dynamic-form';
 import { editorState } from './editor_state';
 import { findConflict } from './editor_helpers';
+import { EditorProperty, PropertyPair } from './property_pair';
 
 // const intParse = (value: string) => parseInt(value, 10);
 const stringParse = (value: string) => value;
 // const floatParse = (value: string) => parseFloat(value);
-
-type EditorProperty = {
-  label: string;
-  type: 'input' | 'number' | 'checkbox' | 'radio' | 'combo';
-  source: string;
-  parse: (value: string, prev: any) => any;
-  limit?: FormElement[];
-};
-
-type EditorProps = EditorProperty & { activeElement: FormControl & { [index: string]: any } };
 
 let options: EditorProperty[] = [
   {
@@ -162,33 +153,6 @@ let options: EditorProperty[] = [
   }
 ];
 
-let schemaOptions: EditorProperty[] = [
-  {
-    label: config.i18n`Source`,
-    parse: stringParse,
-    source: 'source',
-    type: 'input'
-  }
-];
-
-export const PropertyPair: React.FC<EditorProps> = observer(
-  ({ activeElement, label, type, source, parse = stringParse }: EditorProps) => (
-    <Form.Group>
-      <Form.Field width={6} className={styles.propertyLabel}>
-        <label>{label}</label>
-      </Form.Field>
-      <Form.Input
-        width={10}
-        type={type}
-        value={activeElement.getValue(source)}
-        onChange={e =>
-          activeElement.setValue(source, parse(e.currentTarget.value, activeElement[source]))
-        }
-      />
-    </Form.Group>
-  )
-);
-
 export const PropertyPanel = observer(() => {
   const activeElement = editorState.selectedElement;
   return (
@@ -201,7 +165,7 @@ export const PropertyPanel = observer(() => {
         </Menu.Item>
       </Menu>
 
-      <div className={styles.controlsMenu}>
+      <div className={styles.controlsMenu + ' ' + styles.toolBox}>
         {!activeElement.control && <span>Please select a form control.</span>}
         {activeElement.control && (
           <Form className={styles.propertyFields}>
@@ -211,26 +175,6 @@ export const PropertyPanel = observer(() => {
           </Form>
         )}
       </div>
-
-      {activeElement.control && (
-        <>
-          <Menu secondary inverted color="blue">
-            <Menu.Item icon="caret down" className={styles.caret} />
-            <Menu.Item icon="folder" content={config.i18n`Schema`} />
-            <Menu.Item fitted className={styles.flexed}>
-              <Input icon="search" placeholder="Search ..." fluid />
-            </Menu.Item>
-          </Menu>
-
-          <div className={styles.controlsMenu}>
-            <Form className={styles.propertyFields}>
-              {schemaOptions.map((o, i) => (
-                <PropertyPair key={i} activeElement={activeElement as any} {...o} />
-              ))}
-            </Form>
-          </div>
-        </>
-      )}
     </div>
   );
 });

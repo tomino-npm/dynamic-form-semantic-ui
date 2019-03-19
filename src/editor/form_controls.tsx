@@ -27,7 +27,7 @@ const standard: Array<{ control: FormControl; title: string; icon: SemanticICONS
 ];
 
 export const FormControls = () => (
-  <div className={styles.flexibleContent}>
+  <div className={styles.paneContent}>
     <Menu secondary inverted color="blue" className={styles.compact}>
       <Menu.Item icon="caret down" className={styles.caret} />
       <Menu.Item icon="puzzle" content={config.i18n`Form`} />
@@ -36,7 +36,7 @@ export const FormControls = () => (
       </Menu.Item>
     </Menu>
 
-    <Menu text vertical compact fluid className={styles.controlsMenu}>
+    <Menu text vertical compact fluid className={styles.toolBox + ' ' + styles.controlsMenu}>
       <Menu.Item header>Controls</Menu.Item>
 
       {standard.map(s => (

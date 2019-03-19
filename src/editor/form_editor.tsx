@@ -11,11 +11,16 @@ import { PropertyPanel } from './property_panel';
 import { FormEditorView } from './editor_form_view';
 import { DatasetEditor } from './dataset_editor';
 import { TopMenu } from './editor_top.menu';
+import { SchemaEditor } from './schema_panel';
 
 const SplitPane = require('react-split-pane');
 
+type Props = {
+  showTopMenu: boolean;
+};
+
 @DragDropContext(HTML5Backend)
-export class FormEditor extends React.Component<FormControlProps> {
+export class FormEditor extends React.Component<FormControlProps & Props> {
   elements: FormElement[];
 
   public render() {
@@ -23,18 +28,30 @@ export class FormEditor extends React.Component<FormControlProps> {
 
     return (
       <>
-        <TopMenu />
+        {this.props.showTopMenu && <TopMenu />}
         <SplitPane
-          className={styles.editorGrid}
+          className={styles.editorGrid(this.props.showTopMenu)}
           split="vertical"
           minSize={100}
           defaultSize={parseInt(localStorage.getItem('CORPIX.v-split-1') || '280px', 10)}
           onChange={(size: number) => localStorage.setItem('CORPIX.v-split-1', size.toString())}
         >
           <div className={styles.paneContent}>
-            <DatasetEditor context={{ dataset: this.props.owner }} handlers={this.props.handlers} />
-
-            <FormControls />
+            <SplitPane
+              className={styles.editorGrid(this.props.showTopMenu)}
+              split="horizontal"
+              minSize={100}
+              defaultSize={parseInt(localStorage.getItem('CORPIX.h-split-tools') || '280px', 10)}
+              onChange={(size: number) =>
+                localStorage.setItem('CORPIX.h-split-tools', size.toString())
+              }
+            >
+              <DatasetEditor
+                context={{ dataset: this.props.owner }}
+                handlers={this.props.handlers}
+              />
+              <FormControls />
+            </SplitPane>
           </div>
           <SplitPane
             primary="second"
@@ -50,7 +67,21 @@ export class FormEditor extends React.Component<FormControlProps> {
                 formControl={this.props.formControl}
               />
             </div>
-            <PropertyPanel />
+            <SplitPane
+              className={styles.editorGrid(this.props.showTopMenu)}
+              split="horizontal"
+              minSize={100}
+              defaultSize={parseInt(
+                localStorage.getItem('CORPIX.h-split-properties') || '280px',
+                10
+              )}
+              onChange={(size: number) =>
+                localStorage.setItem('CORPIX.h-split-tproperties', size.toString())
+              }
+            >
+              <PropertyPanel />
+              <SchemaEditor />
+            </SplitPane>
           </SplitPane>
         </SplitPane>
       </>

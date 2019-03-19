@@ -40,7 +40,7 @@
     "typescript": "*"
   },
   "dependencies": {
-    "@tomino/dynamic-form": "^1.0.7",
+    "@tomino/dynamic-form": "^1.0.9",
     "luis": "^3.2.12-rc.3",
     "mobx": "*",
     "mobx-react": "*",

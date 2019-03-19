@@ -17,10 +17,9 @@ export const caret = css`
 export const paneContent = css`
   overflow-x: hidden;
   overflow-y: hidden;
-  display: flex;
-  flex-direction: column;
   background-color: #ebfaff;
   height: 100%;
+  width: 100%;
 `;
 
 export const propertyFields = css`
@@ -36,17 +35,8 @@ export const propertyFields = css`
   }
 `;
 
-export const flexibleContent = css`
-  display: flex;
-  flex-direction: column;
-`;
-
 export const controlsMenu = css`
   /* name: controls */
-  overflow: auto;
-  padding: 6px 12px 6px 12px;
-  margin-top: 0px !important;
-
   .item {
     margin: 0px !important;
     padding: 0px !important;
@@ -83,8 +73,8 @@ export const editorPane = css`
     border-left: dashed 1px #aaa !important;
   } */
 
-export const editorGrid = css`
-  padding-top: 41px;
+export const editorGrid = (showTopMenu: boolean) => css`
+  padding-top: ${showTopMenu ? 41 : 0}px;
   .Resizer {
     background: #000;
     opacity: 0.2;
@@ -146,7 +136,18 @@ export const propertyLabel = css`
   }
 `;
 
-export const searchItem = css`
+export const toolBox = css`
+  padding: 6px 12px 6px 12px;
+  position: absolute;
+  top: 40px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin: 0px !important;
+  overflow: auto;
+`;
+
+export const fullWidth = css`
   width: 100%;
 `;
 

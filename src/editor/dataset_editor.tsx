@@ -32,7 +32,7 @@ const GlobalHandlers: React.FC<Props> = ({ context, handlers }) => {
   }
 
   return (
-    <Menu text vertical fluid>
+    <Menu text vertical fluid className={styles.toolBox}>
       <Menu.Item header content={config.i18n`Shared Data`} />
       <Menu.Item>ererer</Menu.Item>
       <Divider />
@@ -51,7 +51,7 @@ export const DatasetEditor: React.FC<Props> = ({ context, handlers }) => {
   }
 
   return (
-    <>
+    <div className={styles.fullWidth}>
       <Menu secondary inverted color="blue" className={styles.marginLess}>
         <Menu.Item icon="caret down" className={styles.caret} />
         <Menu.Item icon="database" content={config.i18n`Data`} />
@@ -61,6 +61,6 @@ export const DatasetEditor: React.FC<Props> = ({ context, handlers }) => {
       </Menu>
 
       <GlobalHandlers context={context} handlers={handlers} />
-    </>
+    </div>
   );
 };
